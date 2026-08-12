@@ -1,0 +1,363 @@
+# Instrument registry — the single source of truth for what the observatory tracks.
+# Scope and rationale: research/02-observatory-scope.md
+#
+# Fields:
+#   name       human-readable
+#   klass      equity_index | volatility | rates | flows | commodity | fx
+#   source     yfinance | nse | derived | unresolved
+#   ticker     source-specific symbol (null where source unresolved)
+#   currency   quote currency
+#   session    trading session — drives the timezone-contamination policy (scope §4.1)
+#              ist_close  = settles 15:30 IST, aligns cleanly with Indian equities
+#              us_session = settles after Indian close; same-day joins are contaminated
+#              global_24h = near-continuous
+#   role       subject = studied in its own right
+#              context = present only to make a question answerable
+#   status     ok | verify | unresolved
+#   answers    question IDs from scope §3 this instrument is required for
+
+# ---------------------------------------------------------------- Indian equity
+nifty50:
+  name: NIFTY 50
+  klass: equity_index
+  source: yfinance
+  ticker: "^NSEI"
+  currency: INR
+  session: ist_close
+  role: subject
+  status: verify
+  answers: [A1, A3, B1, C2, C3, D1, D2, D3, E1, E2, F1, F2, G1]
+
+niftybank:
+  name: NIFTY Bank
+  klass: equity_index
+  source: yfinance
+  ticker: "^NSEBANK"
+  currency: INR
+  session: ist_close
+  role: subject
+  status: verify
+  answers: [A1, A4, D3, G1]
+
+niftyit:
+  name: NIFTY IT
+  klass: equity_index
+  source: yfinance
+  ticker: "^CNXIT"
+  currency: INR
+  session: ist_close
+  role: subject
+  status: verify
+  answers: [A2, D3, G1]
+  notes: Dollar-earner. Expected inverse exposure to USDINR — the point of A2.
+
+niftymidcap:
+  name: NIFTY Midcap
+  klass: equity_index
+  source: yfinance
+  ticker: "^NSEMDCP50"
+  currency: INR
+  session: ist_close
+  role: subject
+  status: verify
+  answers: [A3, D3, G1]
+  notes: >
+    Open item 1. Midcap 150 preferred over Midcap 50 for breadth; ticker
+    availability on the free source is unconfirmed. Verify before relying on A3.
+
+# ------------------------------------------------------------ Volatility, rates
+indiavix:
+  name: India VIX
+  klass: volatility
+  source: yfinance
+  ticker: "^INDIAVIX"
+  currency: index
+  session: ist_close
+  role: subject
+  status: verify
+  answers: [D1, D2, D3]
+  notes: The regime variable. Most conditional statements key off this.
+
+india10y:
+  name: India 10Y G-Sec yield
+  klass: rates
+  source: unresolved
+  ticker: null
+  currency: percent
+  session: ist_close
+  role: subject
+  status: unresolved
+  answers: [A4]
+  notes: Open item 2. Candidates — NSE, CCIL, FRED (monthly only, too coarse).
+
+# ---------------------------------------------------------------------- Flows
+fii_net_cash:
+  name: FII net cash flow
+  klass: flows
+  source: nse
+  ticker: null
+  currency: INR_crore
+  session: ist_close
+  role: subject
+  status: unresolved
+  answers: [E1, E2]
+  notes: Open item 3. Free from NSE but needs a dedicated fetcher, not an API.
+
+dii_net_cash:
+  name: DII net cash flow
+  klass: flows
+  source: nse
+  ticker: null
+  currency: INR_crore
+  session: ist_close
+  role: subject
+  status: unresolved
+  answers: [E1, E2]
+
+# ----------------------------------------------------------- Commodities (USD)
+gold_usd:
+  name: Gold (COMEX front)
+  klass: commodity
+  source: yfinance
+  ticker: "GC=F"
+  currency: USD
+  session: us_session
+  role: subject
+  status: verify
+  answers: [C1, C4, D3, G1]
+
+silver_usd:
+  name: Silver (COMEX front)
+  klass: commodity
+  source: yfinance
+  ticker: "SI=F"
+  currency: USD
+  session: us_session
+  role: subject
+  status: verify
+  answers: [C4, D3, G1]
+
+brent_usd:
+  name: Brent crude
+  klass: commodity
+  source: yfinance
+  ticker: "BZ=F"
+  currency: USD
+  session: global_24h
+  role: subject
+  status: verify
+  answers: [C2, C3, D3, G1]
+  notes: Primary crude benchmark for India — the import basket is Brent-linked.
+
+wti_usd:
+  name: WTI crude
+  klass: commodity
+  source: yfinance
+  ticker: "CL=F"
+  currency: USD
+  session: us_session
+  role: context
+  status: verify
+  answers: [C2, C3]
+
+copper_usd:
+  name: Copper (COMEX front)
+  klass: commodity
+  source: yfinance
+  ticker: "HG=F"
+  currency: USD
+  session: us_session
+  role: subject
+  status: verify
+  answers: [C2, C4, D3, G1]
+
+# --------------------------------------------------- Commodities (INR) — see §4.2
+# SYNTHETIC: usd_price x USDINR. Legitimate for C1 (currency-vs-metal
+# decomposition). MUST NOT be used for C5 (basis) — its basis is zero by
+# construction. Real MCX prices are open item 4.
+gold_inr_synth:
+  name: Gold, synthetic INR
+  klass: commodity
+  source: derived
+  ticker: null
+  currency: INR
+  session: us_session
+  role: subject
+  status: ok
+  answers: [C1]
+  derived_from: [gold_usd, usdinr]
+
+silver_inr_synth:
+  name: Silver, synthetic INR
+  klass: commodity
+  source: derived
+  ticker: null
+  currency: INR
+  session: us_session
+  role: subject
+  status: ok
+  answers: [C1]
+  derived_from: [silver_usd, usdinr]
+
+brent_inr_synth:
+  name: Brent, synthetic INR
+  klass: commodity
+  source: derived
+  ticker: null
+  currency: INR
+  session: global_24h
+  role: subject
+  status: ok
+  answers: [C1, C3]
+  derived_from: [brent_usd, usdinr]
+
+copper_inr_synth:
+  name: Copper, synthetic INR
+  klass: commodity
+  source: derived
+  ticker: null
+  currency: INR
+  session: us_session
+  role: subject
+  status: ok
+  answers: [C1]
+  derived_from: [copper_usd, usdinr]
+
+# -------------------------------------------------------------------------- FX
+# PRIMARY = FRED H.10. The yfinance `=X` spot quotes were measured and rejected
+# for daily use — see scope §4.5. H.10 rates are all snapped at noon ET, so
+# cross-FX relationships are internally consistent. Cost: a few days' lag.
+usdinr:
+  name: USD/INR (H.10)
+  klass: fx
+  source: fred
+  ticker: "DEXINUS"
+  currency: INR
+  session: noon_et
+  role: subject
+  status: ok
+  answers: [A2, B1, B2, C1, D3, G1]
+  notes: INR per USD. The core India variable — B1 is the headline question.
+
+eurusd:
+  name: EUR/USD (H.10)
+  klass: fx
+  source: fred
+  ticker: "DEXUSEU"
+  currency: USD
+  session: noon_et
+  role: context
+  status: ok
+  answers: [B2]
+  notes: USD per EUR. Largest DXY component.
+
+usdjpy:
+  name: USD/JPY (H.10)
+  klass: fx
+  source: fred
+  ticker: "DEXJPUS"
+  currency: JPY
+  session: noon_et
+  role: subject
+  status: ok
+  answers: [B3, D3, G1]
+  notes: Carry / global risk barometer. Yen-carry unwinds hit EM disproportionately.
+
+usdcny:
+  name: USD/CNY (H.10)
+  klass: fx
+  source: fred
+  ticker: "DEXCHUS"
+  currency: CNY
+  session: noon_et
+  role: subject
+  status: ok
+  answers: [B2, C2, G1]
+  notes: >
+    Onshore CNY, not offshore CNH. China proxy — drives copper and the
+    EM-Asia currency bloc.
+
+dxy:
+  name: US Dollar Index (ICE)
+  klass: fx
+  source: yfinance
+  ticker: "DX-Y.NYB"
+  currency: index
+  session: us_session
+  role: subject
+  status: ok
+  answers: [B2, C2, D3, G1]
+  notes: >
+    The market-standard DXY — six currencies, euro-heavy. Verified healthy
+    (r=-0.84 vs H.10 EUR/USD daily); the =X defect does not affect it.
+
+dxy_broad:
+  name: Fed Broad Dollar Index
+  klass: fx
+  source: fred
+  ticker: "DTWEXBGS"
+  currency: index
+  session: noon_et
+  role: subject
+  status: ok
+  answers: [B2, G1]
+  notes: >
+    Trade-weighted across 26 currencies including INR and CNY, so it is the
+    more India-relevant dollar measure. Kept alongside ICE DXY because the
+    two answer different questions. Starts 2006.
+
+# Rejected for daily use, retained as context only — scope §4.5.
+# Weekly-resampled they are fine (r=-0.82 vs DXY, matching FRED), so they are
+# the fallback if H.10's publication lag ever becomes a problem.
+usdinr_yf:
+  name: USD/INR (Yahoo spot)
+  klass: fx
+  source: yfinance
+  ticker: "USDINR=X"
+  currency: INR
+  session: global_24h
+  role: context
+  status: verify
+  answers: []
+  notes: >
+    DEFECTIVE DAILY. Close==Open on 40% of days; correlation with DXY splits
+    across two days. Do not use for daily analysis. Weekly is usable.
+
+eurusd_yf:
+  name: EUR/USD (Yahoo spot)
+  klass: fx
+  source: yfinance
+  ticker: "EURUSD=X"
+  currency: USD
+  session: global_24h
+  role: context
+  status: verify
+  answers: []
+  notes: >
+    DEFECTIVE DAILY. r=-0.34 vs DXY where H.10 gives -0.84. Retained purely
+    as the evidence exhibit for scope §4.5 and as a weekly fallback.
+
+# -------------------------------------------------------------- Global context
+sp500:
+  name: S&P 500
+  klass: equity_index
+  source: yfinance
+  ticker: "^GSPC"
+  currency: USD
+  session: us_session
+  role: context
+  status: verify
+  answers: [C3, D2, D3]
+  notes: Required to separate India-specific moves from global beta.
+
+vix:
+  name: CBOE VIX
+  klass: volatility
+  source: yfinance
+  ticker: "^VIX"
+  currency: index
+  session: us_session
+  role: context
+  status: verify
+  answers: [D2]
+  notes: Required for D2 — is Indian vol idiosyncratic or global vol beta?

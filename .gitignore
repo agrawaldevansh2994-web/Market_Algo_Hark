@@ -1,0 +1,19 @@
+# --- Python environment (551 MB, fully reproducible from requirements.txt) ---
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- Derived data (a pure function of data/raw + code; rebuilt by build.py) ---
+observatory/data/curated/
+
+# --- Raw snapshots ARE committed on purpose ---
+# They are point-in-time and not regenerable (Yahoo revises, FRED restates),
+# so they are the reproducibility record. See research/02 §4.6 / research/01 §4.4.
+# Do NOT ignore observatory/data/raw/
+
+# --- Scratch / tooling ---
+scratchpad/
+.ipynb_checkpoints/
+.DS_Store
+*.log
