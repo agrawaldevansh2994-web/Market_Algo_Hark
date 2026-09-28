@@ -118,6 +118,17 @@ Not subjects of study, but **required** to answer "is India idiosyncratic or jus
 ### G — The meta question
 - **G1.** **Within this entire set, what is genuinely uncorrelated to Indian equities?** The single most valuable output. This is the free lunch of `CLAUDE.md` §4.6, measured rather than assumed.
 
+### H — Equity derivatives *(added 2026-09-28, `research/04`)*
+- **H1.** Is India VIX systematically above subsequently realised Nifty volatility — is there a measurable variance risk premium, and does it vanish in stress? *(Answerable now: both series are in the panel.)*
+- **H2.** How do the Nifty futures basis and open interest behave through the expiry cycle? *(Needs F&O bhavcopy.)*
+- **H3.** Did the Nov 2024 expiry rationalisation and the Apr 2026 STT hike measurably change F&O volume and open interest? *(Needs F&O bhavcopy; overlaps F1.)*
+
+### I — IPOs *(added 2026-09-28, `research/04`; all need an IPO dataset — study-first, source TBD)*
+- **I1.** What does the distribution of listing-day returns look like, mainboard vs SME, and how has it shifted over time?
+- **I2.** How much of the listing-day return does subscription explain — QIB versus retail multiples — and does anything explain what happens *after* listing?
+- **I3.** What happens to price around anchor-investor lock-in expiry?
+- **I4.** Do Indian IPOs underperform over 1–3 years after listing — the classic long-run result — and does that differ by segment?
+
 ---
 
 ## 4. Known traps and the policy for each
@@ -223,3 +234,4 @@ Items 2–4 are all Indian-specific series with no clean free API. They are the 
 |---|---|
 | 2026-08-12 | Scope proposed, revised and locked. Sensex dropped. Nifty IT, India VIX, Midcap, 10Y, FII/DII added. FX widened to 5 pairs. Global context pair added to make D2/C3 answerable. Question bank established at 20 questions. Python 3.14.2 venv created; pandas 3.0.5 / numpy 2.5.2 / pyarrow / duckdb / yfinance installed. |
 | 2026-08-12 | **Layer 0 built and verified.** Registry, snapshot store, yfinance + FRED fetchers, panel alignment, integrity checks. Integrity checks then found two data faults: Yahoo `=X` spot FX unusable daily (§4.5, resolved by moving FX to FRED H.10) and apparent zero-return gaps that proved to be genuine pegged-currency history (§4.6, resolved by scoping checks to the analysis window). 24 series, 2008-03-03 → 2026-08-07, all checks passing. No analysis run yet. |
+| 2026-09-28 | **Re-prioritised after `CLAUDE.md` §5 closed** (`research/04`). Subjects narrow to Indian equities, India VIX + equity derivatives, flows and IPOs. Commodities, FX and global instruments stay in the registry as **context** (they still answer D2, C3, G1) — nothing removed. Question bank grows from 20 to 27: **H1–H3** (derivatives) and **I1–I4** (IPOs). Layer 4 ("a report that gets read") becomes the first half of the Phase 3 Streamlit dashboard. |
