@@ -17,6 +17,8 @@ from __future__ import annotations
 
 import io
 import warnings
+from datetime import datetime, time
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 import requests
@@ -90,6 +92,27 @@ def fetch_fred(inst: Instrument, timeout: int = 60) -> pd.DataFrame:
 
 FETCHERS = {"yfinance": fetch_yfinance, "fred": fetch_fred}
 
+# When a session's daily bar becomes final, with a buffer. Pulling earlier would
+# freeze an in-progress price into a permanent snapshot (market_patterns.md,
+# 2026-09-28). US-tagged futures and DXY trade to the ~17:00 ET roll, so both
+# US sessions share the later cutoff. FRED (noon_et) only publishes final values.
+SETTLES = {
+    "ist_close": (ZoneInfo("Asia/Kolkata"), time(16, 0)),
+    "us_session": (ZoneInfo("America/New_York"), time(17, 30)),
+    "global_24h": (ZoneInfo("America/New_York"), time(17, 30)),
+}
+
+
+def drop_unsettled(df: pd.DataFrame, session: str, now: datetime | None = None) -> pd.DataFrame:
+    """Drop trailing bars whose session had not settled at fetch time."""
+    if session not in SETTLES:
+        return df
+    tz, settle = SETTLES[session]
+    now = now or datetime.now(tz)
+    while not df.empty and now < datetime.combine(df.index[-1].date(), settle, tzinfo=tz):
+        df = df.iloc[:-1]
+    return df
+
 
 def fetch_all(
     registry: Registry | None = None,
@@ -105,6 +128,7 @@ def fetch_all(
         try:
             fetcher = FETCHERS[inst.source]
             df = fetcher(inst, period=period) if inst.source == "yfinance" else fetcher(inst)
+            df = drop_unsettled(df, inst.session)
             write_raw(inst.key, df, snapshot)
             written[inst.key] = len(df)
         except Exception as exc:  # network, symbol change, upstream break

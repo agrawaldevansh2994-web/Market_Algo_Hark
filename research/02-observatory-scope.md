@@ -181,6 +181,11 @@ The gap check initially fired on USD/INR (22% zero-return days) and USD/CNY (33%
 
 **Policy:** integrity checks run from **2008-03-03**, the observatory's actual usable window. A check scoped to full history fires on real history; scoped to the analysis window it fires on real bugs. Confirmed immaterial anyway — B1's correlation moves from −0.3929 to −0.3967 when zero-days are excluded.
 
+### 4.7 Snapshots contain settled bars only — measured, 2026-09-28
+yfinance serves the current day's bar while its session is still trading. Stored raw, that freezes a price that was never a close into the permanent record. The 2026-08-12 snapshot's last US-session bars were off their settled values by up to 0.9% (VIX).
+
+**Policy:** the fetcher drops any trailing bar whose session has not settled at fetch time (`obs/fetch.py::drop_unsettled`). Existing snapshots are never edited after the fact. Full evidence: `market_patterns.md`, 2026-09-28.
+
 ---
 
 ## 5. Build layers

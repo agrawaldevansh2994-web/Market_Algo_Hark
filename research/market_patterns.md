@@ -50,6 +50,33 @@ The CNY was hard-pegged at 8.2765 until July 2005; the RBI managed the rupee far
 
 ---
 
+## 2026-09-28 — Snapshots were freezing in-progress bars as if they were closes
+
+**Finding.** yfinance returns a bar for the current day while that session is still trading. The fetcher stored it as-is, so any pull made before a session settled froze a mid-session price into the permanent snapshot, labelled as that day's close.
+
+**Evidence.** The 2026-08-12 snapshot was pulled at 23:43 IST, which is 14:13 ET, mid-session in New York. Its last bar compared with the settled value for the same day, from the 2026-09-28 pull:
+
+| Instrument | Snapshot "close" vs settled close |
+|---|---|
+| VIX | **+0.89%** |
+| Brent | −0.56% |
+| WTI | −0.53% |
+| Copper | +0.22% |
+| DXY | −0.07% |
+| S&P 500 | +0.02% |
+| Gold | −0.00% |
+| Nifty 50, India VIX | **0.000%** — pulled after the 15:30 IST close, so already final |
+
+The split is exactly the signature expected: every instrument whose session was open at pull time is off, and every instrument whose session had closed is exact.
+
+**Why it matters.** Raw snapshots are the reproducibility record and are never rewritten. A frozen mid-session price is a number that never existed as a close. A backtest acting on it would see a price no one could have traded at the close, and a dashboard would show a "close" that isn't one. `checks.py` could not catch it: one bar out of thousands moves no correlation.
+
+**Resolution.** `obs/fetch.py::drop_unsettled` trims any trailing bar whose session has not settled at fetch time: 16:00 IST for Indian instruments, 17:30 ET for US and 24-hour instruments (the futures and DXY trade to the ~17:00 ET roll). FRED is untouched because it only publishes final values. Edge cases tested either side of each cutoff. **The 2026-08-12 snapshot is left as-is** — snapshots are history, not something to edit after the fact. It is superseded by 2026-09-28, which contains only settled bars.
+
+**Operational consequence.** Any scheduled pull should run after 16:00 IST for Indian data. US data pulled then will lag one day, and that is the correct behaviour, not a bug.
+
+---
+
 ## Layers 1–4 findings
 
 Not yet — no correlation, lead-lag or regime analysis has been run. This section will hold the answers to the scope §3 question bank (A1–G1) as they're produced.
