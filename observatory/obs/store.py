@@ -51,6 +51,30 @@ def read_raw(key: str, snapshot: str | None = None) -> pd.DataFrame:
     return pd.read_parquet(raw_path(key, snapshot))
 
 
+def write_partition(key: str, part: str, df: pd.DataFrame) -> Path:
+    """One file per period for series that accumulate rather than re-download.
+
+    Used for flows: closed periods are never rewritten, so a nightly capture
+    only ever touches the current period's file.
+    """
+    path = RAW / key / f"{part}.parquet"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_parquet(path)
+    return path
+
+
+def read_partition(key: str, part: str) -> pd.DataFrame | None:
+    path = RAW / key / f"{part}.parquet"
+    return pd.read_parquet(path) if path.exists() else None
+
+
+def read_partitions(key: str) -> pd.DataFrame:
+    files = sorted((RAW / key).glob("*.parquet"))
+    if not files:
+        raise FileNotFoundError(f"no partitions for {key!r}")
+    return pd.concat([pd.read_parquet(f) for f in files]).sort_index()
+
+
 def available_keys() -> list[str]:
     if not RAW.exists():
         return []

@@ -16,7 +16,7 @@ CONFIG_PATH = Path(__file__).resolve().parents[1] / "config" / "instruments.yaml
 # Sessions determine timezone-contamination risk when joining to Indian equities.
 # See research/02-observatory-scope.md §4.1.
 SESSIONS = {"ist_close", "us_session", "global_24h", "noon_et"}
-SOURCES = {"yfinance", "fred", "nse", "derived", "unresolved"}
+SOURCES = {"yfinance", "fred", "nse", "nsdl", "derived", "unresolved"}
 FETCHABLE_SOURCES = {"yfinance", "fred"}
 ROLES = {"subject", "context"}
 STATUSES = {"ok", "verify", "unresolved"}

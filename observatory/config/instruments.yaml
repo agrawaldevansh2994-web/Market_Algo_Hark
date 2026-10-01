@@ -92,27 +92,63 @@ india10y:
 
 # ---------------------------------------------------------------------- Flows
 fii_net_cash:
-  name: FII net cash flow
+  name: FII/FPI net cash flow (NSE provisional)
   klass: flows
   source: nse
   ticker: null
   currency: INR_crore
   session: ist_close
   role: subject
-  status: unresolved
+  status: ok
   answers: [E1, E2]
-  notes: Open item 3. Free from NSE but needs a dedicated fetcher, not an API.
+  notes: >
+    NSE fiidiiTradeReact, trade-date T. Latest day only — captured nightly by
+    capture.py, history accumulates from 2026-09-25. For FPI history use
+    fpi_equity_nsdl.
 
 dii_net_cash:
-  name: DII net cash flow
+  name: DII net cash flow (NSE provisional)
   klass: flows
   source: nse
   ticker: null
   currency: INR_crore
   session: ist_close
   role: subject
-  status: unresolved
+  status: ok
   answers: [E1, E2]
+  notes: >
+    Same endpoint as fii_net_cash. No free historical source found, so a
+    missed nightly capture is a permanent gap.
+
+fpi_equity_nsdl:
+  name: FPI net equity investment, all routes (NSDL)
+  klass: flows
+  source: nsdl
+  ticker: null
+  currency: INR_crore
+  session: ist_close
+  role: subject
+  status: ok
+  answers: [E1, E2]
+  notes: >
+    Custodian-confirmed, daily since 1999-01. Dated by REPORTING date, which
+    covers trades up to the previous trading day — roughly T+1 against NSE.
+    Includes primary-market investment (IPOs, placements).
+
+fpi_equity_exch_nsdl:
+  name: FPI net equity investment, stock-exchange route (NSDL)
+  klass: flows
+  source: nsdl
+  ticker: null
+  currency: INR_crore
+  session: ist_close
+  role: subject
+  status: ok
+  answers: [E1, E2]
+  notes: >
+    Secondary-market only — the NSDL series comparable to NSE provisional
+    FII net. Reporting-date convention as fpi_equity_nsdl. Exists only once
+    NSDL began splitting by investment route.
 
 # ----------------------------------------------------------- Commodities (USD)
 gold_usd:

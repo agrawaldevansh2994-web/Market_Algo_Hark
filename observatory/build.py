@@ -10,6 +10,7 @@ import sys
 
 from obs import panel as P
 from obs.fetch import fetch_all
+from obs.flows import flows_panel
 from obs.registry import load_registry
 from obs.store import write_curated
 
@@ -36,6 +37,17 @@ def main(fetch: bool = True) -> int:
     write_curated("logret_daily", P.log_returns(daily))
     write_curated("logret_weekly", P.log_returns(weekly))
 
+    # Flows are levels, not prices: their own panel, never log-returned.
+    # Their data arrives via capture.py, not this build.
+    try:
+        flows = flows_panel()
+        write_curated("flows_daily", flows)
+        print("flows: " + ", ".join(
+            f"{c} {flows[c].first_valid_index().date()}→{flows[c].last_valid_index().date()}"
+            for c in flows.columns) + "\n")
+    except FileNotFoundError as exc:
+        print(f"flows: skipped — {exc}\n")
+
     cov = P.coverage(daily)
     print(cov.to_string())
 
@@ -55,4 +67,5 @@ def main(fetch: bool = True) -> int:
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     raise SystemExit(main(fetch="--no-fetch" not in sys.argv))
