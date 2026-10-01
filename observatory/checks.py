@@ -17,7 +17,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from obs.flows import INVEST_KEY, NSE_KEY, SUBTOTAL_ROUTES
+from obs.flows import INVEST_KEY, NSE_KEY, SUBTOTAL_ROUTES, lost_capture_days
 from obs.fno import IMBALANCE_TOL, PARTICIPANTS, POI_KEY, POI_PAIRS
 from obs.registry import load_registry
 from obs.store import RAW, read_curated, read_partitions
@@ -159,9 +159,8 @@ def check_flows(daily) -> list[str]:
     if cash is not None:
         # The endpoint is latest-day-only, so a missed capture is permanent.
         # Nifty's own trading calendar says which days should exist.
-        have = set(cash.index.normalize())
-        expected = daily["nifty50"].dropna().loc[cash.index.min():cash.index.max()].index
-        lost = [d.date().isoformat() for d in expected if d not in have]
+        lost = [d.date().isoformat()
+                for d in lost_capture_days(cash.index, daily["nifty50"].dropna().index)]
         if lost:
             print(f"  warn  FII/DII captures missing for Nifty trading days {lost} — "
                   "permanent (source serves the latest day only); FPI side recoverable from NSDL")

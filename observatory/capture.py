@@ -22,6 +22,7 @@ from obs.store import DATA_ROOT
 from obs.universe import backfill_wayback, capture_constituents
 
 LOG = DATA_ROOT / "capture.log"
+CATCHUP_BUDGET = 600  # archive requests per day spent on old participant-OI history
 
 
 def log(msg: str) -> None:
@@ -54,6 +55,10 @@ def main(backfill: bool = False) -> int:
     failures += update_nsdl(start=NSDL_START if backfill else recent, log=log)
     try:
         failures += update_participant_oi(start=POI_START if backfill else recent, log=log)
+        # Once a day (the late run), spend part of the archive host's request
+        # allowance on filling older history. Resumes where the last run stopped.
+        if not backfill and dt.datetime.now().hour >= 22:
+            failures += update_participant_oi(start=POI_START, pause=1.0, log=log, budget=CATCHUP_BUDGET)
     except Exception as exc:  # e.g. NSE session refused
         failures += 1
         log(f"participant OI: FAILED {type(exc).__name__}: {exc}")

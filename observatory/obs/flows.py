@@ -287,6 +287,18 @@ def update_nsdl(start: str = NSDL_START, pause: float = 1.5, log=print) -> int:
     return failed
 
 
+def lost_capture_days(captured: pd.DatetimeIndex, trading_days: pd.DatetimeIndex) -> list[pd.Timestamp]:
+    """Trading days between the first and last capture that have no capture.
+
+    The NSE/MSEI endpoint is latest-day-only, so each of these is permanent."""
+    if len(captured) == 0:
+        return []
+    have = set(pd.DatetimeIndex(captured).normalize())
+    window = pd.DatetimeIndex(trading_days).sort_values()
+    window = window[(window >= min(have)) & (window <= max(have))]
+    return [d for d in window if d not in have]
+
+
 # ----------------------------------------------------------------- panel
 
 def flows_panel() -> pd.DataFrame:

@@ -13,6 +13,7 @@ an identity checks.py asserts.
 
 from __future__ import annotations
 
+import json
 import re
 import time as _time
 from datetime import date
@@ -22,7 +23,7 @@ import pandas as pd
 import requests
 
 from .flows import MAX_STREAK, UA
-from .store import read_partition, read_partitions, write_partition
+from .store import RAW, read_partition, read_partitions, write_partition
 
 POI_URL = "https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_{:%d%m%Y}.csv"
 POI_KEY = "nse_participant_oi"
@@ -110,11 +111,29 @@ def _parse_participant_oi(text: str, day: date) -> pd.DataFrame:
     return df
 
 
-def update_participant_oi(start: str = POI_START, pause: float = 0.6, log=print) -> int:
+SCANNED = RAW / POI_KEY / "_scanned.json"
+
+
+def _scanned() -> dict[str, str]:
+    try:
+        return json.loads(SCANNED.read_text(encoding="utf-8"))
+    except (FileNotFoundError, ValueError):
+        return {}
+
+
+def update_participant_oi(start: str = POI_START, pause: float = 0.6, log=print,
+                          budget: int | None = None) -> int:
     """Fill month files of participant OI; returns the number of failed months.
 
-    Stored closed months are skipped. The current and previous months are
-    rescanned for missing days, so a missed night heals itself from the archive.
+    A closed month is skipped only once it has been *fully scanned* — every
+    weekday either stored, absent (404: a holiday) or rejected as malformed —
+    which is recorded in a sidecar file. A month that failed partway is stored
+    as a partial file but is NOT marked scanned, so it is retried. The current
+    and previous months are always rescanned, so a missed night heals itself.
+
+    The archive host cut us off after roughly 1,000 requests in a few hours, at
+    any pace (market_patterns.md, 2026-10-01), so `budget` caps the requests in
+    one run; the remainder resumes on the next run.
     """
     # The archive host needs no cookies. Staying off www.nseindia.com keeps
     # archive traffic from tripping the bot protection that guards the
@@ -123,20 +142,25 @@ def update_participant_oi(start: str = POI_START, pause: float = 0.6, log=print)
     session.headers.update(UA)
     today = date.today()
     last = pd.Period(today, "M")
-    failed = streak = 0
+    scanned = _scanned()
+    failed = streak = used = 0
 
     for p in pd.period_range(pd.Period(start, "M"), last, freq="M"):
         part = str(p)
-        existing = read_partition(POI_KEY, part)
-        if existing is not None and p < last - 1:
+        if p < last - 1 and part in scanned:
             continue
+        existing = read_partition(POI_KEY, part)
         have = set(existing.index.date) if existing is not None else set()
         days = [d.date() for d in pd.bdate_range(p.start_time, min(p.end_time, pd.Timestamp(today)))
                 if d.date() not in have]
 
-        rows, absent, rejected, error = [], 0, [], None
+        rows, absent, rejected, error, out_of_budget = [], 0, [], None, False
         try:
             for d in days:
+                if budget is not None and used >= budget:
+                    out_of_budget = True
+                    break
+                used += 1
                 try:
                     df = fetch_participant_oi(d, session)
                 except MalformedFile as exc:
@@ -161,7 +185,7 @@ def update_participant_oi(start: str = POI_START, pause: float = 0.6, log=print)
                 f"{type(error).__name__}: {str(error)[:120]}")
             if streak >= MAX_STREAK:
                 log(f"participant OI: {streak} consecutive failures — source is refusing us, "
-                    "stopping. Rerun later; stored months are kept and skipped.")
+                    "stopping. Rerun later; stored months are kept.")
                 return failed
             continue
         streak = 0
@@ -170,6 +194,12 @@ def update_participant_oi(start: str = POI_START, pause: float = 0.6, log=print)
                 f"{absent - len(rejected)} weekdays without a file, {len(rejected)} rejected")
         for msg in rejected:
             log(f"  REJECTED {msg}")
+        if out_of_budget:
+            log(f"participant OI: request budget of {budget} used up at {part}; resumes on the next run")
+            return failed
+        scanned[part] = today.isoformat()
+        SCANNED.parent.mkdir(parents=True, exist_ok=True)
+        SCANNED.write_text(json.dumps(scanned, indent=0, sort_keys=True), encoding="utf-8")
     return failed
 
 
