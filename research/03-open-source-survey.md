@@ -118,12 +118,23 @@ This is the same principle `observatory/checks.py` already runs on: **assert a r
 
 | Need | Blocks | Best open-source option | Verdict |
 |---|---|---|---|
-| **FII/DII daily net flows** | E1, E2 | [nsepython](https://github.com/aeron7/nsepython) `nse_fiidii()` — 362★, GPL-3.0, push 2026-03-07 | ⚠️ **Latest day only, no history.** Solves the going-forward capture, not the backfill |
+| **FII/DII daily net flows** | E1, E2 | [nsepython](https://github.com/aeron7/nsepython) `nse_fiidii()` — 362★, GPL-3.0, push 2026-03-07 | ⚠️ **Latest day only, no history.** Solves the going-forward capture, not the backfill. *Update 2026-09-28: no library needed — see below* |
 | **India 10Y G-Sec daily** | A4 | FRED [`INDIRLTLT01STM`](https://fred.stlouisfed.org/series/INDIRLTLT01STM) is **monthly** (OECD). CCIL is the daily source, no free API | ❌ **Open.** Daily needs CCIL/scraping |
 | **Real MCX prices** | C5 | Nothing found | ❌ **Open** |
 | NSE stock/index/F&O/bhavcopy | — | [jugaad-data](https://github.com/jugaad-py/jugaad-data) — 552★, push 2026-08-07, actively maintained, **public domain** | ✅ Good. *Update 2026-09-28: now needed — adopted for Phase 3 data expansion (`research/04` §3)* |
 
 Also checked and rejected: [nsepy](https://github.com/swapniljariwala/nsepy) (805★, dead since 2023-12, 164 open issues), [pynse](https://github.com/raaghulr/pynse) (7★, dead 2021), [nse-tools](https://github.com/dhruvitdiyora/nse-tools) (3★, dead 2023, unlicensed).
+
+**Update 2026-09-28 — the FII half of the gap is closed, by a public archive rather than a library.** Built directly in `observatory/obs/`:
+
+| Need | Source found | Coverage |
+|---|---|---|
+| FPI daily flows, history | [NSDL FPI archive](https://www.fpi.nsdl.co.in/web/Reports/Archive.aspx) — custodian-confirmed, by asset and route | **Daily since 1999-01** (investments), since 2003 (derivatives) |
+| FII + DII daily flows, going forward | NSE `fiidiiTradeReact` | Latest day only → captured nightly by a scheduled task |
+| FII/DII/Pro/Client derivatives positioning | NSE archive `fao_participant_oi_DDMMYYYY.csv` | **Daily since 2012** |
+| **DII cash flows, history** | **Nothing found** | Still open — capture-forward only |
+
+The surviving hole is **DII cash-market history**. The FPI side is covered 27 years back.
 
 **Operational consequence — this one is time-sensitive.** If FII/DII is available only as a latest-day endpoint, then **every day that passes without a snapshot is history that has to be backfilled from somewhere else later.** A tiny daily capture job has a cost that rises the longer it is deferred. That is an argument for doing it soon, and it is independent of every open decision in §5 — it does not commit the project to any market, strategy or horizon.
 

@@ -121,7 +121,7 @@ Each step needs its own go-ahead before code is written (`CLAUDE.md` §2).
 | **② Data expansion** | F&O bhavcopy + equity universe via jugaad-data; **daily FII/DII capture** (time-sensitive, `research/03` §5); point-in-time Nifty 200 constituents | H questions, E1/E2, step ⑤ | ① |
 | **③ Observatory Layers 1–2 + dashboard v0** | Returns, vol, drawdowns, rolling correlations, lead-lag — in Streamlit | A, D, H questions; a dashboard you can open | ②, partly |
 | **④ Validation harness** | Indian cost model, walk-forward + purged CV, DSR/PBO with oracles, trial log | Any strategy work | ① |
-| **⑤ Reference strategy** | Replicate **Nifty200 Momentum 30** from its published rules (§7) | Proof the harness is honest | ②, ④ |
+| **⑤ Reference strategy** | Replicate **Nifty200 Momentum 30**'s selection and returns — **re-scoped 2026-10-01 to a measured, decomposed replication** (§7.1) | Proof the harness is honest | ②, ④ |
 | **⑥ Dashboard v1** | Add strategy monitoring: positions, P&L net of cost and tax, drift from backtest | Paper trading | ③, ⑤ |
 | **⑦ Paper → capital** | The graduated path in §4 | Earning | ⑥, plus Devansh's gate criteria |
 | **∥ IPO track** | Study first — how IPO research is done professionally, plus the Indian specifics (mainboard vs SME, subscription categories, anchor lock-ins, grey-market premium) — then source a dataset and answer the I questions | IPO strategies, later | Runs in parallel from ① |
@@ -138,13 +138,38 @@ Each step needs its own go-ahead before code is written (`CLAUDE.md` §2).
 | Property | Detail |
 |---|---|
 | **Published rules** | Top 30 of the Nifty 200 by a normalised momentum score built from 6- and 12-month returns adjusted for daily volatility. Weight = free-float market cap × score, capped at the lower of 5% or 5× the stock's free-float weight. Rebalanced **semi-annually, June and December** ([UTI MF](https://www.utimf.com/articles/what-is-nifty-200-momentum-30-index-and-how-it-works), [Axis Max Life](https://www.axismaxlife.com/blog/investments/what-is-nifty-200-momentum-30-index)) |
-| **A known answer** | NSE publishes the index and its TRI. The replication either matches or it doesn't — no room to talk yourself into a result |
+| **A known answer** | NSE publishes the index and its TRI. The replication either matches or it doesn't — no room to talk yourself into a result. *Confirmed fetchable 2026-09-28:* `jugaad_data.nse.index_tri_raw("NIFTY200MOMENTM30", "NIFTY200 MOMENTUM 30", …)` returns daily TRI from niftyindices.com (e.g. 38,893.83 on 2025-01-10) |
 | **A second known answer** | Index funds and ETFs track it. Their tracking difference against the TRI is the *real-world* cost of implementing it — a benchmark for our cost model. *Idea, to verify* |
 | **A surviving factor** | Momentum is on the replicated-factor list (`CLAUDE.md` §4.2) |
 | **Low turnover** | Two rebalances a year — consistent with §2. Still a substantial reshuffle: ~20 of 30 stocks changed in June 2025 ([Business Standard](https://www.business-standard.com/amp/markets/stock-market-news/nifty200-momentum-30-index-to-see-20-stock-changes-on-june-27-125062600872_1.html)) |
 | **Self-testing for survivorship** | Replicating it needs point-in-time Nifty 200 membership. Get that wrong — use today's constituents for 2018 — and the replication diverges from the published index. **The harness catches its own data bug** |
 
 **The published TRI is gross of costs.** Replication is judged against the TRI gross; the cost model is then applied on top to get what an investor actually receives.
+
+### 7.1 Re-scoped 2026-10-01 — what free data can and cannot support
+
+The plan above assumed an exact replication. Probing the real sources changes that, and it is better to say so than to build toward a target the data can't reach.
+
+| Ingredient | Verdict | Evidence |
+|---|---|---|
+| The answer key (TRI) | **Available** | `index_tri_raw` returns daily TRI; `niftyindices.com` is reachable |
+| Current constituents of every relevant index | **Available** | Captured daily from 2026-10-01 |
+| **Point-in-time Nifty 200 membership** | **Not free** | Only sparse Internet Archive anchors (4 Nifty 200 versions 2017–2023). `market_patterns.md` 2026-10-01 |
+| Survivorship-free daily prices, all NSE equities | **Available, raw** | Bhavcopy archive from 2000-01-03, delisted names included |
+| **Split/bonus-adjusted prices** | **Not free from bhavcopy** | `PREVCLOSE` is *not* rebased on ex-dates — tested on Reliance's 2017 bonus, 0 of 1,500 stocks rebased. Needs a corporate-actions source |
+| **Free-float market cap history** | **Not found** | Needed for index weights; bhavcopy has no share counts |
+| Exact momentum-score formula | **Unconfirmed** | Secondary sources only; official methodology PDF still to read |
+
+**Revised step ⑤, in two stages:**
+
+| Stage | What | Success means |
+|---|---|---|
+| **5a — selection** | Rebuild the *selection rule* (top 30 by volatility-normalised 6/12-month momentum) on a **liquidity-ranked proxy universe** — the top 200 stocks by trailing turnover, which is point-in-time by construction — then compare its picks with the *actual* constituents wherever those are known (archive anchors, then forward snapshots). Prices adjusted with inferred corporate actions, cross-checked against the anchors | A measured overlap, with its gap to the real index explained. The overlap *is* the validation of the proxy |
+| **5b — returns** | Track the TRI. Weights need free-float cap; if no source turns up, use score-weighting and state that as an approximation | A tracking error that is **reported with its known causes**, not tuned away |
+
+**Why this still serves the purpose.** §7's goal was a correct replication that validates the harness, and *measuring and explaining the gap to a known answer* does that at least as well as an exact match would — an exact match could hide offsetting errors, while a decomposed gap cannot. What it gives up is the claim "we reproduced the index"; the claim becomes "we reproduced the selection to X% and the returns to Y bp/yr, with these causes."
+
+**Hard requirement carried forward:** corporate-action adjustment errors are silent and land in the tails that momentum ranks by. Step ⑤ needs an adjustment audit (list every inferred action, check each against a second source) before any momentum result is trusted.
 
 **To confirm before building:** the exact normalised-score formula from the official methodology document on niftyindices.com. The secondary sources above summarise it but are not the rulebook.
 
@@ -155,10 +180,15 @@ Each step needs its own go-ahead before code is written (`CLAUDE.md` §2).
 | # | Item | Owner | Blocks |
 |---|---|---|---|
 | 1 | Gate criteria for the graduated capital path (§4) | **Devansh** | ⑦ |
-| 2 | Source for point-in-time Nifty 200 constituents — the hardest data problem in the plan | Claude | ⑤ |
+| 2 | ~~Source for point-in-time Nifty 200 constituents~~ — **investigated 2026-10-01: no free history exists.** Forward capture running; archive anchors being pulled; ⑤ re-scoped (§7.1) | Claude | — |
 | 3 | Official Nifty200 Momentum 30 methodology PDF | Claude | ⑤ |
+| 8 | **Corporate-actions source** (splits, bonuses, demergers) — bhavcopy `PREVCLOSE` is unadjusted, so adjusted prices need one. Candidates: infer from price/volume discontinuities and audit; yfinance adjusted close for live names | Claude | ⑤ |
+| 9 | Free-float market-cap history for index weights — not found yet | Claude | 5b |
+| 10 | An always-on place to run `capture.py`. A missed 24-hour window permanently loses a day of DII flow (happened 2026-09-28). A GitHub Actions cron job would close this; NSE's main site likely blocks cloud IPs, but MSEI (the working source) may not. **Needs Devansh's OK — it adds a CI workflow that commits to the repo** | Devansh | flow-data completeness |
 | 4 | IPO dataset source (mainboard + SME, subscription by category, listing prices, anchor lock-in dates) | Claude, after study pass | IPO track |
 | 5 | Current F&O lot sizes and margin requirements, for realistic paper sizing | Claude | futures strategies |
+| 6 | DII cash-flow history before 2026-09-25 — no free source found; nightly capture builds it forward | Claude | depth of E2 |
+| 7 | Price-snapshot growth: a full refresh adds ~4 MB to git. Fine at weekly cadence; revisit before anything refreshes prices daily | Claude | — |
 
 ---
 
@@ -167,3 +197,5 @@ Each step needs its own go-ahead before code is written (`CLAUDE.md` §2).
 | Date | Entry |
 |---|---|
 | 2026-09-28 | `CLAUDE.md` §5 closed. Devansh: Indian equities + derivatives + IPOs; learning-first shifting to earning; platform build; capital later. Delegated to Claude and decided here: low turnover (STT arithmetic, §2) and per-layer build-vs-adopt applied to this direction (§3). Phase 3 roadmap proposed with Nifty200 Momentum 30 as the reference replication. jugaad-data confirmed public domain. No code written. |
+| 2026-09-28 | **Step ① done; step ② largely done.** Prices refreshed (and a snapshot bug fixed). Flows layer built: NSDL FPI history 1999 → today, nightly FII/DII capture scheduled (NSE with MSEI fallback), participant OI from 2012 (new question E3). Nifty200 Momentum 30 TRI confirmed fetchable. **Remaining in ②:** F&O bhavcopy (H2/H3) and point-in-time Nifty 200 constituents (blocks ⑤). Detail: `research/02` log, `market_patterns.md`. |
+| 2026-10-01 | **Constituents + capture hardening; step ⑤ re-scoped.** Lost 2026-09-28 DII flow (machine off for the whole 24 h window) → task now fires 09:00/13:00/21:30/23:30; checks report lost days and staleness. Index constituent lists captured forward (6 indices) with Internet Archive anchors being pulled; **no free point-in-time history exists**. Tested NSE bhavcopy `PREVCLOSE` as a free adjusted-price chain — it is *not* rebased on ex-dates (Reliance bonus, 0 of 1,500 stocks), so corporate-action adjustment is the crux. Step ⑤ now a decomposed replication on a liquidity-ranked proxy universe (§7.1). Participant-OI parser hardened (two more format quirks). |

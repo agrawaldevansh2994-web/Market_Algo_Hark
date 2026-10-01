@@ -16,6 +16,8 @@ Devansh has a long-standing interest in markets — equities, trading, commoditi
 
 **So the current phase is: research and scoping. Not design. Not build.**
 
+**Updated 2026-09-28:** the §5 decisions are closed — Indian equities, derivatives and IPOs; learning first; a real dashboard and algo. The project is now moving into **Phase 3, a platform build** (`research/04-direction.md`). Each build step still needs its own explicit go-ahead.
+
 ---
 
 ## 2. How to work here
@@ -40,12 +42,13 @@ The ones that bind hardest on *this* project:
 
 | | |
 |---|---|
-| **Phase** | 2 — Market Observatory (descriptive analysis). Phase 1 research complete. |
-| **Code written** | Layer 0 data spine only — observation infrastructure, no strategy logic |
-| **Strategy chosen** | None |
-| **Market/instrument chosen** | None committed. Observatory covers Indian equities, commodities, FX — deliberately, to *inform* §5.1 rather than pre-empt it |
-| **Capital committed** | None |
-| **Last updated** | 2026-08-12 |
+| **Phase** | **3 — platform build, in progress.** Roadmap step ① done, ② largely done — `research/04-direction.md` §6 |
+| **Code written** | Data layer only — prices, flows (NSDL/NSE/MSEI), participant OI, index-membership snapshots, scheduled capture, integrity checks. No strategy logic |
+| **Strategy chosen** | None live. Reference replication proposed: **Nifty200 Momentum 30** |
+| **Market/instrument chosen** | **Indian equities, equity derivatives, IPOs** (decided 2026-09-28). Commodities/FX/global stay in the observatory as context |
+| **Turnover class** | **Low** — monthly-or-slower rebalance, no intraday |
+| **Capital committed** | None. In scope later via a graduated path — gate criteria are Devansh's to set |
+| **Last updated** | 2026-10-01 |
 
 ### Files
 
@@ -54,19 +57,31 @@ Algo_Finance/
 ├── CLAUDE.md                           # this file
 ├── research/
 │   ├── 01-industry-landscape.md        # Phase 1 findings, fully sourced
-│   └── 02-observatory-scope.md         # Phase 2 scope, question bank, data-quality findings
+│   ├── 02-observatory-scope.md         # Phase 2 scope, question bank, data-quality findings
+│   ├── 03-open-source-survey.md        # build-vs-adopt, resolved per-layer; §5.6
+│   ├── 04-direction.md                 # Phase 3: §5 decisions, turnover call, roadmap
+│   └── market_patterns.md              # dated log of empirical findings (data + market)
 └── observatory/
-    ├── config/instruments.yaml         # 27 instruments — the only place tickers live
+    ├── config/instruments.yaml         # 29 instruments — the only place tickers live
     ├── obs/{registry,store,fetch,panel}.py
-    ├── build.py                        # fetch + rebuild curated panels
+    ├── obs/flows.py                    # FII/DII (NSE, MSEI fallback) + NSDL FPI since 1999
+    ├── obs/fno.py                      # NSE participant-wise open interest since 2012
+    ├── obs/universe.py                 # index constituent snapshots + members_at() — point-in-time membership
+    ├── build.py                        # fetch prices + rebuild curated panels
+    ├── capture.py                      # nightly capture — scheduled 21:30 + 23:30 IST
     ├── checks.py                       # data integrity — run after every build
-    └── data/{raw,curated}/             # snapshot-dated parquet
+    └── data/{raw,curated}/             # snapshot-dated + month-partitioned parquet
 ```
 
-`profile.md` is referenced in §2 but is not present in this folder — the working-style
-rules are loaded from `C:\Users\agraw\Harnessing brain\` instead.
+**Run it:** from `observatory/` — `..\.venv\Scripts\python.exe build.py` then `checks.py`. `capture.py` runs itself nightly (Task Scheduler `AlgoFinance-NightlyCapture`; log in `data/capture.log`); `capture.py --backfill` refills any missing history.
 
-**Run it:** `.venv\Scripts\python.exe build.py` then `checks.py`, from `observatory/`.
+### Version control
+
+- **Repo:** [agrawaldevansh2994-web/Algo_Finance](https://github.com/agrawaldevansh2994-web/Algo_Finance) (private). Under git since 2026-08-12.
+- **What's tracked:** research docs, observatory code/config, and `data/raw/` snapshots (point-in-time, not regenerable — the reproducibility record). **Ignored:** `.venv/` (rebuild from `requirements.txt`) and `data/curated/` (rebuild via `build.py`).
+- **Everyday loop:** `git add -A && git commit -m "…" && git push`.
+- **Accounts (re-checked 2026-09-28):** the GitHub MCP ("git dashboard") and the `gh` CLI's active account are both `agrawaldevansh2994-web`, the repo owner — the earlier `Devansh-AIprojects` mismatch is resolved. `gh` also holds `Devansh-AIprojects` as an inactive second login; if pushes ever 403, check `gh auth status` for which account is active.
+- **Git as epistemic record, not just backup:** the anti-data-snooping defence (research/01 §3.1) needs a tamper-evident log of what was tried and when. Commit history *is* that trial count — keep experiments in their own commits.
 
 ---
 
@@ -142,28 +157,38 @@ These measure *discretionary/short-horizon* trading, not systematic strategies �
 
 ---
 
-## 5. Open decisions — Devansh's call, do not assume
+## 5. Decisions — closed 2026-09-28
 
-Per `profile.md`, these turn on domain judgment and personal circumstance that has not been demonstrated. Surface them; do not infer.
+Full reasoning in `research/04-direction.md`. #3 and #6 were delegated to Claude; the rest are Devansh's. **Anything touching real money remains his call** — in particular the gate criteria for the capital path.
 
-1. **Market / asset class.** Indian equities & derivatives? US equities (better data, cleaner research, no STT)? Crypto (24/7, free data, brutal 30%-no-loss-offset tax for an Indian resident)? Each implies a completely different data and infrastructure path.
-2. **Learning vehicle vs. earning vehicle.** Optimising to *understand the machine* and optimising for *net-of-tax returns* point at different first projects. He has said this is exploratory — worth confirming that framing holds before scoping anything.
-3. **Horizon / turnover class.** The single biggest fork given §4.4. Low-turnover survives the Indian cost stack; high-turnover mostly doesn't.
-4. **Time budget and cadence.** Determines whether this is a build-a-platform project or a run-a-few-experiments project.
-5. **Whether real capital is ever in scope**, and if so at what scale. Changes what "done" means at every stage.
-6. **Build vs adopt** — hand-rolled research stack vs adopting NautilusTrader / QuantConnect LEAN early.
+| # | Decision | Answer | By |
+|---|---|---|---|
+| 1 | Market / asset class | **Indian equities, equity derivatives, IPOs** | Devansh |
+| 2 | Learning vs earning | **Learning now**, shifting gradually to earning. The harness reports net-of-cost and net-of-tax from day one, so the switch needs no rework | Devansh |
+| 3 | Horizon / turnover | **Low** — monthly-or-slower rebalance, no intraday, derivatives held not scalped. Weekly rotation of a stock portfolio costs ~10%/yr in STT alone, more than the realistic solo edge (estimate; `04` §2) | Claude |
+| 4 | Time budget / cadence | **Platform build** — a real dashboard + algo | Devansh |
+| 5 | Real capital | **Yes, later** — graduated: paper → small capital → scaled, gate criteria set by Devansh *before* paper trading starts | Devansh |
+| 6 | Build vs adopt | **Per-layer.** Keep Layer 0 + adopt jugaad-data; implement harness statistics with `purgedcv`/`skfolio` as oracles; own thin vectorised daily backtester; Streamlit dashboard; defer execution tooling to the capital stage | Claude |
+
+**Revisit trigger for #3:** a strategy whose edge per trade, measured net of the full cost stack by the harness, justifies trading faster.
 
 ---
 
-## 6. Proposed next phase (not started — awaiting go-ahead)
+## 6. Phase 3 roadmap (proposed — each step needs its own go-ahead)
 
-Sequenced so that nothing depends on a decision that hasn't been made yet.
+Detail in `research/04-direction.md` §6. The ordering principles from Phase 1 still hold: **harness before any strategy**, then **a boring replication with a known answer**, and **only then** original ideas.
 
-1. **Close the open decisions above** — at minimum #1, #2 and #3, since everything downstream forks on them.
-2. **Foundational reading, prioritised.** Narang's *Inside the Black Box* first (the four-layer architecture, accessibly), then Chan for the practical solo view, Grinold & Kahn for depth, López de Prado for validation machinery — with its criticisms noted.
-3. **Build the validation harness before building any strategy.** Deliberately inverted from the intuitive order: the harness (point-in-time data handling, cost model, purged CV, DSR/PBO, sealed holdout, research log) is the thing that makes every later result trustworthy. Building it first also means the first strategy cannot be graded by a harness that was tuned to flatter it.
-4. **One deliberately boring reference strategy** — a well-documented, published, unexciting strategy reproduced end-to-end purely to validate the harness and learn the pipeline. The goal is *a correct replication*, not a good return. If the harness can honestly reproduce a known result, it can be trusted on an unknown one.
-5. **Only then**, original ideas.
+| Step | What |
+|---|---|
+| ① Housekeeping | ✅ done 2026-09-28 — docs committed, data refreshed |
+| ② Data expansion | **Mostly done.** ✅ FII/DII capture, NSDL FPI history, participant OI, index-constituent snapshots. **Left:** F&O bhavcopy ingest (H2/H3); bhavcopy equity ingest + corporate-action handling (blocks ⑤) |
+| ③ Observatory L1–2 + dashboard v0 | Descriptive analysis in Streamlit — the first thing you can open and look at |
+| ④ Validation harness | Date-stamped Indian cost model, walk-forward + purged CV, DSR/PBO with oracles, trial log |
+| ⑤ Reference strategy | Replicate **Nifty200 Momentum 30**, **re-scoped 2026-10-01**: free data has no point-in-time membership and bhavcopy prices are unadjusted, so this becomes a *measured, decomposed* replication on a liquidity-ranked proxy universe (`research/04` §7.1). Goal: an explained gap to the published index, not an exact match |
+| ⑥ Dashboard v1 | Strategy monitoring — positions, P&L net of cost and tax, drift from backtest |
+| ⑦ Paper → capital | Graduated path; needs Devansh's gate criteria first |
+| ∥ IPO track | Study-first, then dataset, then the IPO question bank (`research/02` §3 I) |
+| ∥ Reading | Narang → Chan → Grinold & Kahn → López de Prado (with its criticisms) |
 
 ---
 
@@ -171,5 +196,11 @@ Sequenced so that nothing depends on a decision that hasn't been made yet.
 
 | Date | Entry |
 |---|---|
-| 2026-08-11 | Project kickoff. `profile.md` supplied. Phase 1 research completed across 5 tracks (lifecycle, strategy families, stack, failure modes, India context) → `research/01-industry-landscape.md`. STT hike and SEBI algo framework independently re-verified. No code written. Awaiting decisions in §5. |
+| 2026-08-11 | Project kickoff. Phase 1 research completed across 5 tracks (lifecycle, strategy families, stack, failure modes, India context) → `research/01-industry-landscape.md`. STT hike and SEBI algo framework independently re-verified. No code written. Awaiting decisions in §5. |
 | 2026-08-12 | **Phase 2 opened: the Market Observatory.** Descriptive cross-asset analysis of Indian equities, commodities and FX — chosen deliberately as a no-overfitting-risk first build whose data layer doubles as the foundation of the §6.3 validation harness. Scope locked in `research/02-observatory-scope.md`: 27 instruments, a 20-question bank, and written policies for the three traps (session contamination, commodity denomination, scope drift). **Layer 0 built and verified.** Two real data faults found and fixed by the integrity checks — Yahoo `=X` spot FX is unusable at daily frequency (moved to FRED H.10), and apparent data gaps proved to be genuine pegged-currency history. 24 series, 2008-03-03 → 2026-08-07. No analysis run yet; Layers 1–4 not started. |
+| 2026-08-12 | **Git initialised, pushed to private GitHub repo** ([agrawaldevansh2994-web/Algo_Finance](https://github.com/agrawaldevansh2994-web/Algo_Finance)). `requirements.txt` pinned; `data/raw/` tracked, `.venv/`+`curated/` ignored. MCP-account-mismatch caveat recorded in §3 — use the `git` CLI, not MCP GitHub tools, on this repo. |
+| 2026-08-13 | **Open-source survey → `research/03-open-source-survey.md`.** ~35 repos health-checked live via the GitHub API. Three findings that change the plan: (1) **`mlfinlab`, the canonical López de Prado validation implementation, has gone closed-source** — §6.3 has no mature free reference implementation, so the harness becomes implement-the-statistics + adopt-a-library-as-oracle; (2) **no open-source project closes the India data gaps**, and NSE FII/DII is latest-day-only, so history is being lost every day it goes uncaptured — a near-term action that blocks on none of §5; (3) backtrader, zipline, pyfolio and alphalens are all **dead** despite dominating tutorials. §5.6 resolved per-layer, pending sign-off. Nothing adopted, no code written. |
+| 2026-08-13 | **`research/market_patterns.md` created** — a dated, standalone log for empirical findings (as opposed to `02-observatory-scope.md`, which is policy/methodology). Populated with the two Layer 0 findings already on record: Yahoo `=X` FX unusable daily, and pegged-currency zero-return days being real history. Will accumulate actual market-behaviour findings once Layers 1–4 run. |
+| 2026-09-28 | **§5 decisions closed → `research/04-direction.md`.** Resumed after ~6 weeks idle (no drift: repo exactly as left 2026-08-13, three files uncommitted). Devansh chose Indian equities + derivatives + IPOs, learning-first, platform build, capital later. Claude, on delegation: **low turnover** (STT arithmetic: weekly stock rotation costs more than the realistic edge) and **per-layer build-vs-adopt** (own backtester, Streamlit, jugaad-data, oracle-checked harness). Phase 3 roadmap proposed; reference replication = Nifty200 Momentum 30 (published rules, semi-annual, known TRI, self-tests for survivorship). Observatory re-prioritised: H (derivatives) and I (IPO) questions added to `research/02`. jugaad-data license confirmed public domain. No code written. |
+| 2026-09-28 | **Phase 3 build started (Devansh: "I will let you handle as of now"; real money stays his).** GitHub accounts re-checked — MCP and `gh` both on `agrawaldevansh2994-web`. Step ①: data refreshed to 2026-09-28; fixed a Layer 0 bug that froze mid-session US bars into snapshots (up to 0.9% off). Step ②: **flows layer** — NSDL FPI daily history 1999 → today; nightly FII/DII capture (NSE, MSEI fallback) scheduled 21:30 + 23:30 IST; NSE participant OI from 2012 (new question E3). Measured the NSDL T+1 reporting convention (prior-day r +0.26 vs same-row +0.04) — a naive join would have decided E1 by accident. New checks; one malformed 2013 NSE file rejected by the long = short identity. Findings in `market_patterns.md`. Remaining in ②: F&O bhavcopy, point-in-time Nifty 200 constituents. |
+| 2026-10-01 | **Resumed; ② nearly complete; ⑤ re-scoped.** (1) **A capture night was lost** (2026-09-28 DII flow — permanent; machine was off for the 24 h window) → scheduled task now fires 09:00/13:00/21:30/23:30 IST, `checks.py` reports lost days + staleness, backfills have circuit breakers. (2) **No free point-in-time index membership exists** — forward capture of six constituent lists started 2026-10-01 (`obs/universe.py`), Internet Archive anchors pulled best-effort; index definitions verified as exact set identities. (3) **Tested and refuted** the idea that NSE bhavcopy `PREVCLOSE` gives free adjusted prices (Reliance 2017 bonus: 0 of 1,500 stocks rebased) — corporate-action adjustment is the crux of any bhavcopy work. (4) Step ⑤ re-scoped to a decomposed replication on a proxy universe. (5) NSE's main site still 403s from this machine; MSEI is the working FII/DII source and its FII `sell` field is wrong every time (use `net`). (6) Fixed a console-encoding crash that would have killed scheduled runs. **Needs Devansh:** OK to add a GitHub Actions cron to run `capture.py` always-on (`research/04` open item 10). |

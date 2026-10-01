@@ -110,6 +110,7 @@ Not subjects of study, but **required** to answer "is India idiosyncratic or jus
 ### E — Flows
 - **E1.** Do FII flows *lead* Nifty, or merely follow it? (Widely assumed to lead; often contemporaneous.)
 - **E2.** Do DII flows offset FII flows, and does that measurably dampen drawdowns?
+- **E3.** *(added 2026-09-28)* How do FII, DII, Pro and Client traders position in index futures — and does FII net positioning lead Nifty, follow it, or act as a hedge against their cash book?
 
 ### F — Calendar
 - **F1.** Is there a persistent expiry-week effect after the November 2024 rule changes?
@@ -186,6 +187,25 @@ yfinance serves the current day's bar while its session is still trading. Stored
 
 **Policy:** the fetcher drops any trailing bar whose session has not settled at fetch time (`obs/fetch.py::drop_unsettled`). Existing snapshots are never edited after the fact. Full evidence: `market_patterns.md`, 2026-09-28.
 
+### 4.8 Flow series carry different date conventions — the E1 trap
+Two FII series now exist and they are **not dated the same way**:
+
+| Series | Source | A row dated D means |
+|---|---|---|
+| `fii_net_cash` | NSE provisional | trades executed **on D** |
+| `fpi_equity_nsdl`, `fpi_equity_exch_nsdl` | NSDL, custodian-confirmed | reported on D, covering trades **up to the previous trading day** |
+
+Joined naively on date, the NSDL series sits a day *after* the trades it describes. Against same-day Nifty returns that shift manufactures exactly the answer E1 asks about — "FII flows lag the market" — out of a reporting convention.
+
+**Policy:** each flow series is stored on its source's own date and never silently shifted. Any analysis joining NSDL flows to prices must state the alignment it uses. The convention is **verified empirically**, not assumed — see `market_patterns.md`.
+
+Flows are also **levels, not prices**: they live in their own curated panel (`flows_daily`) and never pass through `log_returns`, which would turn every net outflow into a NaN.
+
+### 4.9 Index membership is point-in-time or it is wrong — survivorship
+Applying today's Nifty 200 list to 2018 builds a universe out of the stocks that *survived and grew* into it, which flatters every momentum or factor result and cannot be seen in the output. NSE publishes only current membership.
+
+**Policy:** membership is captured forward (a snapshot whenever a list changes, from 2026-10-01) and anchored backward with the Internet Archive's sparse dated copies. All access goes through `obs/universe.py::members_at(index, date)`, which returns **the snapshot date with the membership** so staleness is never hidden, and raises if nothing that old exists. A snapshot is accurate only to about a week around the March/September reviews. `checks.py` asserts the identities Nifty 100 = Nifty 50 + Next 50, Nifty 200 = Nifty 100 + Midcap 100 and Momentum 30 ⊂ Nifty 200 on every snapshot. For history before the anchors, a liquidity-ranked proxy universe from the bhavcopy archive is the fallback (`research/04` §7.1) and is labelled as a proxy wherever it is used.
+
 ---
 
 ## 5. Build layers
@@ -202,18 +222,27 @@ yfinance serves the current day's bar while its session is still trading. Stored
 
 ```
 observatory/
-├── config/instruments.yaml    27 instruments — the only place tickers live
+├── config/instruments.yaml    29 instruments — the only place tickers live
 ├── obs/
 │   ├── registry.py            load + validate; selectors incl. answering('C1')
-│   ├── store.py               snapshot-dated parquet: raw/<key>/<date>.parquet
-│   ├── fetch.py               yfinance + FRED fetchers
+│   ├── store.py               snapshot-dated parquet raw/<key>/<date>.parquet,
+│   │                          plus month partitions raw/<key>/<YYYY-MM>.parquet
+│   ├── fetch.py               yfinance + FRED; drops unsettled bars (§4.7)
+│   ├── flows.py               FII/DII (NSE, MSEI fallback) + NSDL FPI history (§4.8)
+│   ├── fno.py                 NSE participant-wise open interest (E3)
+│   ├── universe.py            index constituent snapshots + members_at() (§4.9)
 │   └── panel.py               alignment, derived series, returns, weekly resample
-├── build.py                   fetch + rebuild curated panels
+├── build.py                   fetch prices + rebuild curated panels (incl. flows_daily)
+├── capture.py                 nightly capture of daily-published series (scheduled)
 ├── checks.py                  integrity checks — run after every build
 └── data/raw|curated/
 ```
 
-**Verified state:** 20 fetched + 4 derived = 24 series. Usable window **2008-03-03 → 2026-08-07**, spanning the 2008 GFC, the 2013 taper tantrum, 2020 COVID and the 2022 rate shock. All integrity checks pass.
+**Verified state (2026-09-28):** 20 fetched + 4 derived = 24 price series, usable window **2008-03-03 → 2026-09-18**, spanning the 2008 GFC, the 2013 taper tantrum, 2020 COVID and the 2022 rate shock. Flows: NSDL FPI daily **1999-01 → today** (333 months, no gaps); NSE FII/DII captured nightly from 2026-09-25; participant OI from 2012. All integrity checks pass.
+
+**Nightly capture:** Windows Task Scheduler task `AlgoFinance-NightlyCapture`, daily 21:30 and 23:30 IST, runs `capture.py`, logs to `data/capture.log`. Runs late if the machine was off; does not wake it. Remove with `Unregister-ScheduledTask AlgoFinance-NightlyCapture`.
+
+**Update 2026-10-01:** now four triggers (09:00, 13:00, 21:30, 23:30 IST) — a day's FII/DII figures stay available for ~24 h, so any run in that window captures them, and the machine only needs to be on once per window. One night (2026-09-28) was lost before this was understood. `capture.py` also snapshots the six index constituent lists on every run.
 
 `checks.py` asserts relationships whose sign and magnitude are known *before* looking at the data — a misaligned panel still produces numbers, but not numbers that pass these. It is what caught §4.5 and §4.6.
 
@@ -225,11 +254,15 @@ observatory/
 |---|---|---|---|
 | 1 | Nifty Midcap — currently `^NSEMDCP50` (Midcap **50**). Midcap 150 preferred for breadth; not available on the free source | A3 | open, low priority |
 | 2 | India 10Y G-Sec daily series | A4 | **open** |
-| 3 | FII/DII daily net flows — needs a dedicated NSE fetcher | E1, E2 | **open** |
-| 4 | Real MCX commodity prices | C5 | **open** |
+| 3 | FII/DII daily net flows | E1, E2 | ✅ **mostly resolved 2026-09-28** — FPI history from NSDL since 1999; FII + DII captured nightly from NSE. **Remaining gap: DII cash history before 2026-09-25** — no free source found |
+| 4 | Real MCX commodity prices | C5 | open, low priority after the §5 decision (commodities are context) |
 | 5 | Primary data vendor | all | ✅ resolved — FRED for FX and macro, yfinance for indices and futures. See §4.5 |
+| 6 | F&O bhavcopy — Nifty futures basis and aggregate F&O volume/OI | H2, H3 | **open** — archive confirmed reachable (legacy to ≥2015, UDiFF from 2024); not yet ingested |
+| 8 | Point-in-time index membership before 2026-10-01 | A3, ⑤ | **no free source** — see §4.9; forward capture running, archive anchors being pulled |
+| 9 | Corporate-action adjustment for bhavcopy prices | ⑤ | **open** — bhavcopy `PREVCLOSE` is not rebased (`market_patterns.md` 2026-10-01) |
+| 7 | IPO dataset | I1–I4 | open — study-first track (`research/04` §6) |
 
-Items 2–4 are all Indian-specific series with no clean free API. They are the natural next unit of work and they unblock 5 of the 20 questions (A4, C5, E1, E2, plus depth on A3).
+Item 2 (10Y G-Sec) is now the main unresolved *rates* input; items 6–7 are the next data units for the Phase 3 subjects.
 
 ---
 
@@ -240,3 +273,5 @@ Items 2–4 are all Indian-specific series with no clean free API. They are the 
 | 2026-08-12 | Scope proposed, revised and locked. Sensex dropped. Nifty IT, India VIX, Midcap, 10Y, FII/DII added. FX widened to 5 pairs. Global context pair added to make D2/C3 answerable. Question bank established at 20 questions. Python 3.14.2 venv created; pandas 3.0.5 / numpy 2.5.2 / pyarrow / duckdb / yfinance installed. |
 | 2026-08-12 | **Layer 0 built and verified.** Registry, snapshot store, yfinance + FRED fetchers, panel alignment, integrity checks. Integrity checks then found two data faults: Yahoo `=X` spot FX unusable daily (§4.5, resolved by moving FX to FRED H.10) and apparent zero-return gaps that proved to be genuine pegged-currency history (§4.6, resolved by scoping checks to the analysis window). 24 series, 2008-03-03 → 2026-08-07, all checks passing. No analysis run yet. |
 | 2026-09-28 | **Re-prioritised after `CLAUDE.md` §5 closed** (`research/04`). Subjects narrow to Indian equities, India VIX + equity derivatives, flows and IPOs. Commodities, FX and global instruments stay in the registry as **context** (they still answer D2, C3, G1) — nothing removed. Question bank grows from 20 to 27: **H1–H3** (derivatives) and **I1–I4** (IPOs). Layer 4 ("a report that gets read") becomes the first half of the Phase 3 Streamlit dashboard. |
+| 2026-09-28 | **Data refresh + flows layer built.** Prices refreshed to 2026-09-28; fixed a Layer 0 bug freezing mid-session bars into snapshots (§4.7). Flows: NSDL FPI daily history backfilled 1999-01 → today (333 months); NSE FII/DII nightly capture with MSEI fallback, scheduled 21:30 + 23:30 IST; NSE participant-wise OI from 2012 for new question **E3**. Measured the NSDL T+1 reporting convention that would otherwise have decided E1 by accident (§4.8). New checks: NSDL self-reconciliation, NSDL date convention, FII/DII buy − sell = net by source, participant-OI long = short identity — which rejected a misaligned 2013 source file. Question bank now 28. |
+| 2026-10-01 | **Capture hardened; membership layer added.** A capture night was lost (2026-09-28 DII flow, permanent) → four daily triggers, lost-day and staleness checks, circuit breakers on backfills. `obs/universe.py`: six index constituent lists captured forward, Internet Archive anchors pulled best-effort (§4.9). Participant-OI parser hardened (two more quirks; bad files reject a day, never abort a month). Tested the hypothesis that bhavcopy `PREVCLOSE` gives free adjusted returns — false. Console-encoding crash fixed in the entry points. Findings in `market_patterns.md`. |
