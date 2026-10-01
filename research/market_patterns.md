@@ -184,5 +184,15 @@ Stable in every era: 2008–13 prior-day **+0.396** vs same-row −0.017; 2014�
 
 ## Layers 1–4 findings
 
-Not yet — no correlation, lead-lag or regime analysis has been run. This section will hold the answers to the scope §3 question bank (A1–G1) as they're produced.
+### 2026-10-01 — First descriptive pass: A1, D1, D3, E1 (data through 2026-09-28)
+
+All computed by `obs/analysis.py` (unit-tested against planted answers) and shown in `dashboard.py`. **Nothing is fitted, but ~140 numbers were inspected** (4 questions; 11 lags × 2 frequencies for E1; 9 assets × 3 regimes for D3). A value near its noise band is not evidence.
+
+**A1 — Nifty vs Bank Nifty does not break down in stress.** 60-day rolling daily correlation: median 0.88, range 0.61 (2021-10-26, a *calm* period) to 0.98. By prior-close India VIX regime it *rises*: calm 0.85 → elevated 0.88 → stress 0.91. Single days dominate the rolling line: 2024-06-04's election-result crash (Nifty −6.1%, Bank −8.3%) lifted it by 0.09 and its exit 60 sessions later dropped it 0.12.
+
+**D1 — stress is variance, not mean.** India VIX regimes (in-sample cut-offs: median 17.0, top decile 30.2; each day classified by the *previous* close). Nifty annualised vol: calm 11.5%, elevated 18.2%, stress 42.6%. Mean daily return +0.028% / +0.027% / +0.015% with standard errors 0.016 / 0.028 / 0.131 — indistinguishable. Stress extremes: −13.9% / +16.3% in a day.
+
+**D3 — correlations with Nifty rise with prior-day stress, for everything except gold.** Within India, daily: Bank 0.85→0.91, IT 0.44→0.80, Midcap 0.77→0.90. Cross-asset, weekly (484 / 388 / 97 weeks): S&P 500 0.41→0.60, USD/INR −0.38→−0.64, Dollar Index −0.05→−0.50, Brent 0.07→0.39, Copper 0.19→0.50, **Gold −0.00→0.18**. A first answer to G1: gold is the least stress-sensitive. Same-day *daily* S&P correlation was only 0.20→0.39, under half the weekly figure — a direct measurement of the §4.1 session contamination. Caveats: the stress column rests on 97 weeks; regime cut-offs use the whole history; conditioning on same-day volatility would inflate these (Forbes & Rigobon), hence the lag.
+
+**E1 — FPI flows move with and follow Nifty; no lead found.** NSDL exchange-route net flow re-dated to the trading day it describes. Daily corr(flow(t), Nifty(t+k)): k=0 +0.279, k=−1 +0.207, −2 +0.133, −3 +0.106; **k=+1 +0.041** (band ±0.032), +2 0.000. Weekly: k=0 +0.397, −1 +0.311, −2 +0.186, **+1 +0.003**. Contemporaneous co-movement plus decay into the past is the signature of flows chasing returns; it does not prove causation. Cumulative-flow shape matches known FPI history (2022 outflow, 2023 recovery, Oct 2024 burst), which independently supports the NSDL data and its T+1 re-dating.
 </content>
