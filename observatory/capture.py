@@ -70,5 +70,7 @@ def main(backfill: bool = False) -> int:
 if __name__ == "__main__":
     # Under Task Scheduler stdout is redirected and defaults to cp1252; one
     # stray non-cp1252 character in a log line must not kill a capture run.
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    # Under pythonw.exe (the scheduled task, no console window) stdout is None.
+    if sys.stdout is not None:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     raise SystemExit(main(backfill="--backfill" in sys.argv))

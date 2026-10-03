@@ -196,3 +196,19 @@ All computed by `obs/analysis.py` (unit-tested against planted answers) and show
 
 **E1 — FPI flows move with and follow Nifty; no lead found.** NSDL exchange-route net flow re-dated to the trading day it describes. Daily corr(flow(t), Nifty(t+k)): k=0 +0.279, k=−1 +0.207, −2 +0.133, −3 +0.106; **k=+1 +0.041** (band ±0.032), +2 0.000. Weekly: k=0 +0.397, −1 +0.311, −2 +0.186, **+1 +0.003**. Contemporaneous co-movement plus decay into the past is the signature of flows chasing returns; it does not prove causation. Cumulative-flow shape matches known FPI history (2022 outflow, 2023 recovery, Oct 2024 burst), which independently supports the NSDL data and its T+1 re-dating.
 </content>
+
+### 2026-10-03 — The Aug–Oct 2026 Indian equity drawdown: a slow grind, not a crash (data through 2026-10-01)
+
+Prices re-downloaded live from Yahoo for this note (repo snapshots untouched); flows and positioning from the stored NSDL / MSEI / NSE participant-OI data. Descriptive only; nothing fitted.
+
+**Size and shape.** Nifty 50 closed 22,421.9 on 2026-10-01, **−14.8% from its all-time high** (26,329 on 2026-01-02) and −9.5% from the 2026-08-03 high. Sensex −9.3%, Bank −7.0%, IT −11.1%, Midcap 50 −8.9% from their recent highs — broad, every index. **8 consecutive weekly losses**, the longest streak in this dataset (Nifty weekly closes, 2007 →); press reports call it the longest in ~25 years, which we cannot verify with data that starts in 2007.
+
+**No panic days.** Worst Nifty day in the last six months is −2.12% (2026-07-08); the recent worst are −1.64% (2026-09-24) and −1.56% (2026-09-28). 20-day annualised realised vol 10.3% vs a 14.2% median since 2008. India VIX 14.5, up from 10.4 on 2026-09-23 but low. Consistent with D1 (stress is variance): this episode has had a falling mean without the variance spike.
+
+**Flows.** FPI net equity (NSDL, all routes) **−US$28.8 bn year to date — the worst calendar year in the stored record** (2025 −18.9, 2022 −16.5); March alone −12.7. Last three sessions FII ≈ −₹10,000 cr/day with DIIs ≈ +₹10,000 cr/day (MSEI source; `sell` field not used, `net` is) — domestic buying absorbing foreign selling, which fits the lack of panic days. Consistent with E1: flows co-move with Nifty; no lead claimed.
+
+**Positioning (caveated).** FII index-futures long share of open interest 8.0% on 2026-10-01 (11.4% a week earlier) — the lowest in the stored participant-OI history. **Stored history is 2012-01 → 2017-10 plus 2026 only** (backfill is still running), so "lowest" does not yet cover 2018–2025, including 2020. Low long share can mean bearish positioning or hedging of cash holdings; not distinguished here.
+
+**Reported drivers (press, unverified by us):** fears of an October rate hike, tight liquidity, high crude, persistent FII selling, a long weekend.
+
+**Open question to test later.** Does a record-low FII index-futures long share precede anything? One episode is an anecdote; test once participant OI covers 2018–2025 (new question for E3).
