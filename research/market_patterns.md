@@ -6,6 +6,16 @@
 
 ---
 
+## 2026-10-07 — NSE's corporate-action feed is incomplete; the market's own gap is the best audit
+
+**Finding.** Pairing every NSE-announced split/bonus (api/corporates-corporateActions, 2004→) with the bhavcopy close-to-close gap on its ex-date, for the 1,177 stocks that ever reached the turnover top 300: 760 matched on the day or within 5 sessions; 4 were announced but the market never moved (not applied); **57 large gaps had no NSE announcement but match Yahoo's split history** (JSW Steel 1:10 on 2017-01-04; Vedanta/Sterlite 2008; ITC 2005). Yahoo agrees with 604 of NSE's applied factors and disagrees with 46. 115 gaps beyond −40%/+67% remain unexplained, 69 of them in 2004–2012 — mostly names Yahoo no longer carries.
+
+**Also:** NSE does not re-base bhavcopy `PREVCLOSE` on demerger ex-dates (Reliance → Jio Financial, 2023-07-20), extending the 2026-10-01 bonus finding. Subjects are free text with abbreviations ("Bon 1:1", "Fv Spl-Rs10tors2/Bon-12:1"). ETFs (NIFTYBEES, GOLDBEES) trade in series EQ and top turnover rankings.
+
+**Why it matters.** Each missed split looks like a −50% to −90% one-day crash in exactly the high-momentum names a momentum rule buys. Require the announcement and the price gap to agree before adjusting.
+
+**Evidence.** `observatory/reports/corpactions/audit.csv`; `obs/corpactions.py`; `tests/test_momentum.py`.
+
 ## 2026-08-12 — Yahoo's spot FX quotes (`=X`) are unusable at daily frequency
 
 **Finding.** yfinance's `USDINR=X`, `EURUSD=X` etc. produce daily bars whose `Close` is frequently identical to `Open` (40% of days for USDINR, 23% for EURUSD) and whose cross-pair correlations are roughly half their true value.
