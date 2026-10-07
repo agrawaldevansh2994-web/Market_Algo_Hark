@@ -42,13 +42,13 @@ The ones that bind hardest on *this* project:
 
 | | |
 |---|---|
-| **Phase** | **3 — platform build, in progress.** Steps ①, ③, ④ done; ② largely done — `research/04-direction.md` §6 |
-| **Code written** | Data layer (prices, flows, participant OI, index-membership snapshots, capture, checks) + observatory dashboard + **validation harness** (`observatory/harness/`). One harness shakedown experiment (E001); no strategy proposed |
-| **Strategy chosen** | None live. Reference replication proposed: **Nifty200 Momentum 30** |
+| **Phase** | **3 — platform build, in progress.** Steps ①, ③, ④ done; ② largely done; ⑤ first pass built 2026-10-07 — `research/04-direction.md` §6 |
+| **Code written** | Data layer (prices, flows, participant OI, index-membership snapshots, capture, checks) + observatory dashboard + **validation harness** (`observatory/harness/`) + **NSE equity bhavcopy store, corporate-action audit and the Nifty200 Momentum 30 replication** (step ⑤). One harness shakedown experiment (E001); no strategy proposed |
+| **Strategy chosen** | None live. Reference replication **Nifty200 Momentum 30** — first pass: 28/30 of the June 2026 picks match; returns track within +1.6 pts/yr since 2018, −4.4 pts/yr over 2005–2026 (`observatory/reports/mom30/report.md`) |
 | **Market/instrument chosen** | **Indian equities, equity derivatives, IPOs** (decided 2026-09-28). Commodities/FX/global stay in the observatory as context |
 | **Turnover class** | **Low** — monthly-or-slower rebalance, no intraday |
 | **Capital committed** | None. In scope later via a graduated path — gate criteria are Devansh's to set |
-| **Last updated** | 2026-10-07 |
+| **Last updated** | 2026-10-07 (step ⑤ first pass) |
 
 ### Files
 
@@ -67,14 +67,20 @@ Algo_Finance/
     ├── obs/flows.py                    # FII/DII (NSE, MSEI fallback) + NSDL FPI since 1999
     ├── obs/fno.py                      # NSE participant-wise open interest since 2012
     ├── obs/universe.py                 # index constituent snapshots + members_at() — point-in-time membership
+    ├── obs/bhavcopy.py                 # NSE equity bhavcopy 2004→ (legacy + UDiFF formats) → data/bhav/ (gitignored, ~195 MB)
+    ├── obs/corpactions.py              # NSE corporate-action feed + Yahoo splits → audited adjustment factors
+    ├── obs/momentum.py                 # Nifty200 Momentum 30 rules (official methodology pp.187–189), buffer, capping, drift
+    ├── obs/textstore.py                # per-year CSV split (keeps committed text files < 128 KB)
     ├── obs/analysis.py                 # Layers 1–2: drawdown, vol, rolling corr, lead-lag, regimes, NSDL re-dating (unit-tested)
     ├── dashboard.py                    # Streamlit dashboard v0 — `streamlit run dashboard.py` from observatory/ → localhost:8501
     ├── harness/                        # step ④ validation harness — costs, backtest, splits, stats, trials, gates
     ├── experiments/                    # one script per pre-registered experiment (E001 = harness shakedown)
     ├── reports/                        # generated experiment reports (markdown + chart), committed
     ├── trials/log.jsonl                # append-only trial log — registrations, trials, holdout unlocks. NEVER edit by hand
-    ├── tests/                          # pytest: `python -m pytest -q` from observatory/ (51 tests)
+    ├── tests/                          # pytest: `python -m pytest -q` from observatory/ (69 tests)
     ├── build.py                        # fetch prices + rebuild curated panels
+    ├── build_bhav.py                   # fetch/update the bhavcopy store (incremental)
+    ├── build_momentum.py               # step ⑤: audit + replication → reports/mom30/, reports/corpactions/
     ├── capture.py                      # nightly capture — scheduled 21:30 + 23:30 IST
     ├── checks.py                       # data integrity — run after every build
     └── data/{raw,curated}/             # snapshot-dated + month-partitioned parquet
@@ -188,10 +194,10 @@ Detail in `research/04-direction.md` §6. The ordering principles from Phase 1 s
 | Step | What |
 |---|---|
 | ① Housekeeping | ✅ done 2026-09-28 — docs committed, data refreshed |
-| ② Data expansion | **Mostly done.** ✅ FII/DII capture, NSDL FPI history, participant OI, index-constituent snapshots. **Left:** F&O bhavcopy ingest (H2/H3); bhavcopy equity ingest + corporate-action handling (blocks ⑤) |
+| ② Data expansion | **Mostly done.** ✅ FII/DII capture, NSDL FPI history, participant OI, index-constituent snapshots, ✅ **equity bhavcopy 2004→ + audited corporate actions (2026-10-07)**. **Left:** full F&O bhavcopy ingest (H2/H3; only per-review F&O stock lists so far) |
 | ③ Observatory L1–2 + dashboard v0 | **Built 2026-10-01** — `obs/analysis.py` + `dashboard.py` (Overview, Equity structure, Flows & positioning, Data health; light and dark mode checked in a browser). First findings in `market_patterns.md`. Still to add: A2–A4, B, C, F, G1 views; F&O (H) and IPO (I) views once their data exists |
 | ④ Validation harness | ✅ **Built 2026-10-07** (`observatory/harness/`): date-stamped cost model, lag-enforced vectorised backtester, walk-forward / purged k-fold / CPCV (matches `skfolio` oracle), PSR/DSR/MinTRL/Harvey-Liu/PBO, pre-registration + trial log + one-time holdout seal, regime/sensitivity/capacity gates. Shakedown E001 run. **Still to add:** ADV data for capacity (gate 8), F&O cost path exercised on real data, net-of-tax for F&O (business income) |
-| ⑤ Reference strategy | Replicate **Nifty200 Momentum 30**, **re-scoped 2026-10-01**: free data has no point-in-time membership and bhavcopy prices are unadjusted, so this becomes a *measured, decomposed* replication on a liquidity-ranked proxy universe (`research/04` §7.1). Goal: an explained gap to the published index, not an exact match |
+| ⑤ Reference strategy | Replicate **Nifty200 Momentum 30**, **re-scoped 2026-10-01**: free data has no point-in-time membership and bhavcopy prices are unadjusted, so this becomes a *measured, decomposed* replication on a liquidity-ranked proxy universe (`research/04` §7.1). Goal: an explained gap to the published index, not an exact match. **First pass built 2026-10-07** — dashboard *Momentum 30* view; selection 28/30 on the June 2026 review; gap concentrated pre-2018, causes listed in `reports/mom30/report.md` §Leading hypotheses — **next: decompose that gap** |
 | ⑥ Dashboard v1 | Strategy monitoring — positions, P&L net of cost and tax, drift from backtest |
 | ⑦ Paper → capital | Graduated path; needs Devansh's gate criteria first |
 | ∥ IPO track | Study-first, then dataset, then the IPO question bank (`research/02` §3 I) |
@@ -215,3 +221,4 @@ Detail in `research/04-direction.md` §6. The ordering principles from Phase 1 s
 | 2026-10-03 | **Scheduled capture hardened; drawdown logged.** Found 5 of 11 recent runs killed (0xC000013A) because the task launched `python.exe` with a visible console window that got closed; task now runs `pythonw.exe` with WakeToRun on, `capture.py` guards `sys.stdout is None`; verified with a manual trigger (rc 0, full log). A 12:05 catch-up run hung 18 min with no log (cause unconfirmed — likely console freeze). Still needs always-on host (GitHub Actions) to cover PC-off days. First look at the Aug–Oct 2026 drawdown (Nifty −14.8% from ATH, 8-week losing streak, FPI −$28.8bn YTD, FII index-futures long share 8%) → `market_patterns.md`. Open: price-refresh policy, GH Actions OK, Wayback backfill rerun. |
 | 2026-10-07 | **Step ④ built — the validation harness (Hark, on Devansh's go-ahead "make it alive").** Worked in the public clone `Market_Algo_Hark`. `observatory/harness/`: **costs** (STT date-stamped from research/01 §5.2; exchange/SEBI/stamp/GST from zerodha.com/charges read 2026-10-07; pre-2026 non-STT charges approximated at today's rates, < 1.5 bp/side, labelled), **backtest** (target weights in; lag ≥ 1 enforced, `lag=0` raises; weights drift; costs on execution date, dated or frozen-today; √-law impact when ADV is supplied; approximate net-of-tax by Indian FY with loss carry-forward), **splits** (walk-forward, purged k-fold, CPCV — purge/embargo **verified identical to `skfolio.CombinatorialPurgedCV`** as oracle), **stats** (PSR, DSR, E[max SR], MinTRL, Harvey-Liu Bonferroni haircut, PBO by CSCV — checked by simulation, not re-typed formulas), **trials** (registration required before any trial; immutable; trial touching the holdout refused; holdout unlock once, logged), **gates** (India regimes fixed before any run, neighbour-ratio sensitivity, √-law capacity, 12-gate report). 19 new tests, 44 total pass. **E001 shakedown** (Nifty 50 month-end SMA trend vs buy & hold, 9-point grid + 1 cash-yield check, 2008-09 → 2024-09, holdout 2024-10 → sealed): trend cut volatility 19.9% → 13.5% and max drawdown −38% → −34% but CAGR 13.0% → 9.6%; Sharpe 0.75 vs 0.72; **fails gate 5** — PBO 94% (choosing the SMA length is noise), t 2.94 < 3; MinTRL to show it beats buy & hold ≈ 2,800 years. Report: `observatory/reports/e001/`. Harness was debugged (common-window bug) before the first commit and the trial log reset once then; from this commit on the log is append-only. |
 | 2026-10-07 | **Older-code fixes (Hark, on Devansh's go-ahead).** `analysis.lead_lag` now returns a Newey-West HAC band and t-stat (`band_hac`, `t_hac`) beside the naive band; dashboard E1 plots the HAC band. `analysis.regime_labels(expanding=True)` gives look-ahead-free VIX cut-offs; dashboard D1/D3 has a toggle. `flows.with_retry` retries NSE FII/DII 3× (5/20/60 s) and MSEI once before giving up, so one blip no longer loses a DII day. `store.read_raw(key, snapshot)` falls back to the vintage on or before the date instead of crashing. 7 new tests, 51 pass. **Re-check:** E1 holds (daily k=+1 HAC t 1.68); D1 holds; D3 direction holds but gold's correlation rises most under expanding cut-offs, so the G1 "gold least stress-sensitive" answer is withdrawn — see market_patterns.md. |
+| 2026-10-07 | **Step ⑤ first pass (Hark, on Devansh's go-ahead "build till the dashboard is ready").** (1) `obs/bhavcopy.py` + `build_bhav.py`: NSE equity bhavcopy 2004-01-01 → 2026-10-06 (5,624 days, EQ+BE, both file formats) into gitignored `data/bhav/` — regenerable from NSE's immutable archive. (2) `obs/corpactions.py`: NSE corporate-action feed parsed (bonus/split/consolidation/scheme/rights/dividend) and **audited against the observed price gap**; Yahoo split history as a second source (604 agree, 46 disagree); NSE's feed misses some big splits (JSW Steel 2017, Vedanta 2008, ITC 2005) and NSE does not re-base PREVCLOSE on demergers either. Symbol renames joined via NSE symbolchange.csv; ETFs (ISIN INF…) dropped from the universe. (3) `obs/momentum.py`: official rules confirmed from the Sept 2026 methodology document. (4) Results: June 2026 selection **28/30** vs the actual list; same code on the real Nifty 200 27/30; turnover proxy 154/200 vs the real Nifty 200; returns 13.9% vs 18.4% CAGR 2005–2026 (TE 7.2%) but **+1.6 pts/yr, TE 3.7%, corr 0.985 since 2018**. (5) Dashboard view *Momentum 30* (smoke-tested headless; not yet eyeballed in a browser). 69 tests pass. Text data under `data/corpactions/`, `data/reference/`, `reports/` committed as per-year CSVs. **Next:** decompose the pre-2018 gap (held-stock unexplained gaps → Wayback Nifty 200 anchors → weight proxy); add anchors as forward capture records each review. |
