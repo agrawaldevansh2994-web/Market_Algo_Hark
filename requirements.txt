@@ -66,3 +66,5 @@ uvicorn==0.54.0
 watchdog==6.0.0
 websockets==16.1.1
 yfinance==1.5.2
+# Optional test oracle for harness/splits.py (tests skip if absent):
+# skfolio==1.6.0

@@ -212,3 +212,18 @@ Prices re-downloaded live from Yahoo for this note (repo snapshots untouched); f
 **Reported drivers (press, unverified by us):** fears of an October rate hike, tight liquidity, high crude, persistent FII selling, a long weekend.
 
 **Open question to test later.** Does a record-low FII index-futures long share precede anything? One episode is an anecdote; test once participant OI covers 2018–2025 (new question for E3).
+
+### 2026-10-07 — E001: a month-end trend filter on Nifty 50 buys a smoother ride, not an edge (dev sample 2008-09-30 → 2024-09-30)
+
+Harness shakedown, pre-registered, 10 trials logged, holdout from 2024-10-01 sealed. Price index (no dividends, which flatters trend by roughly 1%/yr vs buy & hold — estimate).
+
+| | Buy & hold | Trend SMA100 (best of 9) |
+|---|---|---|
+| CAGR, net | 13.0% | 9.6% |
+| Volatility | 19.9% | 13.5% |
+| Sharpe | 0.72 | 0.75 |
+| Max drawdown | −38% | −34% |
+| Cost drag | ~0 | 0.36%/yr |
+
+**What it says.** Every SMA length from 50 to 250 lands at Sharpe 0.63–0.75, around buy & hold's 0.72: the family reliably cuts volatility and gives up return, and the *choice* of length is noise (PBO 94%). Trend sat in cash through the 2008 crash tail and lost a third as much in the COVID crash (−21% vs −52% annualised over Feb–May 2020), but lagged badly in 2009–2013 whipsaws. Turning a long-term hold into sub-year holdings also converts LTCG (12.5%) into STCG (20%): after the approximate tax model, Sharpe falls to 0.64. **Not a strategy.** A volatility-targeted buy & hold is the honest comparator if this is ever revisited.
+
