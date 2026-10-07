@@ -17,3 +17,6 @@ scratchpad/
 .ipynb_checkpoints/
 .DS_Store
 *.log
+
+# --- NSE bhavcopy store: public immutable archive, regenerable with build_bhav.py (~100 MB) ---
+observatory/data/bhav/
