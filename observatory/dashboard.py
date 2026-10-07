@@ -561,9 +561,20 @@ def page_mom30(window, p):
 
 # --------------------------------------------------------------------- main
 
+def ensure_curated() -> None:
+    """Hosted deploys (Streamlit Cloud) start without the gitignored data/curated/.
+    Rebuild it once from the committed raw snapshots — no network fetch."""
+    if any(CURATED.glob("*.parquet")):
+        return
+    import build
+    with st.spinner("First run on this server: building panels from committed snapshots…"):
+        build.main(fetch=False)
+
+
 def main():
     st.set_page_config(page_title="Market Observatory", layout="wide", initial_sidebar_state="collapsed")
     p = pal()
+    ensure_curated()
     close, rd, rw, flows = load(stamp())
     raw = raw_tables(stamp())
 
