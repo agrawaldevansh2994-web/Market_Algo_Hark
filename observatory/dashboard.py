@@ -418,6 +418,147 @@ def page_health(close, flows, raw, p):
         st.info("capture.log not found — the scheduled capture has not run on this machine yet.")
 
 
+# ------------------------------------------------------------ momentum 30
+
+MOM = HERE / "reports" / "mom30"
+SER_MOM = {"replica_tilt": ("Replica — score × liquidity weights", 0), "replica_ew": ("Replica — equal weight", 3),
+           "nifty200mom30_tri": ("Nifty200 Momentum 30 TRI (the answer key)", 1),
+           "nifty200_tri": ("Nifty 200 TRI", 2)}
+
+
+@st.cache_data(show_spinner=False)
+def load_mom(_stamp):
+    from obs.textstore import read_split
+    if not (MOM / "daily_returns").exists():
+        return None
+    rd_ = read_split(MOM / "daily_returns", index_col=0)
+    out = {"daily": rd_,
+           "sel": read_split(MOM / "selections", parse_dates=["cutoff", "effective"]),
+           "by_year": pd.read_csv(MOM / "by_year.csv"),
+           "anchors": pd.read_csv(MOM / "anchors.csv") if (MOM / "anchors.csv").exists() else pd.DataFrame(),
+           "turnover": pd.read_csv(MOM / "turnover.csv"),
+           "summary": __import__("json").loads((MOM / "summary.json").read_text())}
+    audit_p = HERE / "reports" / "corpactions" / "audit.csv"
+    out["audit"] = pd.read_csv(audit_p, parse_dates=["ex_date", "applied_date"]) if audit_p.exists() else None
+    return out
+
+
+def page_mom30(window, p):
+    m = load_mom((MOM / "summary.json").stat().st_mtime if (MOM / "summary.json").exists() else 0)
+    if m is None:
+        st.info("No replication results yet. Run `python build_bhav.py` then `python build_momentum.py`.")
+        return
+    d, summ = m["daily"], m["summary"]
+    tt, te = summ["tracking"]["replica_tilt"], summ["tracking"]["replica_ew"]
+    st.subheader("⑤ Nifty200 Momentum 30 — how close does a free-data rebuild get?")
+    st.caption("A measured replication of a published index (roadmap step 5), not a strategy signal. The "
+               "methodology is NSE's (Sept 2026 document, pp. 187–189); what free data forces us to approximate is "
+               "listed at the bottom. Success means an explained gap, not a zero one.")
+    k = st.columns(5)
+    k[0].metric("Replica CAGR", f"{tt['cagr_rep']:.1%}", help="Score × liquidity weights, total return, gross of costs")
+    k[1].metric("Index TRI CAGR", f"{tt['cagr_bench']:.1%}")
+    k[2].metric("Gap per year", f"{tt['gap_pa']:+.1%}", help="Replica minus index, annualised")
+    k[3].metric("Tracking error", f"{tt['tracking_error']:.1%}", help="Annualised std. dev. of daily return differences")
+    k[4].metric("Daily correlation", f"{tt['corr']:.3f}")
+    st.caption(f"{tt['start']} → {tt['end']}, {summ['reviews']} semi-annual reviews. Equal-weight replica: "
+               f"CAGR {te['cagr_rep']:.1%}, tracking error {te['tracking_error']:.1%}.")
+
+    dd = clip(d, window)
+    growth = (1 + dd).cumprod()
+    fig = base_fig(p, 380)
+    for col, (name, slot) in SER_MOM.items():
+        line(fig, growth.index, growth[col], name, p["series"][slot], fmt="%{y:,.2f}×")
+    fig.update_yaxes(type="log", title="growth of ₹1 (log)")
+    show(fig)
+    table_twin(growth.resample("ME").last().round(3), "Monthly values")
+
+    st.subheader("Where the gap comes from, year by year")
+    by = m["by_year"].copy()
+    by["gap_tilt"] = by["replica_tilt"] - by["index_tri"]
+    fig = base_fig(p, 300)
+    fig.add_trace(go.Bar(x=by["year"], y=by["gap_tilt"] * 100, name="replica − index, % pts",
+                         marker_color=[p["pos"][1] if v >= 0 else p["neg"] for v in by["gap_tilt"]],
+                         hovertemplate="%{x}: %{y:+.1f} pts<extra></extra>"))
+    fig.update_yaxes(zeroline=True, zerolinecolor=p["axis"], title="% points")
+    show(fig)
+    show_by = by[["year", "replica_tilt", "replica_ew", "index_tri", "nifty200_tri", "gap_tilt", "te_tilt"]].copy()
+    for c in show_by.columns[1:]:
+        show_by[c] = (show_by[c] * 100).round(1)
+    st.dataframe(show_by.set_index("year").rename(columns={
+        "replica_tilt": "replica %", "replica_ew": "replica EW %", "index_tri": "Mom30 TRI %",
+        "nifty200_tri": "Nifty 200 TRI %", "gap_tilt": "gap pts", "te_tilt": "tracking error %"}), width="stretch")
+
+    from obs.momentum import tracking_stats
+    eras = []
+    for a_, b_ in [("2005", "2012"), ("2013", "2017"), ("2018", str(d.index[-1].year))]:
+        g = d.loc[a_:b_]
+        t_ = tracking_stats(g["replica_tilt"], g["nifty200mom30_tri"])
+        eras.append({"era": f"{a_}–{b_}", "replica CAGR %": round(t_["cagr_rep"] * 100, 1),
+                     "index CAGR %": round(t_["cagr_bench"] * 100, 1), "gap pts/yr": round(t_["gap_pa"] * 100, 1),
+                     "tracking error %": round(t_["tracking_error"] * 100, 1), "correlation": round(t_["corr"], 3)})
+    st.dataframe(pd.DataFrame(eras).set_index("era"), width="stretch")
+    unx = m["audit"][m["audit"]["status"] == "unexplained"] if m["audit"] is not None else pd.DataFrame(columns=["ex_date"])
+    n_unx, n_old = len(unx), int((unx["ex_date"].dt.year <= 2012).sum()) if len(unx) else 0
+    st.caption("The gap is concentrated before 2018. That is where NSE's corporate-action feed leaves the most "
+               f"price gaps unexplained ({n_old} of {n_unx} fall in 2004–2012) and where the turnover proxy for "
+               "Nifty 200 has no anchor to check it against.")
+
+    st.subheader("Validation anchors — the real lists on file")
+    if len(m["anchors"]):
+        st.dataframe(m["anchors"], width="stretch", hide_index=True)
+        st.caption("The first row tests the whole pipeline; the second tests only the universe proxy; the third "
+                   "scores the *real* Nifty 200 with our code, so its overlap isolates the scoring from the "
+                   "universe approximation. More anchors arrive as the forward capture records each review.")
+
+    st.subheader("Picks at each review")
+    sel = m["sel"]
+    reviews = sorted(sel["review"].unique())
+    rv = st.select_slider("Review", reviews, value=reviews[-1])
+    one = sel[sel["review"] == rv].sort_values("rank")
+    tab = one[["symbol", "rank", "score", "ret6", "ret12", "sigma", "weight_tilt"]].copy()
+    tab[["ret6", "ret12", "sigma", "weight_tilt"]] = (tab[["ret6", "ret12", "sigma", "weight_tilt"]] * 100).round(1)
+    tab["score"] = tab["score"].round(2)
+    st.dataframe(tab.rename(columns={"ret6": "6M return %", "ret12": "12M return %", "sigma": "volatility %",
+                                     "weight_tilt": "weight %"}), width="stretch", hide_index=True)
+    r0 = one.iloc[0]
+    st.caption(f"Cut-off {r0['cutoff']:%d %b %Y}, effective {r0['effective']:%d %b %Y}; "
+               f"{int(r0['n_eligible'])} stocks eligible after the F&O and one-year-listing filters.")
+    to = m["turnover"]
+    if len(to):
+        st.caption(f"Average names changed per review: {to['names_changed'].mean():.1f} of 30; average one-way "
+                   f"turnover {to['one_way_turnover'].mean():.0%}.")
+
+    st.subheader("Corporate-action audit")
+    a = m["audit"]
+    if a is not None:
+        counts = a["status"].value_counts().rename("actions").to_frame()
+        c1, c2 = st.columns([1, 2])
+        c1.dataframe(counts, width="stretch")
+        c2.caption("**applied** — NSE announced it and the price gapped by that factor on the ex-date. "
+                   "**applied_shifted** — the gap came within 5 sessions of the announced date. "
+                   "**no_gap** — announced, but the market never moved by that factor; *not* applied. "
+                   "**scheme_market_implied** — demerger or scheme; factor = ex-date gap net of the day's median "
+                   "move (an estimate). **unexplained** — a gap beyond −40% / +67% with nothing announced. "
+                   "Scope: the stocks that ever reached the liquidity top 300 at a review.")
+        pick = st.multiselect("Show status", list(counts.index), default=[x for x in ["no_gap", "unexplained"]
+                                                                          if x in counts.index])
+        st.dataframe(a[a["status"].isin(pick)].sort_values("ex_date", ascending=False), width="stretch",
+                     hide_index=True)
+
+    with st.expander("What free data forces us to approximate"):
+        st.markdown(
+            "- **A. Universe** — Nifty 200 membership history is not free. Proxy: top 200 by 6-month average "
+            "daily turnover (point-in-time by construction). NSE ranks by market cap.\n"
+            "- **B. Weights** — free-float market cap history is not free. Proxy: 6-month average turnover × "
+            "score, capped at min(5%, 5× base weight). Equal weight shown alongside.\n"
+            "- **C. Timing** — portfolio changes at the close of the last trading day of June/December; NSE's "
+            "effective date is usually a few sessions earlier.\n"
+            "- **D. Prices** — adjusted only where NSE's announcement and the market's own gap agree (audit above).\n"
+            "- **E. Mid-period events** — delistings and ad-hoc replacements are not modelled.\n"
+            "- Results are **gross of costs**, like the TRI. Single-day moves are clipped at −60% / +150% "
+            f"({summ['clipped_daily_moves']} clipped).")
+
+
 # --------------------------------------------------------------------- main
 
 def main():
@@ -427,11 +568,11 @@ def main():
     raw = raw_tables(stamp())
 
     st.title("Market Observatory")
-    st.caption("Indian equities, derivatives and flows — descriptive analysis only; no signals, forecasts or "
-               "backtests. Data through " + f"{close['nifty50'].dropna().index[-1]:%d %b %Y}.")
+    st.caption("Indian equities, derivatives and flows — descriptive analysis, plus the step-5 replication of a "
+               "published index; no signals or forecasts. Data through " + f"{close['nifty50'].dropna().index[-1]:%d %b %Y}.")
 
     nav, win = st.columns([3, 2])
-    page = nav.segmented_control("View", ["Overview", "Equity structure", "Flows & positioning", "Data health"],
+    page = nav.segmented_control("View", ["Overview", "Equity structure", "Flows & positioning", "Momentum 30", "Data health"],
                                  default="Overview") or "Overview"
     window = win.segmented_control("Window", list(WINDOWS), default="5Y") or "5Y"
 
@@ -441,6 +582,8 @@ def main():
         page_structure(close, rd, rw, window, p)
     elif page == "Flows & positioning":
         page_flows(close, rd, rw, flows, window, p, raw)
+    elif page == "Momentum 30":
+        page_mom30(window, p)
     else:
         page_health(close, flows, raw, p)
 
