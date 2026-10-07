@@ -171,7 +171,9 @@ The plan above assumed an exact replication. Probing the real sources changes th
 
 **Hard requirement carried forward:** corporate-action adjustment errors are silent and land in the tails that momentum ranks by. Step ⑤ needs an adjustment audit (list every inferred action, check each against a second source) before any momentum result is trusted.
 
-**To confirm before building:** the exact normalised-score formula from the official methodology document on niftyindices.com. The secondary sources above summarise it but are not the rulebook.
+**Confirmed 2026-10-07** from the official methodology document (Sept 2026, pp.187–189): MR = price return / annualised 1-year σ of daily log returns; z-scores of MR6 and MR12 across the eligible set; wz = ½z12 + ½z6; score = 1+wz or 1/(1−wz); prices as of the last trading day of M−1, M−7, M−13; eligibility also needs F&O availability; buffer 15-in / 45-out.
+
+**First-pass result (2026-10-07):** selection 28/30 on the June 2026 review; returns +1.6 pts/yr vs the TRI since 2018, −4.4 pts/yr over 2005–2026. Detail: `observatory/reports/mom30/report.md`.
 
 ---
 
@@ -181,8 +183,8 @@ The plan above assumed an exact replication. Probing the real sources changes th
 |---|---|---|---|
 | 1 | Gate criteria for the graduated capital path (§4) | **Devansh** | ⑦ |
 | 2 | ~~Source for point-in-time Nifty 200 constituents~~ — **investigated 2026-10-01: no free history exists.** Forward capture running; archive anchors being pulled; ⑤ re-scoped (§7.1) | Claude | — |
-| 3 | Official Nifty200 Momentum 30 methodology PDF | Claude | ⑤ |
-| 8 | **Corporate-actions source** (splits, bonuses, demergers) — bhavcopy `PREVCLOSE` is unadjusted, so adjusted prices need one. Candidates: infer from price/volume discontinuities and audit; yfinance adjusted close for live names | Claude | ⑤ |
+| 3 | ~~Official Nifty200 Momentum 30 methodology PDF~~ — **read 2026-10-07** (Nifty Indices methodology doc, Sept 2026, pp.187–189); implemented in `obs/momentum.py` | Claude | — |
+| 8 | ~~Corporate-actions source~~ — **built 2026-10-07**: NSE corporate-action API audited against observed gaps, Yahoo splits as second source; demergers market-implied (estimate). 115 unexplained gaps remain (69 in 2004–2012) — `observatory/reports/corpactions/audit.csv` | Claude | — |
 | 9 | Free-float market-cap history for index weights — not found yet | Claude | 5b |
 | 10 | An always-on place to run `capture.py`. A missed 24-hour window permanently loses a day of DII flow (happened 2026-09-28). A GitHub Actions cron job would close this; NSE's main site likely blocks cloud IPs, but MSEI (the working source) may not. **Needs Devansh's OK — it adds a CI workflow that commits to the repo** | Devansh | flow-data completeness |
 | 4 | IPO dataset source (mainboard + SME, subscription by category, listing prices, anchor lock-in dates) | Claude, after study pass | IPO track |
