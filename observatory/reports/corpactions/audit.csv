@@ -1,0 +1,1094 @@
+cid,ex_date,kind,announced,subject,status,applied_date,observed,factor,yf_check
+SUVEN,2004-01-16,none,,,unexplained,,0.20349,,
+AFTEK,2004-01-21,none,,,unexplained,,0.18119,,
+SUNDRMFAST,2004-01-23,yahoo_split,0.10000,,applied_yf,2004-01-23,0.10836,0.10000,yahoo_only
+JSL,2004-03-01,none,,,unexplained,,0.20241,,
+MOTHERSON,2004-03-16,none,,,unexplained,,0.18748,,
+UNICHEMLAB,2004-03-17,none,,,unexplained,,0.22205,,disagree
+BERGEPAINT,2004-03-24,none,,,unexplained,,0.54012,,
+ALEMBICLTD,2004-03-25,yahoo_split,0.50000,,applied_yf,2004-03-25,0.31226,0.50000,yahoo_only
+BAJAJHIND,2004-04-29,yahoo_split,0.10000,,applied_yf,2004-04-29,0.10317,0.10000,yahoo_only
+FDC,2004-04-29,yahoo_split,0.50000,,applied_yf,2004-04-29,0.54928,0.50000,yahoo_only
+WOCKPHARMA,2004-04-29,none,,,unexplained,,0.36026,,
+MARICO,2004-05-06,yahoo_split,0.50000,,applied_yf,2004-05-06,0.52190,0.50000,yahoo_only
+CIPLA,2004-05-12,yahoo_split,0.20000,,applied_yf,2004-05-12,0.20474,0.20000,yahoo_only
+MPHASIS,2004-05-26,yahoo_split,0.50000,,applied_yf,2004-05-26,0.52153,0.50000,yahoo_only
+SUNPHARMA,2004-05-27,yahoo_split,0.50000,,applied_yf,2004-05-27,0.52240,0.50000,yahoo_only
+BSELINFRA,2004-06-09,none,,,unexplained,,0.56166,,
+WIPRO,2004-06-25,yahoo_split,0.33333,,applied_yf,2004-06-25,0.33578,0.33333,yahoo_only
+ASHOKLEY,2004-06-29,none,,,unexplained,,0.09916,,
+INFY,2004-07-01,yahoo_split,0.25000,,applied_yf,2004-07-01,0.25503,0.25000,yahoo_only
+PRICOL,2004-07-08,none,,,unexplained,,0.06334,,
+BOSCHLTD,2004-07-09,yahoo_split,0.10000,,applied_yf,2004-07-09,0.10365,0.10000,yahoo_only
+SHANTIGEAR,2004-07-27,none,,,unexplained,,0.06008,,
+ADANIENT,2004-07-29,none,,,unexplained,,0.10185,,
+GEOMETRIC,2004-08-02,none,,,unexplained,,0.50761,,
+NUCLEUS,2004-08-06,yahoo_split,0.50000,,applied_yf,2004-08-06,0.50542,0.50000,yahoo_only
+BERGEPAINT,2004-08-25,none,,,unexplained,,0.21217,,
+KOTAKBANK,2004-08-25,yahoo_split,0.50000,,applied_yf,2004-08-25,0.49150,0.50000,yahoo_only
+AMTEKAUTO,2004-10-05,none,,,unexplained,,0.21849,,
+PVP,2004-10-14,none,,,unexplained,,0.29219,,
+UCAL,2004-10-25,yahoo_split,0.50000,,applied_yf,2004-10-25,0.48453,0.50000,yahoo_only
+FEDERALBNK,2004-11-29,yahoo_split,0.33333,,applied_yf,2004-11-29,0.34909,0.33333,yahoo_only
+PEL,2004-12-27,none,,,unexplained,,0.21083,,
+KTKBANK,2005-01-13,none,,,unexplained,,0.48504,,
+MATRIXLABS,2005-01-13,none,,,unexplained,,0.09833,,
+IPCALAB,2005-01-28,yahoo_split,0.50000,,applied_yf,2005-01-28,0.49148,0.50000,yahoo_only
+AARTIIND,2005-02-09,none,,,unexplained,,0.34625,,
+GUJNRECOKE,2005-02-09,none,,,unexplained,,0.51613,,
+VEDL,2005-02-16,yahoo_split,0.50000,,applied_yf,2005-02-16,0.49407,0.50000,yahoo_only
+GEODESIC,2005-02-18,none,,,unexplained,,0.10500,,
+INGVYSYABK,2005-02-21,none,,,unexplained,,0.33512,,
+VISHALEXPO,2005-02-25,none,,,unexplained,,0.24006,,
+BSOFT,2005-03-03,none,,,unexplained,,0.49400,,
+GLENMARK,2005-03-04,none,,,unexplained,,0.51114,,
+GAMMONIND,2005-03-15,none,,,unexplained,,0.20995,,
+STERLINBIO,2005-03-18,none,,,unexplained,,0.50746,,
+BALRAMCHIN,2005-03-23,yahoo_split,0.10000,,applied_yf,2005-03-23,0.09835,0.10000,yahoo_only
+JBCHEPHARM,2005-04-05,none,,,unexplained,,0.19141,,
+HEXAWARE,2005-04-28,none,,,unexplained,,0.19776,,
+ABAN,2005-05-04,yahoo_split,0.20000,,applied_yf,2005-05-04,0.20669,0.20000,yahoo_only
+EIDPARRY,2005-05-27,none,,,unexplained,,0.20689,,
+AMBUJACEM,2005-06-20,yahoo_split,0.20000,,applied_yf,2005-06-20,0.13144,0.20000,yahoo_only
+HCL-INSYS,2005-07-08,yahoo_split,0.20000,,applied_yf,2005-07-08,0.21169,0.20000,yahoo_only
+BHARATFORG,2005-07-20,split,0.20000,Spl Rs10 To Rs2 /Div-125%,applied,2005-07-20,0.21105,0.20000,agree
+RANBAXY,2005-07-25,none,,,unexplained,,0.48525,,
+GEOMETRIC,2005-08-02,none,,,unexplained,,0.21704,,
+HAVELLS,2005-08-04,yahoo_split,0.50000,,applied_yf,2005-08-04,0.50310,0.50000,yahoo_only
+PRAJIND,2005-08-17,yahoo_split,0.20000,,applied_yf,2005-08-17,0.10505,0.20000,yahoo_only
+SHASUNPHAR,2005-08-19,none,,,unexplained,,0.19926,,
+WIPRO,2005-08-22,yahoo_split,0.50000,,applied_yf,2005-08-22,0.50351,0.50000,yahoo_only
+NAVA,2005-08-24,yahoo_split,0.20000,,applied_yf,2005-08-24,0.20819,0.20000,yahoo_only
+NCC,2005-08-24,yahoo_split,0.20000,,applied_yf,2005-08-24,0.21152,0.20000,yahoo_only
+KOTAKBANK,2005-08-25,yahoo_split,0.40000,,applied_yf,2005-08-25,0.43626,0.40000,yahoo_only
+VISHALEXPO,2005-08-25,none,,,unexplained,,0.36866,,
+HINDALCO,2005-08-30,yahoo_split,0.10000,,applied_yf,2005-08-30,0.10233,0.10000,yahoo_only
+M&M,2005-09-01,yahoo_split,0.50000,,applied_yf,2005-09-01,0.50250,0.50000,yahoo_only
+CASTEXTECH,2005-09-08,none,,,unexplained,,0.20847,,
+RAJESHEXPO,2005-09-09,yahoo_split,0.20000,,applied_yf,2005-09-09,0.20543,0.20000,yahoo_only
+PIDILITIND,2005-09-20,yahoo_split,0.10000,,applied_yf,2005-09-20,0.10678,0.10000,yahoo_only
+ITC,2005-09-21,yahoo_split,0.10000,,applied_yf,2005-09-21,0.07266,0.10000,yahoo_only
+METALFORGE,2005-09-22,none,,,unexplained,,0.31855,,
+UPL,2005-09-27,yahoo_split,0.20000,,applied_yf,2005-09-27,0.21829,0.20000,yahoo_only
+ASTRAMICRO,2005-10-07,yahoo_split,0.20000,,applied_yf,2005-10-07,0.10502,0.20000,yahoo_only
+DCMSHRIRAM,2005-10-07,yahoo_split,0.20000,,applied_yf,2005-10-07,0.10499,0.20000,yahoo_only
+GFLLIMITED,2005-10-10,none,,,unexplained,,0.20451,,
+SINTEX,2005-10-10,none,,,unexplained,,0.19152,,
+SURYALAXMI,2005-10-10,none,,,unexplained,,0.50522,,
+LIBERTSHOE,2005-10-13,yahoo_split,0.50000,,applied_yf,2005-10-13,0.47705,0.50000,yahoo_only
+HIMATSEIDE,2005-10-14,yahoo_split,0.50000,,applied_yf,2005-10-14,0.25023,0.50000,yahoo_only
+KAJARIACER,2005-10-19,yahoo_split,0.20000,,applied_yf,2005-10-19,0.19441,0.20000,yahoo_only
+DISHMAN,2005-10-21,none,,,unexplained,,0.19533,,
+DALMIASUG,2005-10-27,none,,,unexplained,,0.21001,,
+HELIOSMATH,2005-10-27,none,,,unexplained,,0.48301,,
+HCC,2005-11-08,yahoo_split,0.10000,,applied_yf,2005-11-08,0.10052,0.10000,yahoo_only
+MPHASIS,2005-11-11,yahoo_split,0.50000,,applied_yf,2005-11-11,0.50289,0.50000,yahoo_only
+SRIADIKARI,2005-12-30,none,,,unexplained,,0.20991,,
+COROMANDEL,2006-01-02,yahoo_split,0.20000,,applied_yf,2006-01-02,0.20396,0.20000,yahoo_only
+SUBEX,2006-01-05,none,,,unexplained,,0.50588,,
+RADICO,2006-01-06,none,,,unexplained,,0.20586,,
+AARTIIND,2006-01-13,none,,,unexplained,,0.52420,,
+DABUR,2006-01-19,yahoo_split,0.50000,,applied_yf,2006-01-19,0.48902,0.50000,yahoo_only
+KLGSYSTEL,2006-01-27,none,,,unexplained,,0.52501,,
+MERCATOR,2006-02-02,none,,,unexplained,,0.39158,,
+SUMMIT,2006-02-07,none,,,unexplained,,0.16531,,
+TORNTPHARM,2006-02-20,none,,,unexplained,,0.24587,,disagree
+VIMTALABS,2006-02-24,none,,,unexplained,,0.21054,,
+KCPSUGIND,2006-03-08,yahoo_split,0.10000,,applied_yf,2006-03-08,0.09846,0.10000,yahoo_only
+JUBLPHARMA,2006-03-17,yahoo_split,0.20000,,applied_yf,2006-03-17,0.20790,0.20000,yahoo_only
+MASTEK,2006-03-27,yahoo_split,0.50000,,applied_yf,2006-03-27,0.45601,0.50000,yahoo_only
+IVRCLINFRA,2006-03-29,none,,,unexplained,,0.19991,,
+THERMAX,2006-03-31,yahoo_split,0.20000,,applied_yf,2006-03-31,0.21103,0.20000,yahoo_only
+KPIL,2006-04-13,yahoo_split,0.50000,,applied_yf,2006-04-13,0.46584,0.50000,yahoo_only
+MAHSEAMLES,2006-04-18,split,0.50000,Fv Split Rs.10/- To Rs.5/,applied,2006-04-18,0.50784,0.50000,no_record
+CIPLA,2006-04-24,bonus,0.40000,Bonus 3:2,applied,2006-04-24,0.39378,0.40000,agree
+STER,2006-05-05,bonus+split,0.20000,Fv Spl-Rs5 To Rs2/Bon 1:1,applied,2006-05-05,0.20745,0.20000,no_record
+ANSALAPI,2006-05-10,split,0.50000,Fv Split Rs.10/- To Rs.5/,applied,2006-05-10,0.52503,0.50000,no_record
+SIEMENS,2006-06-13,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-06-13,0.18944,0.20000,agree
+ASTRAZEN,2006-06-15,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-06-15,0.22001,0.20000,no_record
+UNITECH,2006-06-23,bonus+split,0.01538,Fv Spl-Rs10tors2/Bon-12:1,applied,2006-06-23,0.01616,0.01538,disagree
+GTL,2006-07-07,scheme,,Scheme Of Demerger,scheme_market_implied,2006-07-07,0.83284,0.85038,
+INFY,2006-07-13,bonus,0.50000,Bonus 1:1,applied,2006-07-13,0.49679,0.50000,agree
+KARURVYSYA,2006-07-19,bonus,0.50000,Agm/Div - 120%/Bonus 1:1,applied,2006-07-19,0.44332,0.50000,agree
+HAVELLS,2006-07-20,bonus,0.50000,Bonus 1:1,applied,2006-07-20,0.50493,0.50000,agree
+CYIENT,2006-07-28,bonus+split,0.33333,Fv Spl-10 To 5 / Bon 1:2,applied,2006-07-28,0.35526,0.33333,no_record
+JYOTISTRUC,2006-07-28,split,0.20000,Fv Split-Rs.10/-To Rs.2/-,applied,2006-07-28,0.21005,0.20000,agree
+TCS,2006-07-28,bonus,0.50000,Intdiv-Rs 3persh/Bonus1:1,applied,2006-07-28,0.48874,0.50000,agree
+CGPOWER,2006-08-10,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-08-10,0.21040,0.20000,agree
+LUPIN,2006-08-11,bonus,0.50000,Bonus 1:1,applied,2006-08-11,0.50984,0.50000,agree
+GODREJCP,2006-08-24,split,0.25000,Fv Split Rs.4/- To Re.1/-,applied,2006-08-24,0.24898,0.25000,agree
+GODREJIND,2006-08-25,split,0.16667,Fv Split Rs.6/- To Re.1/,applied,2006-08-25,0.17505,0.16667,agree
+DRREDDY,2006-08-28,bonus,0.50000,Bonus 1:1,applied,2006-08-28,0.49487,0.50000,agree
+ZYDUSLIFE,2006-08-30,bonus,0.50000,Bonus 1:1,applied,2006-08-30,0.50935,0.50000,no_record
+EXIDEIND,2006-09-08,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2006-09-08,0.11731,0.10000,agree
+HLVLTD,2006-09-08,none,,,unexplained,,0.23753,,
+EIHOTEL,2006-09-12,bonus+split,0.13333,Spl-Rs10 To Rs2/Bonus-1:2,applied,2006-09-12,0.14881,0.13333,disagree
+SIMPLEXINF,2006-09-13,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-09-13,0.21085,0.20000,no_record
+BLUESTARCO,2006-09-20,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-09-20,0.19160,0.20000,agree
+NCC,2006-09-20,bonus,0.50000,Bonus 1:1,applied,2006-09-20,0.50608,0.50000,agree
+ALPSINDUS,2006-09-22,bonus,0.50000,Dividend-7.50% /Bonus 1:1,applied,2006-09-22,0.54408,0.50000,agree
+VOLTAS,2006-09-22,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2006-09-22,0.10319,0.10000,agree
+ALEMBICLTD,2006-09-26,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-09-26,0.18630,0.20000,agree
+GEOJITFSL,2006-09-26,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2006-09-26,0.09197,0.10000,no_record
+GUJNRECOKE,2006-09-28,bonus,0.50000,Bonus 1:1,applied,2006-09-28,0.53788,0.50000,no_record
+LT,2006-09-28,bonus,0.50000,Bonus 1:1,applied,2006-09-28,0.48774,0.50000,agree
+SATYAMCOMP,2006-10-09,bonus,0.50000,Bonus-1:1,applied,2006-10-09,0.50065,0.50000,no_record
+BERGEPAINT,2006-10-12,bonus,0.62500,Bonus 3:5,applied,2006-10-12,0.65220,0.62500,agree
+ELECON,2006-10-17,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-10-17,0.19518,0.20000,no_record
+UNITDSPR,2006-10-17,scheme,,Sch Of Arngment-Demerger,scheme_market_implied,2006-10-17,1.01778,1.02462,
+INDHOTEL,2006-10-27,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2006-10-27,0.10281,0.10000,agree
+ONGC,2006-10-27,bonus,0.66667,Bonus 1:2,applied,2006-10-27,0.68420,0.66667,agree
+OPTOCIRCUI,2006-10-30,bonus,0.50000,Bonus 1:1,applied,2006-10-30,0.50555,0.50000,no_record
+JAGRAN,2006-11-02,bonus,0.83333,Bonus 1:5,applied,2006-11-02,0.85526,0.83333,no_record
+SUPREMEIND,2006-11-13,bonus,0.50000,Bonus 1:1,applied,2006-11-13,0.51281,0.50000,agree
+LAKSHVILAS,2006-11-17,bonus,0.66667,Bonus 1:2/Rights 1:1,applied,2006-11-17,0.51314,0.66667,no_record
+GRAPHITE,2006-12-11,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-12-11,0.19529,0.20000,agree
+FEL,2006-12-12,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-12-12,0.19777,0.20000,no_record
+LMW,2006-12-13,split,0.10000,Fv Spl 100 To 10/Div150%,applied,2006-12-13,0.10455,0.10000,agree
+CGPOWER,2006-12-14,bonus,0.71429,Bonus 2:5,applied,2006-12-14,0.73551,0.71429,agree
+KEI,2006-12-21,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-12-21,0.22003,0.20000,agree
+HTMEDIA,2006-12-28,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2006-12-28,0.20160,0.20000,agree
+INDIABULLS,2007-01-02,scheme,,Scheme Of Arrangement,scheme_market_implied,2007-01-02,0.46249,0.45768,
+BSOFT,2007-01-04,bonus+split,0.20000,Bonus-1:1 Spl-Rs 5/ To 2/,applied,2007-01-04,0.20528,0.20000,no_record
+SUNDRMFAST,2007-01-04,bonus,0.50000,Bonus-1:1,applied,2007-01-04,0.48931,0.50000,agree
+FINCABLES,2007-01-08,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-01-08,0.20364,0.20000,agree
+APARINDS,2007-01-11,bonus,0.75000,Bonus-1:3,applied,2007-01-11,0.76411,0.75000,agree
+ZANDUREALT,2007-01-18,bonus,0.75000,Bonus 1:3,applied,2007-01-18,0.78751,0.75000,no_record
+DABUR,2007-01-25,bonus,0.66667,Bonus - 1:2,applied,2007-01-25,0.62698,0.66667,agree
+GOKEX,2007-02-08,split,0.50000,Fv Split Rs.10/- To Rs.5/,applied,2007-02-08,0.49175,0.50000,agree
+ZEEL,2007-02-12,scheme,,Scheme Of Arrangement,scheme_market_implied,2007-02-12,0.71506,0.74626,
+MARICO,2007-02-21,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2007-02-21,0.10201,0.10000,agree
+MFSL,2007-03-12,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-03-12,0.20546,0.20000,agree
+DCHL,2007-03-13,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-03-13,0.19408,0.20000,no_record
+HCLTECH,2007-03-15,bonus,0.50000,Bonus 1:1,applied,2007-03-15,0.49128,0.50000,agree
+SUVEN,2007-03-23,bonus+split,0.25000,Fv Spl-Rs2 To Re1/Bon-1:1,applied,2007-03-23,0.25890,0.25000,disagree
+PUNJLLOYD,2007-03-29,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-03-29,0.19687,0.20000,no_record
+MANINDS,2007-04-13,scheme,,Scheme Of Demerger,scheme_no_gap,,1.02102,,
+ANSALAPI,2007-04-23,bonus,0.50000,Bonus 1:1,applied,2007-04-23,0.52500,0.50000,agree
+SUNPHARMA,2007-04-23,scheme,,Scheme Of Arrangement,scheme_market_implied,2007-04-23,0.88613,0.88896,
+MIRZAINT,2007-04-24,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-04-24,0.21007,0.20000,no_record
+THOMASCOOK,2007-05-14,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2007-05-14,0.10504,0.10000,agree
+GUJRATGAS,2007-05-15,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-05-15,0.20138,0.20000,no_record
+BHEL,2007-05-31,bonus,0.50000,Bonus 1:1,applied,2007-05-31,0.50549,0.50000,agree
+COREEDUTEC,2007-06-06,split,0.20000,Agm/Div-5%/Spl-Rs10tors2 Purpose Revised,applied,2007-06-06,0.23981,0.20000,no_record
+ABB,2007-06-28,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-06-28,0.21736,0.20000,agree
+MOSERBAER,2007-07-17,bonus,0.66667,Bonus 1:2,applied,2007-07-17,0.64397,0.66667,no_record
+KSOILS,2007-07-18,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2007-07-18,0.11199,0.10000,no_record
+PRAJIND,2007-07-18,bonus,0.50000,Bonus 1:1,applied,2007-07-18,0.51159,0.50000,agree
+SUNTV,2007-07-23,bonus,0.50000,Agm/Spl/Bon-1:1/Div-20%,no_gap,,0.24824,,
+SUNTV,2007-07-23,none,,,unexplained,,0.24824,,disagree
+GDL,2007-08-02,bonus,0.80000,Bonus 1:4,applied,2007-08-02,0.82481,0.80000,no_record
+DIVISLAB,2007-08-03,split,0.20000,Agm/Fv Split Rs10 To Rs2,applied,2007-08-03,0.20441,0.20000,agree
+NUCLEUS,2007-08-03,bonus,0.50000,Bonus 1:1,applied,2007-08-03,0.50416,0.50000,agree
+BANKRAJAS,2007-08-16,bonus,0.80000,Agm/Div-20%/Bonus 1:4,applied,2007-08-16,0.82592,0.80000,no_record
+APOLLOTYRE,2007-08-17,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2007-08-17,0.10655,0.10000,agree
+GEODESIC,2007-08-17,bonus,0.66667,Bonus 1:2,applied,2007-08-17,0.64435,0.66667,no_record
+EKC,2007-08-21,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-08-21,0.19857,0.20000,no_record
+NIITLTD,2007-08-24,bonus+split,0.13333,Fv Spl-Rs10tors2/Bon-1:2,applied,2007-08-24,0.14060,0.13333,disagree
+3IINFOTECH,2007-08-27,bonus,0.50000,Bonus 1:1,applied,2007-08-27,0.49364,0.50000,no_record
+USHAMART,2007-08-29,split,0.20000,Fv Split Rs.5/- To Re.1/,applied,2007-08-29,0.20776,0.20000,no_record
+COFORGE,2007-08-30,bonus,0.66667,Bonus 1:2,applied,2007-08-30,0.65385,0.66667,agree
+MOTHERSON,2007-08-30,bonus,0.66667,Bonus 1:2,applied,2007-08-30,0.67978,0.66667,agree
+UNITECH,2007-08-30,bonus,0.50000,Bonus 1:1,applied,2007-08-30,0.48691,0.50000,agree
+GLENMARK,2007-09-10,split,0.50000,Agm/Fv Split Rs.2 To Re.1,applied,2007-09-10,0.51798,0.50000,agree
+ELECTCAST,2007-09-17,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2007-09-17,0.10808,0.10000,agree
+ARE&M,2007-09-19,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-09-19,0.20677,0.20000,agree
+GMRAIRPORT,2007-09-28,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-09-28,0.20425,0.20000,agree
+VALECHAENG,2007-10-04,bonus,0.66667,Bonus 1:2,applied,2007-10-04,0.68340,0.66667,no_record
+JAICORPLTD,2007-10-05,bonus+split,0.05000,Fv Spl-Rs10tore1/Bon-1:1,applied,2007-10-05,0.05250,0.05000,disagree
+ANANTRAJ,2007-10-08,split,0.20000,Fv Split Rs.10/- To Re.2/,applied,2007-10-08,0.18525,0.20000,agree
+MANINDS,2007-10-09,split,0.50000,Fv Split Rs.10/- To Rs.5/,applied,2007-10-09,0.51074,0.50000,disagree
+ELECON,2007-10-10,bonus,0.33333,Bonus 2:1,applied,2007-10-10,0.33956,0.33333,agree
+KERNEX,2007-10-16,bonus,0.90909,Bonus 1:10,applied,2007-10-16,0.94015,0.90909,agree
+PENINLAND,2007-10-16,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-10-16,0.20990,0.20000,agree
+TV-18,2007-10-17,bonus,0.50000,Bonus 1:1,applied,2007-10-17,0.49330,0.50000,no_record
+ASIANELEC,2007-10-22,split,0.50000,Fv Split Rs.10/- To Rs.5/,applied,2007-10-22,0.48458,0.50000,no_record
+BLKASHYAP,2007-10-22,split,0.50000,Fv Split Rs.10/- To Rs.5/,applied,2007-10-22,0.50687,0.50000,agree
+ICSA,2007-10-23,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-10-23,0.21126,0.20000,no_record
+JBMA,2007-10-24,bonus,0.66667,Bonus 1:2,applied,2007-10-24,0.72602,0.66667,agree
+OPTOCIRCUI,2007-10-25,bonus,0.66667,Bonus 1:2,applied,2007-10-25,0.76032,0.66667,no_record
+WSTCSTPAPR,2007-10-26,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-10-26,0.21265,0.20000,agree
+RUCHISOYA,2007-10-29,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-10-29,0.21225,0.20000,no_record
+GMDCLTD,2007-11-08,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-11-08,0.20791,0.20000,agree
+JPASSOCIAT,2007-12-17,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2007-12-17,0.18531,0.20000,no_record
+INDIABULLS,2008-01-01,scheme,,Scheme Of Arrangement,scheme_market_implied,2008-01-01,0.73099,0.72259,
+JAGRAN,2008-01-09,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-01-09,0.20934,0.20000,agree
+DELTACORP,2008-01-15,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-01-15,0.10503,0.10000,agree
+JINDALSTEL,2008-01-21,split,0.20000,Fv Split Rs.5/- To Re.1/-,applied_loose,2008-01-21,0.14650,0.20000,agree
+SUZLON,2008-01-21,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-01-21,0.19297,0.20000,agree
+CUB,2008-01-23,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-01-23,0.10508,0.10000,agree
+ROLTA,2008-01-24,bonus,0.50000,Bonus 1 : 1,applied,2008-01-24,0.50881,0.50000,no_record
+RAJESHEXPO,2008-01-29,bonus+split,0.16667,Fv Spl-Rs2 To Re1/Bon-2:1,applied,2008-01-29,0.17123,0.16667,disagree
+GFLLIMITED,2008-02-01,split,0.50000,Fv Split Rs.2/- To Re.1/-,applied,2008-02-01,0.51260,0.50000,agree
+ORIENTPPR,2008-02-01,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-02-01,0.09802,0.10000,agree
+GVKPIL,2008-02-08,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-02-08,0.10129,0.10000,agree
+KEC,2008-02-11,scheme,,Scheme Of Arrangement,scheme_market_implied,2008-02-11,1.09697,1.15433,
+PHOENIXLTD,2008-02-13,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-02-13,0.20924,0.20000,agree
+PEL,2008-02-15,scheme,,Scheme Of Arrangement,scheme_market_implied,2008-02-15,0.88389,0.86637,
+TV18BRDCST,2008-02-21,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-02-21,0.20387,0.20000,no_record
+WALCHANNAG,2008-02-25,bonus+split,0.10000,Fv Spl-Rs10tors2/Bon-1:1,applied,2008-02-25,0.10500,0.10000,disagree
+SIEMENS,2008-02-29,bonus,0.50000,Bonus 1:1,applied,2008-02-29,0.47719,0.50000,agree
+RAIN,2008-03-03,none,,,unexplained,,20.20098,,
+MARKSANS,2008-03-11,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-03-11,0.10769,0.10000,agree
+ACE,2008-03-13,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-03-13,0.20552,0.20000,agree
+BAJAJHLDNG,2008-03-14,scheme,,Scheme Of Arrangement,scheme_market_implied,2008-03-14,0.37046,0.36861,
+EMCO,2008-03-14,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-03-14,0.18910,0.20000,no_record
+STCINDIA,2008-03-19,bonus,0.50000,Bonus - 1:1,applied,2008-03-19,0.45004,0.50000,agree
+KGL,2008-04-04,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-04-04,0.10422,0.10000,no_record
+NMDC,2008-04-10,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-04-10,0.10500,0.10000,agree
+RENUKA,2008-04-10,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-04-10,0.09800,0.10000,agree
+CONCOR,2008-04-16,bonus,0.50000,Bonus - 1:1,applied,2008-04-16,0.51759,0.50000,agree
+CENTURYPLY,2008-04-24,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-04-24,0.10145,0.10000,agree
+SKUMARSYNF,2008-04-24,scheme,,Scheme Of Arrangement,scheme_no_gap,,0.97935,,
+EVINIX,2008-04-29,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-04-29,0.10494,0.10000,no_record
+TANLA,2008-05-02,split,0.50000,Fv Split Rs.2/- To Re.1/-,applied,2008-05-02,0.51969,0.50000,agree
+NMDC,2008-05-21,bonus,0.33333,Bonus 2:1,applied,2008-05-21,0.35000,0.33333,agree
+RPOWER,2008-05-30,bonus,0.62500,Bonus 3:5,applied,2008-05-30,0.57360,0.62500,agree
+MIC,2008-06-27,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-06-27,0.18888,0.20000,no_record
+MOTILALOFS,2008-07-25,split,0.20000,Fv Split Rs.5/- To Re.1/-,applied,2008-07-25,0.19954,0.20000,agree
+IIFL,2008-08-08,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-08-08,0.20676,0.20000,agree
+VEDL,2008-08-08,bonus+split,0.05000,Fv Spl-Rs10tore1/Bon-1:1,applied,2008-08-08,0.05315,0.05000,disagree
+HDIL,2008-08-21,bonus,0.77778,Bonus - 2:7,applied,2008-08-21,0.75099,0.77778,agree
+KOKUYOCMLN,2008-08-22,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-08-22,0.10294,0.10000,agree
+SUNDARMFIN,2008-08-22,bonus,0.50000,Bonus 1:1,applied,2008-08-22,0.48972,0.50000,agree
+JMFINANCIL,2008-09-08,bonus+split,0.04000,Fv Spl-Rs10tore1/Bon-3:2,applied,2008-09-08,0.04803,0.04000,disagree
+BIOCON,2008-09-11,bonus,0.50000,Bonus 1:1,applied,2008-09-11,0.50063,0.50000,agree
+ERAINFRA,2008-09-17,none,,,unexplained,,0.19884,,
+HERCULES,2008-09-17,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-09-17,0.08922,0.10000,agree
+BANKRAJAS,2008-09-18,bonus,0.83333,Bonus 1: 5,applied,2008-09-18,0.90244,0.83333,no_record
+TAKE,2008-09-18,split,0.10000,Fv Split-Rs10/- To Re.1/-,applied,2008-09-18,0.09665,0.10000,agree
+LT,2008-10-01,bonus,0.50000,Bonus 1:1,applied,2008-10-01,0.49710,0.50000,agree
+RAMCOCEM,2008-10-01,bonus+split,0.05000,Fv Spl-Rs10tore1/Bon-1:1,applied,2008-10-01,0.05284,0.05000,disagree
+VALECHAENG,2008-10-01,bonus,0.66667,Bonus 1:2,applied,2008-10-01,0.65925,0.66667,no_record
+PROVOGUE,2008-10-03,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2008-10-03,0.20445,0.20000,no_record
+GAIL,2008-10-06,bonus,0.66667,Bonus 1:2,applied,2008-10-06,0.63954,0.66667,agree
+COREEDUTEC,2008-10-10,none,,,unexplained,,0.57598,,
+AIAENG,2008-10-13,split,0.20000,Fv Split Rs.10/- To Rs.2/Rd Date Revised,applied,2008-10-13,0.20116,0.20000,agree
+COREEDUTEC,2008-10-13,none,,,unexplained,,0.41606,,
+ARE&M,2008-10-14,bonus,0.66667,Bonus 1:2,applied,2008-10-14,0.74353,0.66667,agree
+GMDCLTD,2008-10-16,bonus,0.50000,Bonus 1:1,applied,2008-10-16,0.51760,0.50000,agree
+SOUTHBANK,2008-10-16,bonus,0.80000,Bonus 1:4,applied,2008-10-16,0.78447,0.80000,agree
+GUJNRECOKE,2008-10-17,bonus,0.71429,Bonus 2:5,applied,2008-10-17,0.78606,0.71429,no_record
+GVT&D,2008-10-22,split,0.20000,Fv Split Rs.10/- To Rs.2/Rd Date Revised,applied,2008-10-22,0.19735,0.20000,agree
+PURVA,2008-10-24,none,,,unexplained,,0.54514,,
+UNITECH,2008-10-24,none,,,unexplained,,0.50325,,
+DELTACORP,2008-10-29,scheme,,Scheme Of Arrangement Rd Date Revised,scheme_no_gap,,0.99020,,
+SCI,2008-10-29,bonus,0.66667,Bonus 1:2,applied,2008-10-29,0.65430,0.66667,agree
+TIMETECHNO,2008-10-29,split,0.10000,Fv Split Rs.10/- To Re.1/Record Date Revised,applied,2008-10-29,0.10232,0.10000,agree
+UPL,2008-10-29,bonus,0.50000,Bonus 1:1,applied,2008-10-29,0.51026,0.50000,agree
+OPTOCIRCUI,2008-11-03,bonus,0.58824,Bonus 7:10,applied,2008-11-03,0.63288,0.58824,no_record
+JINDRILL,2008-11-06,split,0.50000,Fv Split-Rs10/- To Rs5/-,applied,2008-11-06,0.49309,0.50000,agree
+NECLIFE,2008-11-12,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2008-11-12,0.11205,0.10000,agree
+JYOTHYLAB,2008-12-12,split,0.20000,Fv Split Rs.5/- To Re.1/-,applied,2008-12-12,0.22437,0.20000,agree
+ZYDUSLIFE,2008-12-29,scheme,,Scheme Of Arrangement,scheme_market_implied,2008-12-29,0.94736,0.94064,
+TEXINFRA,2009-01-01,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2009-01-01,0.10331,0.10000,agree
+SATYAMCOMP,2009-01-07,none,,,unexplained,,0.22492,,
+SATYAMCOMP,2009-01-09,none,,,unexplained,,0.59006,,
+SPICETELE,2009-01-30,none,,,unexplained,,1.73019,,
+SPICETELE,2009-02-02,none,,,unexplained,,1.75027,,
+SITINET,2009-02-04,none,,,unexplained,,1.76804,,
+REIAGROLTD,2009-02-05,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2009-02-05,0.11163,0.10000,no_record
+CORALHUB,2009-02-27,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2009-02-27,0.10812,0.10000,no_record
+HUBTOWN,2009-03-26,none,,,unexplained,,0.54707,,
+TCS,2009-06-16,bonus,0.50000,Bonus 1:1/Div-Rs.5 Per Sh,applied,2009-06-16,0.50019,0.50000,agree
+SMARTLINK,2009-06-18,scheme,,Scheme Of Arrangement,scheme_market_implied,2009-06-18,0.74449,0.77551,
+WELSPUNLIV,2009-06-19,scheme,,Scheme Of Arrangement,scheme_market_implied,2009-06-19,0.93163,0.92514,
+BHARTIARTL,2009-07-24,yahoo_split,0.50000,,applied_yf,2009-07-24,0.51093,0.50000,yahoo_only
+DIVISLAB,2009-07-30,bonus,0.50000,Bonus-1:1,applied,2009-07-30,0.49538,0.50000,agree
+RELMEDIA,2009-07-31,scheme,,Scheme Of Arrangement,scheme_no_gap,,1.01387,,
+CORALHUB,2009-08-06,bonus,0.66667,Bonus 1:2,applied,2009-08-06,0.73333,0.66667,no_record
+AUSTRAL,2009-08-07,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2009-08-07,0.10202,0.10000,no_record
+GLODYNE,2009-08-20,bonus,0.50000,Div-Rs.4.20 Pr Sh/Bon 1:1,applied,2009-08-20,0.52201,0.50000,no_record
+SHREEASHTA,2009-08-20,split,0.10000,Fv Split Rs.10/- To Rs.1/,applied,2009-08-20,0.09168,0.10000,no_record
+JINDALSTEL,2009-09-14,bonus,0.16667,Div-Rs.5.50 Pr Sh/Bon 5:1purpose Revised,applied,2009-09-14,0.17055,0.16667,agree
+GUJRATGAS,2009-09-17,bonus,0.50000,Bonus 1:1,applied,2009-09-17,0.51511,0.50000,no_record
+MVL,2009-09-18,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2009-09-18,0.19826,0.20000,no_record
+GMRAIRPORT,2009-10-01,split,0.50000,Fv Split Rs.2/- To Re.1/-,applied,2009-10-01,0.51069,0.50000,agree
+GOKUL,2009-10-14,split,0.20000,Fv Split Rs.10/- To Rs.2/Rd Revised,applied,2009-10-14,0.19238,0.20000,agree
+FCSSOFT,2009-10-15,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2009-10-15,0.10581,0.10000,agree
+EDUCOMP,2009-10-27,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2009-10-27,0.19635,0.20000,agree
+IOC,2009-10-29,bonus,0.50000,Bonus 1:1,applied,2009-10-29,0.48957,0.50000,agree
+VINATIORGA,2009-10-30,split,0.20000,Fv Spl-Rs10tors2/Div-1.50record Date Revised,applied,2009-10-30,0.21758,0.20000,agree
+ADSL,2009-11-11,split,0.50000,Fv Split Rs.10/- To Rs.5/,applied,2009-11-11,0.53439,0.50000,agree
+ALLCARGO,2009-11-19,split,0.20000,Fv Spl-Rs10to2/Div-Rs2.50,applied,2009-11-19,0.19365,0.20000,agree
+HBLENGINE,2009-11-24,split,0.10000,Fv Split Rs.10/- To Re.1/,applied,2009-11-24,0.09952,0.10000,agree
+RELIANCE,2009-11-26,bonus,0.50000,Bonus 1:1,applied,2009-11-26,0.48469,0.50000,agree
+ADANIENT,2009-12-10,bonus,0.50000,Bonus 1:1,applied,2009-12-10,0.50556,0.50000,agree
+JINDALSAW,2009-12-10,split,0.20000,Fv Split Rs.10/- To Rs.2/,applied,2009-12-10,0.19874,0.20000,agree
+JKLAKSHMI,2009-12-17,split,0.50000,Fv Split Rs.10 To Rs.5,applied,2009-12-17,0.51435,0.50000,agree
+JPASSOCIAT,2009-12-17,bonus,0.66667,Bonus 1:2,applied,2009-12-17,0.68759,0.66667,no_record
+ZANDUREALT,2009-12-22,scheme,,Agm/Scheme Of Arrangement,scheme_market_implied,2009-12-22,0.73252,0.72821,
+NUTEK,2009-12-23,split,0.50000,Fv Split Rs.10 To Rs.5,applied,2009-12-23,0.52553,0.50000,no_record
+LITL,2010-01-04,split,0.10000,Fv Split Rs.10 To Re.1,applied,2010-01-04,0.10075,0.10000,no_record
+BAJAJELEC,2010-01-28,split,0.20000,Fv Split Rs.10 To Rs.2,applied,2010-01-28,0.20156,0.20000,agree
+SHREEASHTA,2010-02-01,bonus,0.20000,Bonus 4:1,applied,2010-02-01,0.24012,0.20000,no_record
+CCCL,2010-02-10,split,0.20000,Fv Split Rs.10 To Rs.2,applied,2010-02-10,0.20705,0.20000,agree
+KRBL,2010-02-10,split,0.10000,Fv Spl-Rs10tore1/Div-1.50,applied,2010-02-10,0.11790,0.10000,agree
+FCSSOFT,2010-02-26,bonus,0.50000,Bonus 1:1,applied,2010-02-26,0.60494,0.50000,agree
+CGPOWER,2010-03-08,bonus,0.57143,Bonus 3:4,applied,2010-03-08,0.56438,0.57143,agree
+STLTECH,2010-03-09,bonus+split,0.20000,Bon 1:1/Fv Spl Rs.5tors.2,applied,2010-03-09,0.20418,0.20000,disagree
+BFUTILITIE,2010-03-11,scheme,,Scheme Of Arrangement,scheme_market_implied,2010-03-11,0.85172,0.85598,
+PIDILITIND,2010-03-15,bonus,0.50000,Bonus 1:1,applied,2010-03-15,0.47354,0.50000,agree
+RENUKA,2010-03-15,bonus,0.50000,Bonus 1:1,applied,2010-03-15,0.49643,0.50000,agree
+IVRCLINFRA,2010-03-18,bonus,0.50000,Bonus 1:1,applied,2010-03-18,0.51129,0.50000,no_record
+IPCALAB,2010-03-22,split,0.20000,Fv Split Rs.10 To Rs.2,applied,2010-03-22,0.20539,0.20000,agree
+M&M,2010-03-29,split,0.50000,Fv Split Rs.10 To Rs.5,applied,2010-03-29,0.51217,0.50000,agree
+ZYDUSLIFE,2010-04-05,bonus,0.66667,Bonus 1: 2,applied,2010-04-05,0.66489,0.66667,agree
+UNITY,2010-04-07,split,0.20000,Fv Split Rs.10 To Rs.2,applied,2010-04-07,0.21655,0.20000,no_record
+CASTROL,2010-04-09,bonus,0.50000,Bonus 1:1,applied,2010-04-09,0.50266,0.50000,no_record
+ZEEMEDIA,2010-04-15,scheme,,Scheme Of Arrangement,scheme_market_implied,2010-04-15,0.24353,0.24482,
+ENGINERSIN,2010-05-06,bonus+split,0.16667,Fv Spl-Rs10tors5/Bon-2:1,applied,2010-05-06,0.20000,0.16667,disagree
+IVRCLAH,2010-05-20,bonus,0.66667,Bonus 1:2,applied,2010-05-20,0.66880,0.66667,no_record
+GRASIM,2010-05-26,scheme,,Scheme Of Arrangement,scheme_market_implied,2010-05-26,0.79293,0.78373,
+RALLIS,2010-06-08,bonus,0.66667,Bonus 1: 2,applied,2010-06-08,0.68020,0.66667,agree
+CYIENT,2010-06-10,bonus,0.50000,Bonus 1:1,applied,2010-06-10,0.51433,0.50000,agree
+KWALITY,2010-06-15,bonus,0.58333,Bonus 5:7,no_gap,,0.85092,,
+WIPRO,2010-06-15,bonus,0.60000,Bonus 2:3 And Final Dividend Rs.6/- Per Share,applied,2010-06-15,0.60546,0.60000,agree
+RSSOFTWARE,2010-06-21,bonus,0.78125,Bonus 28:100,applied,2010-06-21,0.84725,0.78125,agree
+STER,2010-06-21,bonus+split,0.25000,Bonus 1:1 And Face Value Split From Rs.2/- To Re.1/-,applied,2010-06-21,0.26962,0.25000,no_record
+KANSAINER,2010-06-23,bonus,0.50000,Bonus 1:1,applied,2010-06-23,0.51389,0.50000,agree
+ORBITCORP,2010-06-29,bonus,0.50000,Bonus 1:1,applied,2010-06-29,0.49426,0.50000,no_record
+TATACONSUM,2010-06-30,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-06-30,0.10178,0.10000,agree
+TULIP,2010-07-06,split,0.20000,Fv Split Rs.10/- To Rs.2/-,applied,2010-07-06,0.19652,0.20000,no_record
+NESCO,2010-07-20,bonus,0.50000,Bonus 1:1,applied,2010-07-20,0.50990,0.50000,agree
+EMAMILTD,2010-07-21,split,0.50000,Dividend Rs.6/- Per Share And Face Value Split From Rs.2/- To Re.1/-,applied,2010-07-21,0.49047,0.50000,agree
+ZENSARTECH,2010-07-21,bonus,0.50000,Dividend Rs.5.50 Per Share And Bonus 1:1,applied,2010-07-21,0.49915,0.50000,agree
+ECLERX,2010-07-23,bonus,0.66667,Bonus 1:2,applied,2010-07-23,0.67444,0.66667,agree
+MMTC,2010-07-29,bonus+split,0.05000,Bonus 1:1 And Face Value Split From Rs.10 To Re.1,applied,2010-07-29,0.06094,0.05000,disagree
+PRATIBHA,2010-07-30,split,0.20000,Fv Split Rs.10/- To Rs.2/-,applied,2010-07-30,0.19602,0.20000,no_record
+ITC,2010-08-03,bonus,0.50000,Bonus 1:1,applied,2010-08-03,0.49361,0.50000,agree
+EDELWEISS,2010-08-10,bonus+split,0.10000,Face Value Split From Rs.5/- To Re.1/- And Bonus 1:1,applied,2010-08-10,0.10431,0.10000,disagree
+HCC,2010-08-10,bonus,0.50000,Bonus 1:1,applied,2010-08-10,0.49948,0.50000,agree
+JAYSREETEA,2010-08-13,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2010-08-13,0.51385,0.50000,agree
+POONAWALLA,2010-08-13,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-08-13,0.20878,0.20000,agree
+AEGISLOG,2010-08-18,bonus,0.60000,Bonus 2:3,applied,2010-08-18,0.57261,0.60000,agree
+HDFC,2010-08-18,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-08-18,0.20645,0.20000,no_record
+REDINGTON,2010-08-20,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-08-20,0.19528,0.20000,agree
+LUPIN,2010-08-27,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-08-27,0.19973,0.20000,agree
+HARRMALAYA,2010-08-31,scheme,,Scheme Of Arrangement,scheme_market_implied,2010-08-31,0.72063,0.72856,
+APOLLOHOSP,2010-09-02,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2010-09-02,0.49674,0.50000,agree
+BAJAJ-AUTO,2010-09-08,bonus,0.50000,Bonus 1:1,applied,2010-09-08,0.49396,0.50000,agree
+BRITANNIA,2010-09-08,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-09-08,0.22736,0.20000,agree
+DABUR,2010-09-08,bonus,0.50000,Bonus 1:1,applied,2010-09-08,0.49745,0.50000,agree
+KPIL,2010-09-08,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-09-08,0.20607,0.20000,agree
+TVSMOTOR,2010-09-08,bonus,0.50000,Bonus 1:1,applied,2010-09-08,0.51674,0.50000,agree
+KOTAKBANK,2010-09-13,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2010-09-13,0.52591,0.50000,agree
+ASTRAL,2010-09-15,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2010-09-15,0.52272,0.50000,agree
+RESURGERE,2010-09-15,bonus+split,0.03333,Annual General Meeting/Bonus 2:1/Face Value Split From Rs.10/- To Re.1/-,applied,2010-09-15,0.04055,0.03333,no_record
+KARURVYSYA,2010-09-16,bonus,0.71429,Bonus 2:5,applied,2010-09-16,0.69912,0.71429,agree
+FEL,2010-09-17,scheme,,Scheme Of Arrangement,scheme_market_implied,2010-09-17,1.06324,1.05484,
+TATASTLBSL,2010-09-21,split,0.20000,Annual General Meeting / Dividend Rs.2.50 Per Share And Face Value Split From Rs.10/- To Rs.2/-,applied,2010-09-21,0.19622,0.20000,no_record
+ADANIPORTS,2010-09-23,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-09-23,0.19785,0.20000,agree
+SOUTHBANK,2010-09-23,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-09-23,0.09998,0.10000,agree
+DALMIASUG,2010-09-24,scheme,,Scheme Of Arrangement,scheme_market_implied,2010-09-24,0.29060,0.28858,
+NAUKRI,2010-09-27,bonus,0.50000,Bonus 1:1,applied,2010-09-27,0.53437,0.50000,agree
+NISSAN,2010-09-27,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-09-27,0.09500,0.10000,no_record
+TI,2010-09-28,bonus,0.33333,Bonus 2:1,applied,2010-09-28,0.34163,0.33333,agree
+BLKASHYAP,2010-09-29,bonus+split,0.10000,Bonus 1:1 / Face Value Split From Rs. 5/- To Re. 1/-,applied,2010-09-29,0.10482,0.10000,disagree
+AQUA,2010-10-01,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-10-01,0.09990,0.10000,no_record
+ZEEL,2010-10-07,scheme,,Annual General Meeting / Dividend Rs.2/- Per Share / Scheme Of Arrangement,scheme_no_gap,,0.99342,,
+HAVELLS,2010-10-08,bonus,0.50000,Bonus 1:1,applied,2010-10-08,0.50126,0.50000,agree
+PARSVNATH,2010-10-18,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2010-10-18,0.49381,0.50000,agree
+SUPREMEIND,2010-10-18,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-10-18,0.19835,0.20000,agree
+SEZALGLASS,2010-10-21,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-10-21,0.10499,0.10000,no_record
+UNICHEMLAB,2010-10-21,split,0.40000,Interim Dividend Rs.3/- Per Share And Face Value Split From Rs.5/- To Rs.2/- (Purpose Revised),applied,2010-10-21,0.41664,0.40000,agree
+GENUSPOWER,2010-10-22,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-10-22,0.09886,0.10000,agree
+JINDALPOLY,2010-10-22,bonus,0.50000,Bonus 1:1,applied,2010-10-22,0.51564,0.50000,agree
+CELEBRITY,2010-10-26,scheme,,Scheme Of Arrangement,scheme_market_implied,2010-10-26,0.51908,0.52111,
+SINTEX,2010-10-27,split,0.50000,Face Value Split From Rs.2/- To Re.1/-,applied,2010-10-27,0.49673,0.50000,no_record
+JISLJALEQS,2010-10-29,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-10-29,0.20385,0.20000,agree
+PFOCUS,2010-10-29,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-10-29,0.09731,0.10000,agree
+TEXINFRA,2010-11-01,scheme,,Scheme Of Arrangement,scheme_market_implied,2010-11-01,0.40569,0.40245,
+ARCHIES,2010-11-02,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-11-02,0.20380,0.20000,agree
+NITINFIRE,2010-11-04,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-11-04,0.21908,0.20000,no_record
+ATLANTAA,2010-11-08,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-11-08,0.20123,0.20000,agree
+HSCL,2010-11-08,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-11-08,0.10391,0.10000,agree
+ZEEL,2010-11-11,bonus,0.50000,Bonus 1:1,applied,2010-11-11,0.50017,0.50000,agree
+MVL,2010-11-16,split,0.50000,Face Value Split From Rs.2/- To Re.1/-,applied,2010-11-16,0.54173,0.50000,no_record
+BALAMINES,2010-11-18,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-11-18,0.18776,0.20000,agree
+GREAVESCOT,2010-11-24,split,0.20000,Interim Dividend Rs 2/- Per Share And Face Value Split From Rs 10/- To Rs 2/-,applied,2010-11-24,0.20134,0.20000,agree
+JUBLPHARMA,2010-11-25,scheme,,Scheme Of Demerger,scheme_market_implied,2010-11-25,0.94477,0.96345,
+SUNPHARMA,2010-11-25,split,0.20000,Face Value Split From Rs.5/- To Re.1/-,applied,2010-11-25,0.19971,0.20000,agree
+SADBHAV,2010-12-07,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-12-07,0.10011,0.10000,agree
+ELGIEQUIP,2010-12-14,bonus,0.50000,Bonus 1:1,applied,2010-12-14,0.49344,0.50000,agree
+BALKRISIND,2010-12-20,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-12-20,0.19147,0.20000,agree
+COROMANDEL,2010-12-23,split,0.50000,Face Value Split From Rs.2/- To Re.1/-,applied,2010-12-23,0.50069,0.50000,agree
+EIDPARRY,2010-12-23,split,0.50000,Face Value Split From Rs.2/- To Re.1/-,applied,2010-12-23,0.50010,0.50000,agree
+POLYPLEX,2010-12-23,bonus,0.50000,Bonus 1:1,applied,2010-12-23,0.50671,0.50000,agree
+SURYAPHARM,2010-12-23,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2010-12-23,0.10279,0.10000,no_record
+ASTRAMICRO,2010-12-30,bonus,0.66667,Bonus 1:2,applied,2010-12-30,0.71087,0.66667,agree
+KEC,2010-12-30,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-12-30,0.19803,0.20000,agree
+LICHSGFIN,2010-12-30,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2010-12-30,0.20365,0.20000,agree
+ANTELOPUS,2010-12-31,bonus,0.90909,Bonus 1:10,applied,2010-12-31,0.94572,0.90909,agree
+TULSI,2011-01-07,bonus,0.90909,Bonus 1:10 (Record Date Revised),applied,2011-01-07,0.96034,0.90909,no_record
+SUJANATOW,2011-01-10,split,0.20000,Face Value Split From Rs.5/- To Re.1/-,applied,2011-01-10,0.19017,0.20000,no_record
+SHOPERSTOP,2011-01-12,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2011-01-12,0.48467,0.50000,agree
+NEXTMEDIA,2011-01-20,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-01-20,0.21761,0.21765,
+ONGC,2011-02-08,bonus+split,0.25000,Bonus 1:1 And Face Value Split From Rs.10/- To Rs.5/-,applied,2011-02-08,0.23611,0.25000,disagree
+AUROPHARMA,2011-02-10,split,0.20000,Face Value Split From Rs.5/- To Re.1/-,applied,2011-02-10,0.20789,0.20000,agree
+GLODYNE,2011-02-10,split,0.60000,Face Value Split From Rs.10/- To Rs.6/-,applied,2011-02-10,0.63429,0.60000,no_record
+SREINFRA,2011-02-10,bonus,0.55556,Bonus 4:5 (Pursuant To Scheme Of Amalgamation),applied,2011-02-10,0.55978,0.55556,no_record
+HEXAWARE,2011-02-24,bonus,0.50000,Dividend Rs 1.40 Per Share / Bonus 1:1,applied,2011-02-24,0.45227,0.50000,no_record
+HINDZINC,2011-03-07,bonus+split,0.10000,Bonus - 1:1 And Face Value Split From Rs. 10 To Rs. 2,applied,2011-03-07,0.09738,0.10000,disagree
+NATIONALUM,2011-03-15,bonus+split,0.25000,Bonus 1:1 And Face Value Split From Rs.10/- To Rs.5/-,applied,2011-03-15,0.22726,0.25000,disagree
+DRREDDY,2011-03-17,scheme,,Scheme Of Arrangement - Bonus Debentures 6:1,scheme_market_implied,2011-03-17,0.97202,0.97672,
+VTL,2011-03-29,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-03-29,0.93691,0.94025,
+ALEMBICLTD,2011-04-11,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-04-11,0.35394,0.35763,
+EMBDL,2011-04-21,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-04-21,0.93817,0.93987,
+ONMOBILE,2011-05-03,bonus,0.50000,Bonus 1:1,applied,2011-05-03,0.49835,0.50000,agree
+TRIVENI,2011-05-03,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-05-03,0.40040,0.40969,
+BAJAJCON,2011-05-05,split,0.20000,Face Value Split From Rs.5/- To Re.1/-,applied,2011-05-05,0.20095,0.20000,agree
+CMC,2011-06-08,bonus,0.50000,Dividend Rs.20/- Per Share And Bonus 1:1,applied,2011-06-08,0.49275,0.50000,no_record
+MANAPPURAM,2011-06-09,yahoo_split,0.50000,,applied_yf,2011-06-09,0.50735,0.50000,yahoo_only
+RAIN,2011-06-15,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2011-06-15,0.18980,0.20000,agree
+GTL,2011-06-20,none,,,unexplained,,0.37821,,
+GTLINFRA,2011-06-20,none,,,unexplained,,0.57264,,
+COX&KINGS,2011-06-21,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2011-06-21,0.52076,0.50000,no_record
+TITAN,2011-06-23,bonus+split,0.05000,Bonus 1:1 / Face Value Split From Rs.10/- To Re.1/-,applied,2011-06-23,0.05333,0.05000,disagree
+HDFCBANK,2011-07-14,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2011-07-14,0.20080,0.20000,agree
+RALLIS,2011-07-15,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2011-07-15,0.10204,0.10000,agree
+ASHOKLEY,2011-08-02,bonus,0.50000,Bonus 1:1,applied,2011-08-02,0.50339,0.50000,agree
+WABAG,2011-08-16,split,0.40000,Face Value Split From Rs.5/- To Rs.2/-,applied,2011-08-16,0.40993,0.40000,agree
+PIIND,2011-08-17,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2011-08-17,0.51080,0.50000,agree
+BANG,2011-08-24,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-08-24,0.87544,0.87886,
+DHANUS,2011-08-29,bonus,0.29412,Bonus 12:5,applied,2011-08-29,0.30916,0.29412,no_record
+TATAMTRDVR,2011-09-12,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2011-09-12,0.18965,0.20000,no_record
+TMPV,2011-09-12,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2011-09-12,0.19133,0.20000,agree
+CUMMINSIND,2011-09-20,bonus,0.71429,Bonus 2:5,applied,2011-09-20,0.70273,0.71429,agree
+NITINFIRE,2011-09-22,bonus,0.28571,Bonus 5:2,applied,2011-09-22,0.31448,0.28571,no_record
+TATAPOWER,2011-09-26,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2011-09-26,0.09781,0.10000,agree
+CRISIL,2011-09-28,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2011-09-28,0.10236,0.10000,agree
+BHEL,2011-10-03,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2011-10-03,0.19510,0.20000,agree
+MONSANTO,2011-10-05,bonus,0.50000,Bonus 1:1,applied,2011-10-05,0.48554,0.50000,no_record
+VIPIND,2011-10-31,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2011-10-31,0.20257,0.20000,agree
+CASTEXTECH,2011-11-21,bonus,0.50000,Bonus 1:1,applied,2011-11-21,0.52529,0.50000,no_record
+JINDALSAW,2011-11-22,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-11-22,0.92407,0.92286,
+EMBDL,2011-12-07,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-12-07,0.89897,0.89897,
+GVT&D,2011-12-14,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-12-14,0.76166,0.76795,
+PIRPHYTO,2011-12-23,scheme,,Scheme Of Arrangement,scheme_market_implied,2011-12-23,0.07554,0.07537,
+PAISALO,2012-01-05,scheme,,Scheme Of Arrangement,scheme_market_implied,2012-01-05,1.14342,1.14342,
+SYMPHONY,2012-02-15,split,0.20000,Face Value Split Rs.10/- To Rs.2/-,applied,2012-02-15,0.22848,0.20000,agree
+BSOFT,2012-03-13,bonus,0.50000,Bonus 1:1,applied,2012-03-13,0.45730,0.50000,agree
+OIL,2012-03-29,bonus,0.40000,Bonus 3:2,applied,2012-03-29,0.38498,0.40000,agree
+OPTOCIRCUI,2012-03-29,bonus,0.76923,Bonus 3:10,applied,2012-03-29,0.80962,0.76923,no_record
+ZUARIIND,2012-04-09,scheme,,Scheme Of Arrangement And Demerger,scheme_market_implied,2012-04-09,0.35773,0.36199,
+VAKRANGEE,2012-04-12,bonus+split,0.05000,Bonus 1:1 And Face Value Split From Rs.10/- To Re.1/-,applied,2012-04-12,0.05724,0.05000,disagree
+INDOCO,2012-05-17,bonus+split,0.13333,Bonus 1:2 And Face Value Split From Rs.10 To Rs.2,applied,2012-05-17,0.13364,0.13333,disagree
+INVENTURE,2012-05-22,bonus,0.25000,Bonus - 3:1,applied,2012-05-22,0.23534,0.25000,agree
+GRAVITA,2012-05-25,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2012-05-25,0.20994,0.20000,agree
+NAUKRI,2012-06-22,bonus,0.50000,Annual General Meeting/Dividend-Re.1/- Per Share/Bonus 1:1,applied,2012-06-22,0.50646,0.50000,agree
+ZYLOG,2012-06-29,split,0.50000,Face Value Split From Rs 10 To Rs 5,applied,2012-06-29,0.48165,0.50000,no_record
+HERCULES,2012-07-11,bonus,0.50000,Annual General Meeting/Dividend Rs.3.50 Per Share/Bonus 1:1 (Purpose Revised),applied,2012-07-11,0.49496,0.50000,agree
+JYOTHYLAB,2012-07-12,bonus,0.50000,Annual General Meeting/Dividend Of Rs.2.50 Per Share/ Bonus 1:1,applied,2012-07-12,0.50755,0.50000,agree
+BPCL,2012-07-13,bonus,0.50000,Annual General Meeting/ Dividend Rs 11/- Per Share/ Bonus 1:1,applied,2012-07-13,0.49214,0.50000,agree
+COROMANDEL,2012-07-13,scheme,,Annual General Meeting/Dividend Rs.3/- Per Share/Scheme Of Arrangement - Bonus Debentures 1:1 (Purpose Revised),scheme_market_implied,2012-07-13,0.96300,0.96544,
+GRUH,2012-07-24,split,0.20000,Face Value Split From Rs 10 To Rs 2,applied,2012-07-24,0.20815,0.20000,no_record
+AJANTPHARM,2012-08-09,split,0.50000,Face Value Split From Rs. 10/- To Rs. 5/-,applied,2012-08-09,0.51544,0.50000,agree
+CASTROL,2012-09-04,bonus,0.50000,Bonus 1:1,applied,2012-09-04,0.48316,0.50000,no_record
+IMPAL,2012-09-10,bonus,0.50000,Bonus 1:1,applied,2012-09-10,0.52059,0.50000,agree
+GSFC,2012-09-20,split,0.20000,Face Value Split From Rs 10 To Rs 2,applied,2012-09-20,0.20659,0.20000,agree
+ARE&M,2012-09-25,split,0.50000,Face Value Split From Rs.2/- To Re.1/-,applied,2012-09-25,0.51706,0.50000,agree
+MOTHERSON,2012-10-03,bonus,0.66667,Bonus 1:2,applied,2012-10-03,0.68270,0.66667,agree
+AMRUTANJAN,2012-10-25,split,0.20000,Face Value Split From Rs. 10 To Rs. 2/-,applied,2012-10-25,0.19075,0.20000,agree
+GOENKA,2012-10-25,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2012-10-25,0.10251,0.10000,agree
+ORISSAMINE,2012-10-29,split,0.10000,Face Value Split From Rs.10/- To Re.1/-,applied,2012-10-29,0.09590,0.10000,agree
+BOMDYEING,2012-10-30,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2012-10-30,0.20695,0.20000,agree
+BBTC,2012-11-08,split,0.20000,Face Value Split From Rs 10 To Rs 2,applied,2012-11-08,0.19462,0.20000,agree
+SETUINFRA,2012-12-13,split,0.10000,Face Value Split From Rs 10 To Re 1,applied,2012-12-13,0.10406,0.10000,agree
+SUNDARMFIN,2012-12-13,bonus,0.50000,Bonus 1:1,applied,2012-12-13,0.48202,0.50000,agree
+UJAAS,2012-12-21,split,0.10000,Face Value Split From Rs 10 To Re 1,applied,2012-12-21,0.09531,0.10000,no_record
+20MICRONS,2013-01-28,split,0.50000,Face Value Split Rs 10 To Rs 5,applied,2013-01-28,0.52622,0.50000,agree
+M&MFIN,2013-02-15,split,0.20000,Face Value Split Rs 10 To Rs 2,applied,2013-02-15,0.19998,0.20000,agree
+COREEDUTEC,2013-02-25,none,,,unexplained,,0.37604,,
+COREEDUTEC,2013-02-27,none,,,unexplained,,0.54187,,
+ORIENTPPR,2013-03-07,scheme,,Scheme Of Arrangement,scheme_market_implied,2013-03-07,0.19628,0.19583,
+WIPRO,2013-04-09,scheme,,Scheme Of Arrangement,scheme_market_implied,2013-04-09,0.87723,0.88508,
+ANSALHSG,2013-04-10,bonus,0.33333,Bonus 2:1,applied,2013-04-10,0.38036,0.33333,no_record
+SHEKHAWATI,2013-04-10,split,0.10000,Face Value Split From Rs.10 To Re.1,applied,2013-04-10,0.10158,0.10000,agree
+PIIND,2013-04-12,split,0.20000,Face Value Split From Rs.5/- Per Share To Re.1/- Per Share,applied,2013-04-12,0.21519,0.20000,agree
+FEL,2013-04-17,scheme,,Scheme Of Arrangement,scheme_market_implied,2013-04-17,0.90906,0.90906,
+TARIL,2013-06-13,bonus,0.90000,Bonus 1:9,applied,2013-06-13,0.92647,0.90000,agree
+SHRIASTER,2013-06-17,none,,,unexplained,,2.42593,,
+FEL,2013-06-21,scheme,,Scheme Of Arrangement,scheme_market_implied,2013-06-21,0.67075,0.67564,
+EMAMILTD,2013-06-26,bonus,0.66667,Bonus 1:2 And Dividend Rs.8/- Per Share,applied,2013-06-26,0.64675,0.66667,agree
+ASHOKA,2013-07-03,bonus+split,0.33333,Bonus 1:2 And Face Value Split Rs.10/- To Rs.5/-,applied,2013-07-03,0.33546,0.33333,disagree
+ADVANTA,2013-07-05,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2013-07-05,0.20021,0.20000,no_record
+LT,2013-07-11,bonus,0.66667,Bonus 1:2,applied,2013-07-11,0.68250,0.66667,agree
+SHILPAMED,2013-07-16,bonus,0.66667,Annual General Meeting / Dividend - Rs 1.30/- Per Share / Bonus 1:2,applied,2013-07-16,0.67359,0.66667,agree
+JINDALPOLY,2013-07-17,scheme,,Scheme Of Demerger,scheme_market_implied,2013-07-17,0.96861,0.97452,
+CENTURYPLY,2013-07-18,scheme,,Scheme Of Arrangement,scheme_market_implied,2013-07-18,0.86586,0.86373,
+TORNTPHARM,2013-07-23,bonus,0.50000,Bonus 1:1,applied,2013-07-23,0.50533,0.50000,agree
+HERITGFOOD,2013-07-26,bonus,0.50000,Bonus 1:1,applied,2013-07-26,0.45670,0.50000,agree
+SUNPHARMA,2013-07-29,bonus,0.50000,Bonus 1:1,applied,2013-07-29,0.50949,0.50000,agree
+ASIANPAINT,2013-07-30,split,0.10000,Face Value Split Rs 10 To Re 1,applied,2013-07-30,0.09979,0.10000,agree
+63MOONS,2013-08-01,none,,,unexplained,,0.35501,,
+TTML,2013-08-07,bonus,0.88235,Bonus 2:15,applied,2013-08-07,0.96875,0.88235,agree
+CCL,2013-08-19,bonus+split,0.10000,Bonus 1:1 And Face Value Split From Rs.10/- To Rs.2/-,applied,2013-08-19,0.10137,0.10000,disagree
+ASTRAL,2013-09-05,split,0.40000,Face Value Split From Rs.5/- To Rs.2/-,applied,2013-09-05,0.44325,0.40000,agree
+CONCOR,2013-09-06,bonus,0.66667,Bonus 1:2,applied,2013-09-06,0.67083,0.66667,agree
+DHANUS,2013-09-13,none,,,unexplained,,0.50000,,
+DHANUS,2013-09-16,none,,,unexplained,,2.00000,,
+AJANTPHARM,2013-09-17,bonus,0.66667,Bonus 1:2,applied,2013-09-17,0.72783,0.66667,agree
+ALEMBICLTD,2013-09-27,bonus,0.50000,Bonus 1:1,applied,2013-09-27,0.52720,0.50000,agree
+BSLIMITED,2013-09-30,bonus,0.50000,Bonus 1:1,applied,2013-09-30,0.45087,0.50000,no_record
+FEDERALBNK,2013-10-17,split,0.20000,Face Value Split From Rs.10/- To Rs.2/-,applied,2013-10-17,0.20541,0.20000,agree
+PALRED,2013-10-17,none,,,unexplained,,0.32740,,
+MARICO,2013-11-01,scheme,,Scheme Of Arrangement And First Interim Dividend,scheme_market_implied,2013-11-01,0.98844,0.98008,
+OMAXE,2013-11-11,bonus,0.79592,Bonus 10:39,applied,2013-11-11,0.87932,0.79592,agree
+GODREJPROP,2013-11-21,split,0.50000,Face Value Split From Rs.10/- To Rs.5/-,applied,2013-11-21,0.49903,0.50000,agree
+RELAXO,2013-11-22,split,0.20000,Face Value Split From Rs.5/- To Re.1/-,applied,2013-11-22,0.21650,0.20000,agree
+STAR,2013-12-19,none,,,unexplained,,0.42361,,
+MOTHERSON,2013-12-20,bonus,0.66667,Bonus 1:2,applied,2013-12-20,0.68706,0.66667,agree
+GENUSPOWER,2014-01-09,scheme,,Scheme Of Arrangement,scheme_market_implied,2014-01-09,0.87151,0.87937,
+BSLIMITED,2014-01-21,split,0.10000,Face Value Split From Rs 10/- To Re 1/-,applied,2014-01-21,0.10870,0.10000,no_record
+KSCL,2014-01-27,split,0.20000,Face Value Split From Rs 10/- To Rs 2/-,applied,2014-01-27,0.20970,0.20000,agree
+SWANCORP,2014-02-03,split,0.50000,Face Value Split From Rs 2/- To Re 1/-,applied,2014-02-03,0.53060,0.50000,agree
+WELCORP,2014-02-18,scheme,,Scheme Of Arrangement,scheme_no_gap,,0.98673,,
+RAJTV,2014-03-25,bonus+split,0.25000,Bonus 1:1 / Face Value Split From Rs.10/- To Rs.5/-,applied,2014-03-25,0.26389,0.25000,disagree
+GMBREW,2014-05-16,bonus,0.80000,Dividend Rs 2.50/- Per Share / Bonus 1 : 4,applied,2014-05-16,0.86102,0.80000,agree
+PGIL,2014-05-30,scheme,,Scheme Of Arrangement,scheme_no_gap,,,,
+MINDTREE,2014-06-03,bonus,0.50000,Bonus 1 : 1,applied,2014-06-03,0.51143,0.50000,no_record
+GRUH,2014-06-09,none,,,unexplained,,0.50983,,
+DEEPAKNTR,2014-06-20,bonus+split,0.10000,Bonus 1 : 1 / Face Value Split From Rs 10/- Each To Rs 2/- Each,applied,2014-06-20,0.10638,0.10000,disagree
+AXISBANK,2014-07-28,split,0.20000,Face Value Split From Rs 10/- To Rs 2/- Per Share,applied,2014-07-28,0.19909,0.20000,agree
+HAVELLS,2014-08-26,split,0.20000,Face Value Split From Rs 5/- Per Share To Re 1/- Per Share,applied,2014-08-26,0.21899,0.20000,agree
+MANINFRA,2014-08-28,split,0.20000,Annual General Meeting / Dividend - Rs 1.35/- Per Share / Face Value Split - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2014-08-28,0.19073,0.20000,agree
+J&KBANK,2014-09-04,split,0.10000,Face Value Split - From Rs 10/- Per Share To Re 1/- Per Share,applied,2014-09-04,0.10680,0.10000,agree
+ALKYLAMINE,2014-09-08,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2014-09-08,0.48569,0.50000,agree
+ATULAUTO,2014-09-12,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2014-09-12,0.52062,0.50000,agree
+LAOPALA,2014-09-24,split,0.20000,Sub-Division From Rs 10/- Per Share To Rs 2/- Per Share,applied,2014-09-24,0.18624,0.20000,agree
+ASTRAL,2014-09-25,split,0.50000,Face Value Split From Rs 2/- Per Share To Re 1/- Per Share,applied,2014-09-25,0.47608,0.50000,agree
+SUDARSCHEM,2014-09-30,bonus+split,0.10000,Bonus 1 : 1 / Face Value Split From Rs 10/- To Rs 2/- Per Share,applied,2014-09-30,0.09720,0.10000,disagree
+JBMA,2014-10-08,bonus+split,0.25000,Bonus 1:1 And Face Value Split Rs.10/- To Rs.5/- Per Share,applied,2014-10-08,0.23986,0.25000,disagree
+POLARIS,2014-10-09,scheme,,Scheme Of Arrangement Cum Demerger,scheme_market_implied,2014-10-09,0.84677,0.83404,
+THEBYKE,2014-10-09,bonus,0.50000,Bonus 1:1,applied,2014-10-09,0.50660,0.50000,no_record
+NITINFIRE,2014-11-13,bonus,0.75000,Bonus 1:3,applied,2014-11-13,0.77639,0.75000,no_record
+SBIN,2014-11-20,split,0.10000,Face Value Split Rs.10/- To Re.1/- Per Share,applied,2014-11-20,0.10208,0.10000,agree
+GODFRYPHLP,2014-11-28,split,0.20000,Face Value Split From Rs 10/- Per Share To Rs 2/- Per Share,applied,2014-11-28,0.20187,0.20000,agree
+INFY,2014-12-02,bonus,0.50000,Bonus 1:1,applied,2014-12-02,0.48889,0.50000,agree
+ICICIBANK,2014-12-04,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2014-12-04,0.20188,0.20000,agree
+MANAKSIA,2014-12-04,scheme,,Scheme Of Arrangement,scheme_market_implied,2014-12-04,0.37725,0.37693,
+JKTYRE,2014-12-18,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2014-12-18,0.23527,0.20000,agree
+PNB,2014-12-18,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2014-12-18,0.20809,0.20000,agree
+GODREJIND,2015-01-05,bonus,0.99920,Bonus 1 : 1250,applied,2015-01-05,0.99746,0.99920,agree
+HATHWAY,2015-01-06,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2015-01-06,0.19134,0.20000,agree
+BERGEPAINT,2015-01-08,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2015-01-08,0.55055,0.50000,agree
+INTELLECT,2015-01-16,scheme,,Scheme Of Arrangement-To Ascertain Eligible Members To Provide Option To Opt For Ncd In Place Of Equity Shares,scheme_market_implied,2015-01-16,1.05836,1.06077,
+RSSOFTWARE,2015-01-21,split,0.50000,Interim Dividend - Rs 1.50/- Per Share / Face Value Split - From Rs 10/- Per Share To Rs 5/- Per Share (Purpose Revised),applied,2015-01-21,0.48393,0.50000,agree
+BANKBARODA,2015-01-22,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2015-01-22,0.19847,0.20000,agree
+CORPBANK,2015-01-22,split,0.20000,Face Valus Split (Sub-Division) - From Rs 10/- Per To Rs 2/- Per Share,applied,2015-01-22,0.19132,0.20000,no_record
+TATACOFFEE,2015-01-23,split,0.10000,Face Value Split (Sub-Division): From Rs 10/- Per Share To Re 1/- Per Share,applied,2015-01-23,0.10180,0.10000,no_record
+HIKAL,2015-02-27,split,0.20000,Face Value Split (Sub-Division): From Rs 10/- Per Share To Rs 2/- Per Share,applied,2015-02-27,0.20129,0.20000,agree
+PERSISTENT,2015-03-10,bonus,0.50000,Bonus 1 : 1,applied,2015-03-10,0.45517,0.50000,agree
+HCLTECH,2015-03-19,bonus,0.50000,Bonus 1 : 1,applied,2015-03-19,0.48823,0.50000,agree
+TECHM,2015-03-19,bonus+split,0.25000,Bonus 1:1 / Face Value Split - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2015-03-19,0.24537,0.25000,disagree
+AJANTPHARM,2015-03-20,split,0.40000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share,applied,2015-03-20,0.36867,0.40000,agree
+NTPC,2015-03-20,scheme,,Scheme Of Arrangement - Bonus Debentures 1:1,scheme_market_implied,2015-03-20,0.94023,0.96071,
+GRANULES,2015-03-23,split,0.10000,Face Value Split Rs 10 To Rs 1,applied,2015-03-23,0.10363,0.10000,agree
+AARTIDRUGS,2015-03-24,bonus,0.50000,Bonus 1:1,applied,2015-03-24,0.47208,0.50000,agree
+BALKRISIND,2015-03-24,scheme,,Scheme Of Arrangement,scheme_no_gap,,0.98261,,
+KANSAINER,2015-03-26,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2015-03-26,0.09879,0.10000,agree
+WABAG,2015-03-26,bonus,0.50000,Bonus 1 : 1,applied,2015-03-26,0.47963,0.50000,agree
+INSECTICID,2015-04-16,bonus,0.66667,Bonus 1:2,applied,2015-04-16,0.65938,0.66667,agree
+TITAGARH,2015-04-23,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2015-04-23,0.19387,0.20000,agree
+ARVIND,2015-05-28,scheme,,Scheme Of Arrangement,scheme_market_implied,2015-05-28,1.06316,1.06498,
+ADANIENT,2015-06-03,scheme,,Scheme Of Arrangement,scheme_market_implied,2015-06-03,0.17229,0.17788,
+MASTEK,2015-06-12,scheme,,Scheme Of Arrangement,scheme_market_implied,2015-06-12,0.34003,0.34138,
+INFY,2015-06-15,bonus,0.50000,Annual General Meeting/ Dividend - Rs 29.50/- Per Share And Bonus 1:1,applied,2015-06-15,0.50148,0.50000,agree
+CMAHENDRA,2015-06-18,bonus,0.50000,Bonus 1:1,applied,2015-06-18,0.60000,0.50000,no_record
+RELAXO,2015-07-01,bonus,0.50000,Bonus 1:1,applied,2015-07-01,0.51450,0.50000,agree
+FEDERALBNK,2015-07-08,bonus,0.50000,Bonus 1:1,applied,2015-07-08,0.49025,0.50000,agree
+KOTAKBANK,2015-07-08,bonus,0.50000,Bonus 1: 1,applied,2015-07-08,0.49600,0.50000,agree
+AUROPHARMA,2015-07-20,bonus,0.50000,Bonus 1:1,applied,2015-07-20,0.50871,0.50000,agree
+MOTHERSON,2015-07-23,bonus,0.66667,Annual General Meeting / Dividend - Rs 3/- Per Share / Bonus - 1:2,applied,2015-07-23,0.66810,0.66667,agree
+MBLINFRA,2015-07-28,bonus,0.50000,Bonus 1:1,applied,2015-07-28,0.49938,0.50000,agree
+CEMPRO,2015-08-21,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2015-08-21,0.09940,0.10000,agree
+DHFL,2015-09-09,bonus,0.50000,Bonus 1:1,applied,2015-09-09,0.51444,0.50000,no_record
+BEL,2015-09-14,bonus,0.33333,Bonus 2:1,applied,2015-09-14,0.32742,0.33333,agree
+AEGISLOG,2015-09-16,split,0.10000,Face Value Split From Rs 10 To Rs 1,applied,2015-09-16,0.09894,0.10000,agree
+GOKUL,2015-09-16,scheme,,Annual General Meeting/Scheme Of Arrangement,scheme_market_implied,2015-09-16,0.91787,0.91969,
+COLPAL,2015-09-23,bonus,0.50000,Bonus 1:1,applied,2015-09-23,0.48818,0.50000,agree
+DIVISLAB,2015-09-23,bonus,0.50000,Bonus 1:1,applied,2015-09-23,0.50459,0.50000,agree
+IDFC,2015-09-29,scheme,,Demerger,scheme_no_gap,,0.98861,,
+IDFC,2015-10-01,scheme,,Demerger,scheme_market_implied,2015-10-01,0.42786,0.42807,
+ZYDUSLIFE,2015-10-06,split,0.20000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share,applied,2015-10-06,0.20452,0.20000,agree
+BATAINDIA,2015-10-07,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2015-10-07,0.50025,0.50000,agree
+LAMBODHARA,2015-10-15,split,0.50000,Face Value Split From Rs 10 To Rs 5,applied,2015-10-15,0.50972,0.50000,agree
+SHILPAMED,2015-11-06,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2015-11-06,0.49884,0.50000,agree
+JSL,2015-11-19,scheme,,Composite Scheme Of Arrangement,scheme_market_implied,2015-11-19,0.39130,0.38764,
+AVANTIFEED,2015-11-26,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2015-11-26,0.19776,0.20000,agree
+NATCOPHARM,2015-11-26,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2015-11-26,0.21091,0.20000,agree
+JAMNAAUTO,2015-12-03,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2015-12-03,0.49681,0.50000,agree
+JKIL,2015-12-10,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2015-12-10,0.50153,0.50000,agree
+BHARATIDIL,2015-12-14,none,,,unexplained,,0.51738,,
+ECLERX,2015-12-17,bonus,0.75000,Bonus 1:3,applied,2015-12-17,0.76591,0.75000,agree
+VENKEYS,2015-12-21,bonus,0.66667,Bonus 1:2,applied,2015-12-21,0.72246,0.66667,agree
+MARICO,2015-12-22,bonus,0.50000,Bonus 1:1,applied,2015-12-22,0.47775,0.50000,agree
+ALLCARGO,2015-12-30,bonus,0.50000,Bonus 1:1,applied,2015-12-30,0.47917,0.50000,agree
+ABIRLANUVO,2016-01-20,scheme,,Scheme Of Arrangement,scheme_market_implied,2016-01-20,0.42708,0.43910,
+MFSL,2016-01-27,scheme,,Scheme Of Arrangement,scheme_market_implied,2016-01-27,0.73919,0.73854,
+PRAKASHSTL,2016-03-03,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2016-03-03,0.12018,0.10000,agree
+MINDTREE,2016-03-09,bonus,0.50000,Bonus 1:1,applied,2016-03-09,0.44253,0.50000,no_record
+CGPOWER,2016-03-15,scheme,,Scheme Of Arrangement,scheme_market_implied,2016-03-15,0.28332,0.28555,
+VEEDOL,2016-03-16,bonus+split,0.25000,Bonus 1:1/Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2016-03-16,0.24260,0.25000,disagree
+WELSPUNLIV,2016-03-21,split,0.10000,Interim Div - Rs 6/- Per Share + Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2016-03-21,0.10392,0.10000,agree
+VIVIMEDLAB,2016-04-06,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2016-04-06,0.20786,0.20000,agree
+DISHMAN,2016-05-02,bonus,0.50000,Bonus 1:1,applied,2016-05-02,0.49941,0.50000,no_record
+FEL,2016-05-11,scheme,,Scheme Of Arrangement,scheme_market_implied,2016-05-11,0.12579,0.12642,
+JINDALPHOT,2016-05-12,scheme,,Scheme Of Arrangement,scheme_market_implied,2016-05-12,0.52895,0.52593,
+GMBREW,2016-05-30,bonus,0.80000,Bonus 1:4,applied,2016-05-30,0.86462,0.80000,agree
+NBCC,2016-06-02,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2016-06-02,0.20335,0.20000,agree
+LUXIND,2016-06-06,split,0.20000,Face Value Split From Rs 10 To Rs 2,applied,2016-06-06,0.19824,0.20000,agree
+STLTECH,2016-06-15,scheme,,Sheme Of Arrangement,scheme_market_implied,2016-06-15,0.84431,0.83970,
+ITC,2016-07-01,bonus,0.66667,Bonus 1:2,applied,2016-07-01,0.68499,0.66667,agree
+BPCL,2016-07-13,bonus,0.50000,Bonus 1:1,applied,2016-07-13,0.48690,0.50000,agree
+SOLARINDS,2016-07-13,yahoo_split,0.20000,,applied_yf,2016-07-13,0.20012,0.20000,yahoo_only
+BERGEPAINT,2016-07-15,bonus,0.71429,Bonus 2:5,applied,2016-07-15,0.70280,0.71429,agree
+JINDALSAW,2016-08-25,scheme,,Scheme Of Arrangement,scheme_market_implied,2016-08-25,0.93822,0.94223,
+PFC,2016-08-26,bonus,0.50000,Bonus 1:1,applied,2016-08-26,0.48522,0.50000,agree
+VGUARD,2016-08-30,split,0.10000,Face Value Split From Rs 10 To Re 1,applied,2016-08-30,0.10610,0.10000,agree
+NAVA,2016-09-01,bonus,0.50000,Bonus 1:1,applied,2016-09-01,0.47842,0.50000,agree
+BAJFINANCE,2016-09-08,bonus+split,0.10000,Bonus 1:1/Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2016-09-08,0.10206,0.10000,disagree
+TRENT,2016-09-12,split,0.10000,Face Value Split From Rs 10 To Re 1,applied,2016-09-12,0.10297,0.10000,agree
+UNOMINDA,2016-09-12,split,0.20000,Face Value Split From Rs 10 To Rs 2,applied,2016-09-12,0.19104,0.20000,agree
+HINDPETRO,2016-09-14,bonus,0.33333,Bonus 2:1,applied,2016-09-14,0.33274,0.33333,agree
+SYMPHONY,2016-09-14,bonus,0.50000,Bonus 1:1,applied,2016-09-14,0.50908,0.50000,agree
+RECLTD,2016-09-28,bonus,0.50000,Bonus 1:1,applied,2016-09-28,0.50010,0.50000,agree
+KAJARIACER,2016-10-04,split,0.50000,Face Value Split From Rs 2 To Re 1,applied,2016-10-04,0.50005,0.50000,agree
+GRASIM,2016-10-06,split,0.20000,Face Value Split From Rs 10 To Re 2,applied,2016-10-06,0.20456,0.20000,agree
+SECURKLOUD,2016-10-10,bonus+split,0.37500,Bonus 1:3/Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2016-10-10,0.40785,0.37500,disagree
+SHAH,2016-10-13,split,0.10000,Face Value Split From Rs 10 To Re 1,applied,2016-10-13,0.11006,0.10000,agree
+IOC,2016-10-18,bonus,0.50000,Bonus 1:1,applied,2016-10-18,0.50086,0.50000,agree
+CAPLIPOINT,2016-10-19,yahoo_split,0.20000,,applied_yf,2016-10-19,0.20131,0.20000,yahoo_only
+ICIL,2016-11-11,yahoo_split,0.20000,,applied_yf,2016-11-11,0.18761,0.20000,yahoo_only
+KARURVYSYA,2016-11-17,yahoo_split,0.20000,,applied_yf,2016-11-17,0.19971,0.20000,yahoo_only
+CGCL,2016-11-23,yahoo_split,0.20000,,applied_yf,2016-11-23,0.20987,0.20000,yahoo_only
+KPRMILL,2016-11-29,yahoo_split,0.50000,,applied_yf,2016-11-29,0.53399,0.50000,yahoo_only
+SUNILHITEC,2016-12-01,bonus+split,0.05000,Bonus 1:1/Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2016-12-01,0.05253,0.05000,no_record
+ONGC,2016-12-15,bonus,0.66667,Bonus 1: 2,applied,2016-12-15,0.67622,0.66667,agree
+ENGINERSIN,2016-12-30,bonus,0.50000,Bonus 1:1,applied,2016-12-30,0.44894,0.50000,agree
+JSWSTEEL,2017-01-04,yahoo_split,0.10000,,applied_yf,2017-01-04,0.09915,0.10000,yahoo_only
+OIL,2017-01-12,bonus,0.75000,Bonus 1:3,applied,2017-01-12,0.71526,0.75000,agree
+LTFOODS,2017-02-07,yahoo_split,0.10000,,applied_yf,2017-02-07,0.10784,0.10000,yahoo_only
+NBCC,2017-02-17,bonus,0.66667,Bonus 1:2,applied,2017-02-17,0.60536,0.66667,agree
+GAIL,2017-03-09,bonus,0.75000,Bonus 1:3,applied,2017-03-09,0.73108,0.75000,agree
+VGUARD,2017-03-15,bonus,0.71429,Bonus 2:5,applied,2017-03-15,0.71414,0.71429,agree
+BEL,2017-03-16,split,0.10000,Face Value Split From Rs 10/- Per Share To Re 1/- Per Share,applied,2017-03-16,0.10521,0.10000,agree
+CONCOR,2017-04-05,bonus,0.80000,Bonus 1:4,applied,2017-04-05,0.80127,0.80000,agree
+BLS,2017-04-26,split,0.10000,Face Value Split From Rs 10/- Per Share To Re 1/- Per Share,applied,2017-04-26,0.10154,0.10000,agree
+ADVENZYMES,2017-05-25,split,0.20000,Face Value Split From Rs 10/- Per Share To Rs 2/- Per Share,applied,2017-05-25,0.21674,0.20000,agree
+SINTEX,2017-05-25,scheme,,Scheme Of Arrangement,scheme_market_implied,2017-05-25,0.24832,0.24451,
+WIPRO,2017-06-13,bonus,0.50000,Bonus 1:1,applied,2017-06-13,0.49207,0.50000,agree
+BIOCON,2017-06-15,bonus,0.33333,Bonus 2:1,applied,2017-06-15,0.33812,0.33333,agree
+ICICIBANK,2017-06-20,bonus,0.90909,Annual General Meeting/Dividend - Rs 2.50 Per Share/Bonus 1:10 (Revised),applied,2017-06-20,0.91220,0.90909,agree
+ARCOTECH,2017-06-22,split,0.20000,Face Value Split From Rs 10/- Per Share To Rs 2/- Per Share,applied,2017-06-22,0.19197,0.20000,no_record
+GODREJCP,2017-06-22,bonus,0.50000,Bonus 1:1,applied,2017-06-22,0.49117,0.50000,agree
+KITEX,2017-06-22,bonus,0.71429,Bonus 2:5,applied,2017-06-22,0.73761,0.71429,agree
+PETRONET,2017-07-03,bonus,0.50000,Bonus 1:1,applied,2017-07-03,0.49566,0.50000,agree
+MOTHERSON,2017-07-05,bonus,0.66667,Bonus 1:2,applied,2017-07-05,0.66634,0.66667,agree
+PCJEWELLER,2017-07-06,bonus,0.50000,Bonus 1:1,applied,2017-07-06,0.50080,0.50000,agree
+MHRIL,2017-07-10,bonus,0.66667,Bonus 1:2,applied,2017-07-10,0.65855,0.66667,agree
+HINDPETRO,2017-07-11,bonus,0.66667,Bonus 1:2/ Dividend - Rs 1.10 Per Share,applied,2017-07-11,0.66407,0.66667,agree
+BPCL,2017-07-13,bonus,0.66667,Bonus 1:2,applied,2017-07-13,0.67069,0.66667,agree
+CUB,2017-07-13,bonus,0.90909,Bonus 1:10,applied,2017-07-13,0.95138,0.90909,agree
+LT,2017-07-13,bonus,0.66667,Bonus 1:2,applied,2017-07-13,0.67552,0.66667,agree
+GRASIM,2017-07-19,scheme,,Scheme Of Arrangement,scheme_market_implied,2017-07-19,0.80288,0.79747,
+NAVINFLUOR,2017-07-19,split,0.20000,Face Value Split From Rs 10/- Per Share To Rs 2/- Per Share,applied,2017-07-19,0.20435,0.20000,agree
+SUNTECK,2017-07-25,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Rs 1/- Per Share,applied,2017-07-25,0.50893,0.50000,agree
+DWARKESH,2017-08-10,split,0.10000,Annual General Meeting/Dividend - Rs 10 Per Share/Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share (Purpose Revised),applied,2017-08-10,0.09957,0.10000,agree
+CCAVENUE,2017-08-31,split,0.10000,Annual General Meeting/Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2017-08-31,0.10178,0.10000,agree
+RELCAPITAL,2017-09-05,scheme,,Scheme Of Arrangement,scheme_market_implied,2017-09-05,0.91652,0.91012,
+RELIANCE,2017-09-07,bonus,0.50000,Bonus 1:1,applied,2017-09-07,0.49720,0.50000,agree
+NESCO,2017-09-15,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2017-09-15,0.20134,0.20000,agree
+TATAELXSI,2017-09-18,bonus,0.50000,Bonus 1:1,applied,2017-09-18,0.49428,0.50000,agree
+YESBANK,2017-09-21,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2017-09-21,0.20055,0.20000,agree
+MANPASAND,2017-09-27,bonus,0.50000,Bonus 1:1,applied,2017-09-27,0.48170,0.50000,no_record
+MOIL,2017-09-27,bonus,0.50000,Bonus 1:1,applied,2017-09-27,0.46504,0.50000,agree
+BEL,2017-09-28,bonus,0.90909,Bonus 1:10,applied,2017-09-28,0.92480,0.90909,agree
+BHARATFORG,2017-09-28,bonus,0.50000,Bonus 1:1,applied,2017-09-28,0.49232,0.50000,agree
+BHEL,2017-09-28,bonus,0.66667,Bonus 1:2,applied,2017-09-28,0.66306,0.66667,agree
+TARIL,2017-09-28,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2017-09-28,0.10360,0.10000,agree
+JAMNAAUTO,2017-10-05,split,0.20000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share,applied,2017-10-05,0.20321,0.20000,agree
+ZEEMEDIA,2017-10-05,scheme,,Scheme Of Arrangement,scheme_no_gap,,1.00000,,
+HERITGFOOD,2017-10-10,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2017-10-10,0.50826,0.50000,agree
+CANFINHOME,2017-10-12,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2017-10-12,0.20601,0.20000,agree
+IIFL,2017-10-17,scheme,,Scheme Of Arrangement,scheme_no_gap,,0.99244,,
+ATLASCYCLE,2017-10-30,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2017-10-30,0.52506,0.50000,agree
+INFINITE,2017-11-01,bonus,0.96296,Bonus 1:26,applied,2017-11-01,0.97486,0.96296,no_record
+IGL,2017-11-09,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2017-11-09,0.19782,0.20000,agree
+FRETAIL,2017-11-29,scheme,,Scheme Of Arrangement,scheme_no_gap,,1.01290,,
+FCSSOFT,2017-12-04,none,,,unexplained,,0.50000,,
+BALKRISIND,2017-12-21,bonus,0.50000,Bonus 1:1,applied,2017-12-21,0.48300,0.50000,agree
+CASTROLIND,2017-12-21,bonus,0.50000,Bonus 1:1,applied,2017-12-21,0.48377,0.50000,agree
+M&M,2017-12-21,bonus,0.50000,Bonus 1:1,applied,2017-12-21,0.48140,0.50000,agree
+VAKRANGEE,2017-12-21,bonus,0.50000,Bonus 1:1,applied,2017-12-21,0.51470,0.50000,agree
+ORIENTPPR,2018-01-11,scheme,,Scheme Of Arrangement,scheme_market_implied,2018-01-11,0.30434,0.30380,
+LANDSMILL,2018-01-23,bonus,0.33333,Bonus 2:1,applied,2018-01-23,0.34955,0.33333,agree
+FCSSOFT,2018-02-01,none,,,unexplained,,2.00000,,
+SUNDARMFIN,2018-02-01,scheme,,Scheme Of Arrangement,scheme_market_implied,2018-02-01,0.91061,0.91362,
+IOC,2018-03-15,bonus,0.50000,Bonus 1:1,applied,2018-03-15,0.48614,0.50000,agree
+LAOPALA,2018-03-22,bonus,0.50000,Bonus 1:1,applied,2018-03-22,0.44912,0.50000,agree
+GAIL,2018-03-27,bonus,0.75000,Bonus 1:3,applied,2018-03-27,0.75491,0.75000,agree
+OIL,2018-03-27,bonus,0.66667,Bonus 1:2,applied,2018-03-27,0.63309,0.66667,agree
+TALWALKARS,2018-03-27,scheme,,Scheme Of Arrangement,scheme_market_implied,2018-03-27,0.78872,0.77857,
+ADANIENT,2018-04-05,scheme,,Scheme Of Arrangement,scheme_market_implied,2018-04-05,0.97623,0.95844,
+STAR,2018-04-06,scheme,,Scheme Of Arrangement,scheme_no_gap,,1.01568,,
+VIYASH,2018-04-06,scheme,,Scheme Of Arrangement,scheme_market_implied,2018-04-06,0.95928,0.95589,
+AMRUTANJAN,2018-04-13,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2018-04-13,0.52193,0.50000,agree
+PCBL,2018-04-19,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,no_gap,,,,
+PHILIPCARB,2018-04-19,none,,,unexplained,,0.20997,,
+NBCC,2018-04-25,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2018-04-25,0.51451,0.50000,agree
+MMTC,2018-05-03,bonus,0.66667,Bonus 1:2,applied,2018-05-03,0.72641,0.66667,agree
+GMBREW,2018-05-21,bonus,0.80000,Bonus 1:4,applied,2018-05-21,0.83270,0.80000,agree
+TCS,2018-05-31,bonus,0.50000,Bonus 1:1 /Dividend- Rs 29 Per Share,applied,2018-05-31,0.49545,0.50000,agree
+GRUH,2018-06-06,bonus,0.50000,Bonus 1:1,applied,2018-06-06,0.52339,0.50000,no_record
+UNITDSPR,2018-06-15,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2018-06-15,0.19600,0.20000,agree
+PRAKASHSTL,2018-06-18,none,,,unexplained,,0.50000,,
+EMAMILTD,2018-06-21,bonus,0.50000,Bonus 1:1/Dividend- Rs 7 Per Share,applied,2018-06-21,0.49392,0.50000,agree
+JUBLFOOD,2018-06-21,bonus,0.50000,Bonus 1:1,applied,2018-06-21,0.49822,0.50000,agree
+HIKAL,2018-06-22,bonus,0.66667,Bonus 1:2,applied,2018-06-22,0.68181,0.66667,agree
+PRAKASHSTL,2018-06-25,none,,,unexplained,,2.00000,,
+AVANTIFEED,2018-06-26,bonus+split,0.33333,Bonus 1:2/Face Value Split (Sub-Division) From Rs 2/- Per Share To Re 1/- Per Share,applied,2018-06-26,0.38334,0.33333,disagree
+CONCOR,2018-06-26,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2018-06-26,0.50137,0.50000,agree
+NIACL,2018-06-27,bonus,0.50000,Bonus 1:1/ Dividend- Rs 5 Per Share,applied,2018-06-27,0.49237,0.50000,agree
+JYOTHYLAB,2018-06-28,bonus,0.50000,Bonus 1:1,applied,2018-06-28,0.50924,0.50000,agree
+CUB,2018-07-10,bonus,0.90909,Bonus 1:10,applied,2018-07-10,0.92807,0.90909,agree
+UNOMINDA,2018-07-11,bonus,0.33333,Bonus 2:1/Dividend- Rs 1.60 Per Share,applied,2018-07-11,0.33562,0.33333,agree
+ASHOKA,2018-07-12,bonus,0.66667,Bonus 1:2,applied,2018-07-12,0.68535,0.66667,agree
+GICRE,2018-07-12,bonus,0.50000,Bonus 1:1/Dividend- Rs 13.5 Per Share,applied,2018-07-12,0.48528,0.50000,agree
+BORORENEW,2018-08-02,bonus,0.25000,Bonus 3:1,applied,2018-08-02,0.29005,0.25000,agree
+WHEELS,2018-08-08,bonus,0.50000,Bonus 1:1,applied,2018-08-08,0.49281,0.50000,agree
+AURIONPRO,2018-08-14,scheme,,Scheme Of Demerger,scheme_market_implied,2018-08-14,0.91994,0.91961,
+KARURVYSYA,2018-08-14,bonus,0.90909,Bonus 1:10,applied,2018-08-14,0.97945,0.90909,agree
+TIRUMALCHM,2018-08-14,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2018-08-14,0.10778,0.10000,agree
+MONNETISPA,2018-08-29,consolidation,3.03030,Capital Reduction Rs 10 To Rs 3.30 / Consolidation Rs 3.30 To Rs.10,no_gap,,,,
+INFY,2018-09-04,bonus,0.50000,Bonus 1:1,applied,2018-09-04,0.51396,0.50000,agree
+ADANIENT,2018-09-06,scheme,,Scheme Of Arrangement,scheme_market_implied,2018-09-06,0.77601,0.77288,
+ZENSARTECH,2018-09-07,split,0.20000,Face Value Split (Sub-Division) - From Rs 10 /- Per Share To Rs 2/- Per Share,applied,2018-09-07,0.19467,0.20000,agree
+GLAXO,2018-09-11,bonus,0.50000,Bonus 1:1,applied,2018-09-11,0.48705,0.50000,agree
+GODREJCP,2018-09-12,bonus,0.66667,Bonus 1:2,applied,2018-09-12,0.69325,0.66667,agree
+DHFL,2018-09-21,none,,,unexplained,,0.57415,,
+IGARASHI,2018-09-27,bonus,0.88987,Bonus 25:202,applied,2018-09-27,0.97909,0.88987,agree
+CCAVENUE,2018-09-28,none,,,unexplained,,0.29174,,
+CUPID,2018-10-11,bonus,0.83333,Bonus 1:5,applied,2018-10-11,0.91517,0.83333,agree
+IEX,2018-10-19,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2018-10-19,0.09908,0.10000,agree
+COX&KINGS,2018-10-25,scheme,,Scheme Of Demerger,scheme_market_implied,2018-10-25,0.92069,0.93076,
+CESC,2018-10-30,scheme,,Composite Scheme Of Arrangement,scheme_market_implied,2018-10-30,0.82598,0.82093,
+MOTHERSON,2018-10-30,bonus,0.66667,Bonus 1:2,applied,2018-10-30,0.70766,0.66667,agree
+ARVIND,2018-11-28,scheme,,Demerger,scheme_market_implied,2018-11-28,0.34914,0.35183,
+BRITANNIA,2018-11-29,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2018-11-29,0.50863,0.50000,agree
+GUJENERGY,2019-01-15,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2019-01-15,0.21412,0.20000,agree
+BSOFT,2019-01-24,scheme,,Composite Scheme Of Arrangement,scheme_market_implied,2019-01-24,0.59520,0.59836,
+CONCOR,2019-02-04,bonus,0.80000,Bonus 1:4,applied,2019-02-04,0.78731,0.80000,agree
+WIPRO,2019-03-06,bonus,0.75000,Bonus 1:3,applied,2019-03-06,0.76306,0.75000,agree
+NTPC,2019-03-19,bonus,0.83333,Bonus 1:5,applied,2019-03-19,0.84976,0.83333,agree
+HTMEDIA,2019-04-09,scheme,,Demerger,scheme_market_implied,2019-04-09,0.85142,0.85254,
+PRAKASH,2019-04-23,scheme,,Demerger,scheme_market_implied,2019-04-23,0.88807,0.89114,
+TTKPRESTIG,2019-05-15,bonus,0.83333,Bonus 1:5,applied,2019-05-15,0.88633,0.83333,agree
+IIFL,2019-05-30,scheme,,Scheme Of Arrangement,scheme_market_implied,2019-05-30,0.47790,0.47790,
+SYNGENE,2019-06-11,bonus,0.50000,Bonus 1:1,applied,2019-06-11,0.50851,0.50000,agree
+BIOCON,2019-06-12,bonus,0.50000,Bonus 1:1,applied,2019-06-12,0.48017,0.50000,agree
+CHOLAFIN,2019-06-14,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2019-06-14,0.19804,0.20000,agree
+JETAIRWAYS,2019-06-18,none,,,unexplained,,0.59211,,
+JETAIRWAYS,2019-06-20,none,,,unexplained,,1.89879,,
+RELAXO,2019-06-26,bonus,0.50000,Bonus 1:1,applied,2019-06-26,0.51845,0.50000,agree
+UPL,2019-07-02,bonus,0.66667,Bonus 1:2,applied,2019-07-02,0.69200,0.66667,agree
+AARTIIND,2019-07-03,scheme,,Scheme Of Demerger,scheme_market_implied,2019-07-03,0.97360,0.97268,
+GAIL,2019-07-09,bonus,0.50000,Bonus 1:1,applied,2019-07-09,0.48692,0.50000,agree
+VBL,2019-07-25,bonus,0.66667,Bonus 1:2,applied,2019-07-25,0.70002,0.66667,agree
+BILVYAPAR,2019-07-29,none,,,unexplained,,0.42532,,
+GFLLIMITED,2019-08-06,scheme,,Demerger,scheme_market_implied,2019-08-06,0.10893,0.10723,
+RITES,2019-08-08,bonus,0.80000,Bonus 1:4,applied,2019-08-08,0.79303,0.80000,agree
+ALEMBICLTD,2019-08-26,scheme,,Demerger,scheme_market_implied,2019-08-26,0.77358,0.76149,
+BRIGADE,2019-08-28,bonus,0.66667,Bonus 1:2,applied,2019-08-28,0.72125,0.66667,agree
+ASTRAL,2019-09-16,bonus,0.80000,Bonus 1:4,applied,2019-09-16,0.83093,0.80000,agree
+TATACOMM,2019-09-17,scheme,,Demerger,scheme_market_implied,2019-09-17,0.65194,0.66515,
+HDFCBANK,2019-09-19,split,0.50000,Face Value Split (Sub-Division) - From Rs 2 Per Share To Rs 1 Per Share,applied,2019-09-19,0.50328,0.50000,agree
+MVL,2019-09-20,none,,,unexplained,,0.50000,,
+MVL,2019-09-23,none,,,unexplained,,2.00000,,
+AARTIIND,2019-09-27,bonus,0.50000,Bonus 1:1,applied,2019-09-27,0.50739,0.50000,agree
+MVL,2019-09-27,none,,,unexplained,,0.50000,,
+MVL,2019-09-30,none,,,unexplained,,2.00000,,
+MVL,2019-10-09,none,,,unexplained,,0.50000,,
+MVL,2019-10-10,none,,,unexplained,,2.00000,,
+ABREL,2019-10-11,scheme,,Demerger,scheme_market_implied,2019-10-11,0.44644,0.44664,
+MVL,2019-10-11,none,,,unexplained,,0.50000,,
+MVL,2019-10-14,none,,,unexplained,,2.00000,,
+IMPAL,2019-10-25,bonus,0.66667,Bonus 1:2,applied,2019-10-25,0.67795,0.66667,agree
+MVL,2019-10-30,none,,,unexplained,,0.50000,,
+MVL,2019-11-01,none,,,unexplained,,2.00000,,
+MVL,2019-11-13,none,,,unexplained,,0.50000,,
+MVL,2019-11-14,none,,,unexplained,,2.00000,,
+HCLTECH,2019-12-05,bonus,0.50000,Bonus 1:1,applied,2019-12-05,0.49836,0.50000,agree
+THOMASCOOK,2019-12-05,scheme,,Demerger,scheme_market_implied,2019-12-05,0.44448,0.44588,
+TRIDENT,2019-12-13,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 1/- Per Share,applied,2019-12-13,0.11228,0.10000,agree
+ABB,2019-12-20,scheme,,Demerger,scheme_market_implied,2019-12-20,0.85501,0.85613,
+KESORAMIND,2019-12-24,scheme,,Demerger,scheme_market_implied,2019-12-24,0.92975,0.93214,
+JINDALPOLY,2019-12-30,scheme,,Demerger,scheme_market_implied,2019-12-30,0.95061,0.94803,
+SUVEN,2020-01-21,scheme,,Demerger,scheme_market_implied,2020-01-21,0.05291,0.05310,
+VINATIORGA,2020-02-05,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Rs 1/- Per Share,applied,2020-02-05,0.52062,0.50000,agree
+CCCL,2020-03-04,none,,,unexplained,,0.21622,,
+TATACHEM,2020-03-04,scheme,,Demerger,scheme_market_implied,2020-03-04,0.43474,0.44256,
+BORORENEW,2020-03-06,scheme,,Demerger,scheme_market_implied,2020-03-06,0.26404,0.27224,
+YESBANK,2020-03-06,none,,,unexplained,,0.43886,,
+KTKBANK,2020-03-17,bonus,0.90909,Bonus 1:10,applied,2020-03-17,0.95681,0.90909,agree
+IRCON,2020-04-03,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2020-04-03,0.23102,0.20000,agree
+EICHERMOT,2020-08-24,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2020-08-24,0.10029,0.10000,agree
+SECURKLOUD,2020-09-07,none,,,unexplained,,0.40660,,
+PANACEABIO,2020-09-21,scheme,,Demerger,scheme_market_implied,2020-09-21,0.92612,0.96249,
+ELGIEQUIP,2020-09-24,bonus,0.50000,Bonus 1:1,applied,2020-09-24,0.50612,0.50000,agree
+MANINDS,2020-09-24,scheme,,Demerger,scheme_market_implied,2020-09-24,0.89825,0.92432,
+COHANCE,2020-09-25,bonus,0.50000,Bonus 1:1,applied,2020-09-25,0.51943,0.50000,agree
+LAURUSLABS,2020-09-29,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2020-09-29,0.19797,0.20000,agree
+AARTIDRUGS,2020-09-30,bonus,0.25000,Bonus 3:1,applied,2020-09-30,0.26249,0.25000,agree
+ANANTRAJ,2020-10-06,scheme,,Demerger,scheme_market_implied,2020-10-06,0.56138,0.55998,
+DEEPENR,2020-11-10,scheme,,Demerger,scheme_market_implied,2020-11-10,0.61467,0.61500,
+CCAVENUE,2020-12-10,scheme,,Demerger,scheme_no_gap,,0.97074,,
+APLAPOLLO,2020-12-15,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2020-12-15,0.20461,0.20000,agree
+AURUM,2020-12-23,none,,,unexplained,,0.01238,,
+JUBLPHARMA,2021-02-04,scheme,,Demerger,scheme_market_implied,2021-02-04,0.88022,0.87193,
+ASTRAL,2021-03-18,bonus,0.75000,Bonus 1:3,applied,2021-03-18,0.69892,0.75000,agree
+CCAVENUE,2021-03-18,bonus,0.50000,Bonus 1:1,applied,2021-03-18,0.42822,0.50000,agree
+DIXON,2021-03-18,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2021-03-18,0.21122,0.20000,agree
+GFLLIMITED,2021-03-26,scheme,,Demerger,scheme_market_implied,2021-03-26,0.74527,0.73992,
+FINPIPE,2021-04-15,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2021-04-15,0.20565,0.20000,agree
+ALKYLAMINE,2021-05-11,split,0.40000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share,applied,2021-05-11,0.44000,0.40000,agree
+MEGH,2021-05-18,scheme,,Merger/Demerger,scheme_no_gap,,,,
+IRCON,2021-05-20,bonus,0.50000,Bonus 1:1,applied,2021-05-20,0.52337,0.50000,agree
+VBL,2021-06-10,bonus,0.66667,Bonus 1:2,applied,2021-06-10,0.68598,0.66667,agree
+AARTIIND,2021-06-22,bonus,0.50000,Bonus 1:1,applied,2021-06-22,0.49501,0.50000,agree
+INVENTURE,2021-06-24,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2021-06-24,0.11548,0.10000,agree
+VEEDOL,2021-07-26,bonus+split,0.20000,Bonus 1:1 | Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 2/- Per Share,applied,2021-07-26,0.21000,0.20000,disagree
+POWERGRID,2021-07-29,bonus,0.75000,Bonus 1:3,applied,2021-07-29,0.73389,0.75000,agree
+BCG,2021-08-18,bonus,0.80000,Bonus 1:4,applied,2021-08-18,0.83871,0.80000,agree
+REDINGTON,2021-08-18,bonus,0.50000,Bonus 1:1,applied,2021-08-18,0.49970,0.50000,agree
+MHRIL,2021-09-08,bonus,0.66667,Bonus 1:2,applied,2021-09-08,0.70037,0.66667,agree
+MAHLIFE,2021-09-14,bonus,0.33333,Bonus 2:1,applied,2021-09-14,0.32846,0.33333,agree
+APLAPOLLO,2021-09-16,bonus,0.50000,Bonus 1:1,applied,2021-09-16,0.51431,0.50000,agree
+CESC,2021-09-17,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2021-09-17,0.10453,0.10000,agree
+KPRMILL,2021-09-24,split,0.20000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share,applied,2021-09-24,0.21992,0.20000,agree
+AFFLE,2021-10-07,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2021-10-07,0.21000,0.20000,agree
+SRF,2021-10-13,bonus,0.20000,Bonus 4:1,applied,2021-10-13,0.19311,0.20000,agree
+GPIL,2021-10-26,bonus+split,0.25000,Bonus 1:1 | Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2021-10-26,0.27498,0.25000,disagree
+IRCTC,2021-10-28,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2021-10-28,0.22118,0.20000,agree
+MANINFRA,2021-11-17,bonus,0.66667,Bonus 1:2,applied,2021-11-17,0.77666,0.66667,agree
+IEX,2021-12-03,bonus,0.33333,Bonus 2:1,applied,2021-12-03,0.35056,0.33333,agree
+TTKPRESTIG,2021-12-14,split,0.10000,Face Value Split (Sub-Division) - From Rs 10 Per Share To Re 1 Per Share,applied,2021-12-14,0.09831,0.10000,agree
+KKCL,2021-12-16,bonus,0.20000,Bonus 4:1,applied,2021-12-16,0.20032,0.20000,agree
+ANDHRSUGAR,2021-12-30,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2021-12-30,0.19138,0.20000,agree
+IPCALAB,2022-01-10,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2022-01-10,0.48232,0.50000,agree
+GMRAIRPORT,2022-01-11,scheme,,Demerger,scheme_market_implied,2022-01-11,0.92570,0.92814,
+MOTHERSON,2022-01-14,scheme,,Demerger,scheme_market_implied,2022-01-14,0.79025,0.78837,
+SCHAEFFLER,2022-02-08,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2022-02-08,0.19756,0.20000,agree
+JBMA,2022-02-21,split,0.40000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share,applied,2022-02-21,0.41512,0.40000,agree
+HGS,2022-02-22,bonus,0.50000,Bonus 1:1,applied,2022-02-22,0.47922,0.50000,agree
+EASEMYTRIP,2022-02-28,bonus,0.50000,Bonus 1:1,applied,2022-02-28,0.52248,0.50000,agree
+CCAVENUE,2022-03-14,bonus,0.50000,Bonus 1:1,applied,2022-03-14,0.48045,0.50000,agree
+BCG,2022-03-15,bonus,0.60000,Bonus 2:3,applied,2022-03-15,0.62977,0.60000,agree
+BSE,2022-03-21,bonus,0.33333,Bonus 2:1,applied,2022-03-21,0.33187,0.33333,agree
+VTL,2022-03-24,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2022-03-24,0.20461,0.20000,agree
+PCBL,2022-04-11,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2022-04-11,0.54069,0.50000,agree
+JUBLFOOD,2022-04-19,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2022-04-19,0.19201,0.20000,agree
+SAREGAMA,2022-04-26,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2022-04-26,0.09991,0.10000,agree
+BLS,2022-05-13,bonus,0.50000,Bonus 1:1,applied,2022-05-13,0.51707,0.50000,agree
+DHAMPURSUG,2022-05-13,scheme,,Demerger,scheme_market_implied,2022-05-13,0.84134,0.83102,
+VBL,2022-06-06,bonus,0.66667,Bonus 1:2,applied,2022-06-06,0.66614,0.66667,agree
+AUBANK,2022-06-09,bonus,0.50000,Bonus 1:1,applied,2022-06-09,0.48739,0.50000,agree
+COSMOFIRST,2022-06-16,bonus,0.66667,Bonus 1:2,applied,2022-06-16,0.65783,0.66667,agree
+AJANTPHARM,2022-06-22,bonus,0.66667,Bonus- 1:2,applied,2022-06-22,0.65993,0.66667,agree
+NAZARA,2022-06-24,bonus,0.50000,Bonus 1:1,applied,2022-06-24,0.59498,0.50000,agree
+IOC,2022-06-30,bonus,0.66667,Bonus 1:2,applied,2022-06-30,0.67623,0.66667,agree
+PAISALO,2022-06-30,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2022-06-30,0.09032,0.10000,agree
+UNOMINDA,2022-07-07,bonus,0.50000,Bonus 1:1,applied,2022-07-07,0.51233,0.50000,agree
+TORNTPHARM,2022-07-08,bonus,0.50000,Bonus 1:1,applied,2022-07-08,0.49743,0.50000,agree
+GMMPFAUDLR,2022-07-11,bonus,0.33333,Bonus 2:1,applied,2022-07-11,0.35330,0.33333,agree
+TATASTEEL,2022-07-28,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2022-07-28,0.10460,0.10000,agree
+GVKPIL,2022-08-12,none,,,unexplained,,2.07273,,
+RECLTD,2022-08-17,bonus,0.75000,Bonus 1:3,applied,2022-08-17,0.76783,0.75000,agree
+PEL,2022-08-30,scheme,,Demerger,scheme_market_implied,2022-08-30,0.55206,0.54490,
+GAIL,2022-09-06,bonus,0.66667,Bonus 1:2,applied,2022-09-06,0.68044,0.66667,agree
+BEML,2022-09-08,scheme,,Demerger,scheme_market_implied,2022-09-08,0.83591,0.83388,
+SONATSOFTW,2022-09-08,bonus,0.75000,Bonus 1:3,applied,2022-09-08,0.79941,0.75000,agree
+BAJAJFINSV,2022-09-13,bonus+split,0.10000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share | Bonus 1:1,applied,2022-09-13,0.10414,0.10000,disagree
+BEL,2022-09-15,bonus,0.33333,Bonus 2:1,applied,2022-09-15,0.33075,0.33333,agree
+ECLERX,2022-09-21,bonus,0.66667,Bonus 1:2,applied,2022-09-21,0.70078,0.66667,agree
+SAKSOFT,2022-09-23,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2022-09-23,0.09048,0.10000,agree
+LANDSMILL,2022-09-28,bonus+split,0.06667,Bonus 1:2 | Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2022-09-28,0.07386,0.06667,disagree
+INSECTICID,2022-09-30,bonus,0.66667,Bonus 1:2,applied,2022-09-30,0.74345,0.66667,agree
+MOTHERSON,2022-10-03,bonus,0.66667,Bonus 1:2,applied,2022-10-03,0.66927,0.66667,agree
+AARTIIND,2022-10-19,scheme,,Demerger,scheme_market_implied,2022-10-19,0.91737,0.91977,
+NMDC,2022-10-27,scheme,,Demerger,scheme_market_implied,2022-10-27,0.79771,0.79536,
+TDPOWERSYS,2022-10-31,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2022-10-31,0.20329,0.20000,agree
+NYKAA,2022-11-10,bonus,0.16667,Bonus 5:1,applied,2022-11-10,0.17754,0.16667,agree
+MSUMI,2022-11-16,bonus,0.71429,Bonus 2:5,applied,2022-11-16,0.73072,0.71429,agree
+EASEMYTRIP,2022-11-21,bonus+split,0.12500,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share | Bonus 3:1,applied,2022-11-21,0.15002,0.12500,disagree
+MAHSEAMLES,2022-11-25,bonus,0.50000,Bonus 1:1,applied,2022-11-25,0.49743,0.50000,agree
+BLS,2022-12-08,bonus,0.50000,Bonus 1:1,applied,2022-12-08,0.52822,0.50000,agree
+SFL,2022-12-21,bonus,0.50000,Bonus 1:1,applied,2022-12-21,0.49171,0.50000,agree
+KPIGREEN,2023-01-18,bonus,0.50000,Bonus 1:1,applied,2023-01-18,0.51672,0.50000,agree
+HERITGFOOD,2023-01-20,none,,,unexplained,,0.53158,,
+IRB,2023-02-22,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2023-02-22,0.11447,0.10000,agree
+360ONE,2023-03-02,bonus+split,0.25000,Bonus 1:1 | Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2023-03-02,0.24872,0.25000,disagree
+ASTRAL,2023-03-14,bonus,0.75000,Bonus 1:3,applied,2023-03-14,0.73802,0.75000,agree
+MIRZAINT,2023-03-29,scheme,,Demerger,scheme_market_implied,2023-03-29,0.13704,0.13512,
+SCI,2023-03-31,scheme,,Demerger,scheme_market_implied,2023-03-31,0.77580,0.76792,
+GHCL,2023-04-06,scheme,,Demerger,scheme_market_implied,2023-04-06,0.95122,0.94578,
+ALLCARGO,2023-04-18,scheme,,Demerger,scheme_market_implied,2023-04-18,0.78994,0.78893,
+APOLLO,2023-05-04,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2023-05-04,0.10500,0.10000,agree
+VISAKAIND,2023-05-15,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2023-05-15,0.20234,0.20000,agree
+LODHA,2023-05-31,bonus,0.50000,Bonus 1:1,applied,2023-05-31,0.51898,0.50000,agree
+EDELWEISS,2023-06-02,scheme,,Demerger,scheme_market_implied,2023-06-02,0.55263,0.55021,
+NIITLTD,2023-06-08,scheme,,Demerger,scheme_market_implied,2023-06-08,0.23865,0.24042,
+VAKRANGEE,2023-06-15,scheme,,Demerger,scheme_market_implied,2023-06-15,0.91525,0.91730,
+VBL,2023-06-15,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2023-06-15,0.51220,0.50000,agree
+BLUESTARCO,2023-06-20,bonus,0.50000,Bonus 1:1,applied,2023-06-20,0.51810,0.50000,agree
+INDIAMART,2023-06-21,bonus,0.50000,Bonus 1:1,applied,2023-06-21,0.50555,0.50000,agree
+KANSAINER,2023-07-04,bonus,0.66667,Bonus 1:2,applied,2023-07-04,0.69137,0.66667,agree
+BEPL,2023-07-05,bonus,0.66667,Bonus 1:2,applied,2023-07-05,0.71778,0.66667,agree
+APTECHT,2023-07-14,bonus,0.71429,Bonus 2:5,applied,2023-07-14,0.75956,0.71429,agree
+RELIANCE,2023-07-20,scheme,,Demerger,scheme_market_implied,2023-07-20,0.92188,0.92188,
+SAREGAMA,2023-07-27,scheme,,Demerger,scheme_market_implied,2023-07-27,0.97016,0.97070,
+POWERGRID,2023-09-12,bonus,0.75000,Bonus 1:3,applied,2023-09-12,0.72325,0.75000,agree
+BAJAJELEC,2023-09-14,scheme,,Demerger,scheme_market_implied,2023-09-14,0.93105,0.92351,
+JBCHEPHARM,2023-09-18,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2023-09-18,0.50211,0.50000,no_record
+PFC,2023-09-21,bonus,0.80000,Bonus 1:4,applied,2023-09-21,0.80063,0.80000,agree
+BERGEPAINT,2023-09-22,bonus,0.83333,Bonus 1:5,applied,2023-09-22,0.88855,0.83333,agree
+HAL,2023-09-28,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2023-09-28,0.49226,0.50000,agree
+SONATSOFTW,2023-12-12,bonus,0.50000,Bonus 1:1,applied,2023-12-12,0.53524,0.50000,agree
+ALLCARGO,2024-01-02,bonus,0.25000,Bonus 3:1,applied,2024-01-02,0.27382,0.25000,agree
+NESTLEIND,2024-01-05,split,0.10000,Face Value Split (Sub-Division) - From Rs10/- Per Share To Re 1/- Per Share,applied,2024-01-05,0.09833,0.10000,agree
+PGIL,2024-01-05,split,0.50000,Face Value Split (Sub-Division) - From Rs10/- Per Share To Rs 5/- Per Share,applied,2024-01-05,0.50513,0.50000,agree
+COCHINSHIP,2024-01-10,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2024-01-10,0.60000,0.50000,agree
+NEWGEN,2024-01-12,bonus,0.50000,Bonus 1:1,applied,2024-01-12,0.52500,0.50000,agree
+KAUSHALYA,2024-02-06,none,,,unexplained,,100.33503,,
+KPIGREEN,2024-02-15,bonus,0.66667,Bonus 1:2,applied,2024-02-15,0.70000,0.66667,agree
+CGCL,2024-03-05,bonus+split,0.25000,Bonus 1:1 | Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2024-03-05,0.30001,0.25000,disagree
+PAISALO,2024-03-20,bonus,0.50000,Bonus 1:1,applied,2024-03-20,0.51007,0.50000,agree
+PERSISTENT,2024-03-28,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2024-03-28,0.49194,0.50000,agree
+CUPID,2024-04-04,bonus+split,0.05000,Bonus 1:1 | Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2024-04-04,0.05249,0.05000,disagree
+CANBK,2024-05-15,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2024-05-15,0.21004,0.20000,agree
+BDL,2024-05-24,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2024-05-24,0.54190,0.50000,agree
+GMBREW,2024-05-24,bonus,0.80000,Bonus 1:4,applied,2024-05-24,0.84876,0.80000,agree
+INOXWIND,2024-05-24,bonus,0.25000,Bonus 3:1,applied,2024-05-24,0.27266,0.25000,agree
+MOTILALOFS,2024-06-10,bonus,0.25000,Bonus 3:1,applied,2024-06-10,0.27037,0.25000,agree
+SANOFI,2024-06-13,scheme,,Demerger,scheme_market_implied,2024-06-13,0.64661,0.64458,
+BPCL,2024-06-21,bonus,0.50000,Bonus 1:1,applied,2024-06-21,0.49118,0.50000,agree
+HINDPETRO,2024-06-21,bonus,0.66667,Bonus 1:2,applied,2024-06-21,0.65073,0.66667,agree
+AURIONPRO,2024-06-27,bonus,0.50000,Bonus 1:1,applied,2024-06-27,0.52284,0.50000,agree
+OIL,2024-07-02,bonus,0.66667,Bonus 1:2,applied,2024-07-02,0.67990,0.66667,agree
+PGEL,2024-07-10,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2024-07-10,0.09923,0.10000,agree
+RAYMOND,2024-07-11,scheme,,Demerger,scheme_market_implied,2024-07-11,0.63411,0.63261,
+KPIGREEN,2024-07-18,split,0.50000,Face Value Split (Sub-Division) - From Rs10/- Per Share To Rs 5/- Per Share,applied,2024-07-18,0.52500,0.50000,agree
+ELECON,2024-07-19,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2024-07-19,0.50051,0.50000,agree
+AJMERA,2024-08-02,scheme,,Demerger,scheme_market_implied,2024-08-02,0.96877,0.97622,
+RUSHIL,2024-08-09,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2024-08-09,0.11332,0.10000,agree
+CDSL,2024-08-23,bonus,0.50000,Bonus 1:1,applied,2024-08-23,0.54122,0.50000,agree
+CCCL,2024-09-03,none,,,unexplained,,7.62667,,
+SHEKHAWATI,2024-09-10,none,,,unexplained,,9.79932,,
+ANDHRAPAP,2024-09-11,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2024-09-11,0.18825,0.20000,agree
+CCAVENUE,2024-09-11,scheme,,Demerger,scheme_market_implied,2024-09-11,0.96254,0.97233,
+VBL,2024-09-12,split,0.40000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share,applied,2024-09-12,0.41143,0.40000,agree
+KIMS,2024-09-13,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2024-09-13,0.20189,0.20000,agree
+SAKSOFT,2024-09-19,bonus,0.80000,Bonus 1:4,applied,2024-09-19,0.82895,0.80000,agree
+PHOENIXLTD,2024-09-20,bonus,0.50000,Bonus 1:1,applied,2024-09-20,0.52213,0.50000,agree
+RITES,2024-09-20,bonus,0.50000,Bonus 1:1,applied,2024-09-20,0.54605,0.50000,agree
+GPIL,2024-10-04,split,0.20000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share,applied,2024-10-04,0.19763,0.20000,agree
+NBCC,2024-10-07,bonus,0.66667,Bonus 1:2,applied,2024-10-07,0.68534,0.66667,agree
+JINDALSAW,2024-10-09,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2024-10-09,0.49388,0.50000,agree
+HERCULES,2024-10-11,scheme,,Demerger,scheme_market_implied,2024-10-11,0.29386,0.29394,
+HEGAM,2024-10-18,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2024-10-18,0.19310,0.20000,agree
+DRREDDY,2024-10-28,split,0.20000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share,applied,2024-10-28,0.20131,0.20000,agree
+RELIANCE,2024-10-28,bonus,0.50000,Bonus 1:1,applied,2024-10-28,0.50245,0.50000,agree
+SHAKTIPUMP,2024-11-25,bonus,0.16667,Bonus 5:1,applied,2024-11-25,0.17500,0.16667,agree
+EASEMYTRIP,2024-11-29,bonus,0.50000,Bonus 1:1,applied,2024-11-29,0.55100,0.50000,agree
+WIPRO,2024-12-03,bonus,0.50000,Bonus 1:1,applied,2024-12-03,0.49893,0.50000,agree
+STAR,2024-12-06,scheme,,Demerger,scheme_market_implied,2024-12-06,0.45961,0.45856,
+PCJEWELLER,2024-12-16,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2024-12-16,0.10501,0.10000,agree
+ATLASCYCLE,2024-12-27,none,,,unexplained,,1.75931,,
+MAZDOCK,2024-12-27,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2024-12-27,0.48996,0.50000,agree
+NMDC,2024-12-27,bonus,0.33333,Bonus 2:1,applied,2024-12-27,0.32325,0.33333,agree
+KPIGREEN,2025-01-03,bonus,0.66667,Bonus 1:2,applied,2025-01-03,0.63853,0.66667,agree
+ITC,2025-01-06,scheme,,Demerger,scheme_market_implied,2025-01-06,0.91912,0.95271,
+SHRIRAMFIN,2025-01-10,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-01-10,0.18933,0.20000,agree
+KITEX,2025-01-17,bonus,0.33333,Bonus 2:1,applied,2025-01-17,0.34998,0.33333,agree
+NAVA,2025-01-20,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2025-01-20,0.50334,0.50000,agree
+IGL,2025-01-31,bonus,0.50000,Bonus 1:1,applied,2025-01-31,0.50998,0.50000,agree
+JBMA,2025-01-31,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2025-01-31,0.53180,0.50000,agree
+TARIL,2025-02-14,bonus,0.50000,Bonus 1:1,applied,2025-02-14,0.47503,0.50000,agree
+ANANDRATHI,2025-03-05,bonus,0.50000,Bonus 1:1,applied,2025-03-05,0.46731,0.50000,agree
+KESORAMIND,2025-03-10,scheme,,Demerger,scheme_market_implied,2025-03-10,0.04743,0.04853,
+IOLCP,2025-03-11,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-03-11,0.18909,0.20000,agree
+SIEMENS,2025-04-07,scheme,,Demerger,scheme_market_implied,2025-04-07,0.57069,0.59480,
+QUESS,2025-04-15,scheme,,Demerger,scheme_market_implied,2025-04-15,0.49297,0.47905,
+STLTECH,2025-04-24,scheme,,Demerger,scheme_market_implied,2025-04-24,0.74796,0.74831,
+ACUTAAS,2025-04-25,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2025-04-25,0.48572,0.50000,agree
+NAUKRI,2025-05-07,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-05-07,0.19830,0.20000,agree
+CPCAP,2025-05-09,scheme,,Demerger,scheme_market_implied,2025-05-09,0.62489,0.62870,
+RAYMOND,2025-05-14,scheme,,Demerger,scheme_market_implied,2025-05-14,0.35236,0.34799,
+ABFRL,2025-05-22,scheme,,Demerger,scheme_market_implied,2025-05-22,0.33408,0.33507,
+BSE,2025-05-23,bonus,0.33333,Bonus 2:1,applied,2025-05-23,0.34989,0.33333,agree
+COFORGE,2025-06-04,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-06-04,0.20291,0.20000,agree
+VESUVIUS,2025-06-10,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2025-06-10,0.10494,0.10000,agree
+VIMTALABS,2025-06-13,bonus,0.50000,Bonus 1:1,applied,2025-06-13,0.51203,0.50000,agree
+BAJFINANCE,2025-06-16,bonus+split,0.10000,Bonus 4:1 | Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2025-06-16,0.10053,0.10000,disagree
+TAKE,2025-06-23,none,,,unexplained,,0.59246,,
+CONCOR,2025-07-04,bonus,0.80000,Bonus 1:4,applied,2025-07-04,0.80463,0.80000,agree
+PARAS,2025-07-04,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2025-07-04,0.54995,0.50000,agree
+ASHOKLEY,2025-07-16,bonus,0.50000,Bonus 1:1,applied,2025-07-16,0.49661,0.50000,agree
+DBREALTY,2025-07-18,scheme,,Demerger,scheme_market_implied,2025-07-18,0.84783,0.85391,
+MOTHERSON,2025-07-18,bonus,0.66667,Bonus 1:2,applied,2025-07-18,0.65620,0.66667,agree
+MSUMI,2025-07-18,bonus,0.66667,Bonus 1:2,applied,2025-07-18,0.67504,0.66667,agree
+NESTLEIND,2025-08-08,bonus,0.50000,Bonus 1:1,applied,2025-08-08,0.49069,0.50000,agree
+INDIAGLYCO,2025-08-12,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2025-08-12,0.47193,0.50000,agree
+VRLLOG,2025-08-14,bonus,0.50000,Bonus 1:1,applied,2025-08-14,0.50256,0.50000,agree
+TVSMOTOR,2025-08-25,scheme,,Scheme Of Arrangement - Bonus Ncrps 4:1,scheme_no_gap,,0.99700,,
+HDFCBANK,2025-08-26,bonus,0.50000,Bonus 1:1,applied,2025-08-26,0.49560,0.50000,agree
+KARURVYSYA,2025-08-26,bonus,0.83333,Bonus 1:5,applied,2025-08-26,0.81872,0.83333,agree
+PATANJALI,2025-09-11,bonus,0.33333,Bonus 2:1,applied,2025-09-11,0.33235,0.33333,agree
+GODFRYPHLP,2025-09-16,bonus,0.33333,Bonus 2:1,applied,2025-09-16,0.35624,0.33333,agree
+ZYDUSWELL,2025-09-18,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-09-18,0.20204,0.20000,agree
+TFCILTD,2025-09-19,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-09-19,0.19901,0.20000,agree
+ADANIPOWER,2025-09-22,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-09-22,0.23999,0.20000,agree
+PIDILITIND,2025-09-23,bonus,0.50000,Bonus 1:1,applied,2025-09-23,0.49022,0.50000,agree
+TIMETECHNO,2025-09-23,bonus,0.50000,Bonus 1:1,applied,2025-09-23,0.47457,0.50000,agree
+SHANKARA,2025-09-24,scheme,,Demerger,scheme_market_implied,2025-09-24,0.24457,0.24647,
+NAZARA,2025-09-26,bonus+split,0.25000,Bonus 1:1 | Face Value Split (Sub-Division) - From Rs 4/- Per Share To Rs 2/- Per Share,applied,2025-09-26,0.25090,0.25000,disagree
+SHILPAMED,2025-10-03,bonus,0.50000,Bonus 1:1,applied,2025-10-03,0.49432,0.50000,agree
+UNITECH,2025-10-07,none,,,unexplained,,3.60488,,
+TATAINVEST,2025-10-14,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2025-10-14,0.10431,0.10000,agree
+TMPV,2025-10-14,scheme,,Demerger,scheme_market_implied,2025-10-14,0.59849,0.60511,
+SKFINDIA,2025-10-15,scheme,,Demerger,scheme_market_implied,2025-10-15,0.45246,0.44944,
+DALMIASUG,2025-10-31,scheme,,Demerger,scheme_no_gap,,0.99350,,
+BEML,2025-11-03,split,0.50000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share,applied,2025-11-03,0.49707,0.50000,agree
+ALLCARGO,2025-11-12,scheme,,Demerger,scheme_market_implied,2025-11-12,0.35075,0.34924,
+HDFCAMC,2025-11-26,bonus,0.50000,Bonus 1:1,applied,2025-11-26,0.50201,0.50000,agree
+THYROCARE,2025-11-28,bonus,0.33333,Bonus 2:1,applied,2025-11-28,0.33605,0.33333,agree
+CAMS,2025-12-05,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-12-05,0.19605,0.20000,agree
+HINDUNILVR,2025-12-05,scheme,,Demerger,scheme_market_implied,2025-12-05,0.94980,0.95404,
+BECTORFOOD,2025-12-12,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-12-12,0.20698,0.20000,agree
+VIVIMEDLAB,2025-12-18,none,,,unexplained,,2.71429,,
+LALPATHLAB,2025-12-19,bonus,0.50000,Bonus 1:1,applied,2025-12-19,0.49814,0.50000,agree
+NUVAMA,2025-12-26,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2025-12-26,0.19613,0.20000,agree
+MCX,2026-01-02,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2026-01-02,0.20166,0.20000,agree
+AJMERA,2026-01-14,split,0.20000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share,applied,2026-01-14,0.20334,0.20000,agree
+KOTAKBANK,2026-01-14,split,0.20000,Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share,applied,2026-01-14,0.19741,0.20000,agree
+GENUSPOWER,2026-02-06,scheme,,Demerger,scheme_market_implied,2026-02-06,1.03348,1.03761,
+ANGELONE,2026-02-26,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2026-02-26,0.09900,0.10000,agree
+CUPID,2026-03-09,bonus,0.20000,Bonus 4:1,applied,2026-03-09,0.22775,0.20000,agree
+ECLERX,2026-03-13,bonus,0.50000,Bonus 1:1,applied,2026-03-13,0.50022,0.50000,agree
+METROPOLIS,2026-03-20,bonus,0.25000,Bonus 3:1,applied,2026-03-20,0.24186,0.25000,agree
+V2RETAIL,2026-03-25,split,0.10000,Face Value Split (Sub-Division) - From Rs 10/- Per Share To Re 1/- Per Share,applied,2026-03-25,0.10186,0.10000,agree
+IRB,2026-03-30,bonus,0.50000,Bonus 1:1,applied,2026-03-30,0.54092,0.50000,agree
+VEDL,2026-04-30,scheme,,Demerger,scheme_market_implied,2026-04-30,0.35102,0.35374,
+LICI,2026-05-29,bonus,0.50000,Bonus 1:1,applied,2026-05-29,0.49560,0.50000,agree
+ANANDRATHI,2026-06-03,bonus,0.50000,Bonus 1:1,applied,2026-06-03,0.50439,0.50000,agree
+TRENT,2026-06-04,bonus,0.66667,Bonus 1:2,applied,2026-06-04,0.66648,0.66667,agree
+CUB,2026-06-12,bonus,0.75000,Bonus 1:3,applied,2026-06-12,0.78544,0.75000,agree
+BRIGADE,2026-06-17,bonus,0.75000,Bonus 1:3,applied,2026-06-17,0.78563,0.75000,agree
+GUJENERGY,2026-07-02,scheme,,Demerger,scheme_market_implied,2026-07-02,0.88250,0.87681,
+TRIVENI,2026-07-22,scheme,,Demerger,scheme_market_implied,2026-07-22,0.58431,0.59127,
+BURNPUR,2026-08-11,none,,,unexplained,,3.23485,,
+TDPOWERSYS,2026-08-24,split,0.50000,Face Value Split (Sub-Division) - From Rs 2/- Per Share To Re 1/- Per Share,applied,2026-08-24,0.50827,0.50000,agree
+INDIAGLYCO,2026-09-02,scheme,,Demerger,scheme_market_implied,2026-09-02,0.21247,0.21366,
+HEGAM,2026-09-07,scheme,,Demerger,scheme_market_implied,2026-09-07,0.37377,0.37541,
+PGIL,2026-09-11,bonus,0.50000,Bonus 1:1,applied,2026-09-11,0.49937,0.50000,agree
