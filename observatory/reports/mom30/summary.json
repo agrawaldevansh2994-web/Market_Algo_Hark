@@ -1,0 +1,55 @@
+{
+  "built": "2026-10-07",
+  "data_end": "2026-10-06",
+  "reviews": 43,
+  "candidates": 1168,
+  "clipped_daily_moves": 73,
+  "audit": {
+    "applied": 760,
+    "scheme_market_implied": 139,
+    "unexplained": 115,
+    "applied_yf": 57,
+    "scheme_no_gap": 17,
+    "no_gap": 4,
+    "applied_loose": 1
+  },
+  "yahoo_check": {
+    "agree": 604,
+    "": 272,
+    "no_record": 114,
+    "yahoo_only": 57,
+    "disagree": 46
+  },
+  "tracking": {
+    "replica_tilt": {
+      "start": "2005-07-01",
+      "end": "2026-10-06",
+      "days": 5247,
+      "cagr_rep": 0.1393215390253819,
+      "cagr_bench": 0.18380158071144614,
+      "gap_pa": -0.04448004168606423,
+      "tracking_error": 0.07166116065819393,
+      "corr": 0.9614083479454412
+    },
+    "replica_ew": {
+      "start": "2005-07-01",
+      "end": "2026-10-06",
+      "days": 5247,
+      "cagr_rep": 0.15204911488515882,
+      "cagr_bench": 0.18380158071144614,
+      "gap_pa": -0.031752465826287324,
+      "tracking_error": 0.07133769569035682,
+      "corr": 0.9577881591377091
+    },
+    "nifty200_vs_mom30": {
+      "start": "2005-07-01",
+      "end": "2026-10-06",
+      "days": 5247,
+      "cagr_rep": 0.13461434723284382,
+      "cagr_bench": 0.18380158071144614,
+      "gap_pa": -0.04918723347860232,
+      "tracking_error": 0.08945886944972384,
+      "corr": 0.9168461409608171
+    }
+  }
+}
