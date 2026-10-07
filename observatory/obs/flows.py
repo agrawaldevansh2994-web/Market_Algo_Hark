@@ -47,6 +47,24 @@ NSE_HOME = "https://www.nseindia.com/"
 NSE_FIIDII = "https://www.nseindia.com/api/fiidiiTradeReact"
 
 
+RETRY_WAITS = (5, 20, 60)  # seconds between attempts; ~1.5 min worst case before MSEI fallback
+
+
+def with_retry(fn, waits=RETRY_WAITS, sleep=_time.sleep):
+    """Call fn(); on any exception wait and try again, up to len(waits) more times.
+
+    The NSE FII/DII endpoint serves only the latest day, so one transient
+    failure (a 401 cookie hiccup, a timeout) used to cost that day's DII figure
+    permanently. Re-raises the last error if every attempt fails."""
+    for wait in (*waits, None):
+        try:
+            return fn()
+        except Exception:
+            if wait is None:
+                raise
+            sleep(wait)
+
+
 def nse_session() -> requests.Session:
     """NSE rejects API calls without the cookies its homepage sets."""
     s = requests.Session()
@@ -114,10 +132,11 @@ def capture_fiidii() -> str:
     """Append the latest trade date to its month file — NSE first, MSEI if NSE
     refuses. The first capture of a date wins."""
     try:
-        df = fetch_nse_fiidii()
+        # fresh session per attempt: a stale or refused cookie is the usual failure
+        df = with_retry(lambda: fetch_nse_fiidii())
     except Exception as nse_exc:
         try:
-            df = fetch_msei_fiidii()
+            df = with_retry(fetch_msei_fiidii, waits=(10,))
         except Exception as msei_exc:
             raise RuntimeError(f"NSE: {nse_exc!r}; MSEI: {msei_exc!r}") from msei_exc
     day, source = df.index[0], df["source"].iloc[0]

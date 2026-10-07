@@ -239,7 +239,9 @@ def page_structure(close, rd, rw, window, p):
 
     st.subheader("D1 · What does Nifty do by India VIX regime?")
     vix = close["indiavix"].dropna()
-    reg = A.regime_labels(vix)
+    expanding = st.toggle("No look-ahead: expanding cut-offs (each day uses only VIX history up to that day)",
+                          value=False, key="regime_expanding")
+    reg = A.regime_labels(vix, expanding=expanding)
     lag = reg.shift(1).reindex(rd.index)
     rows = []
     for lab in ["calm", "elevated", "stress"]:
@@ -250,8 +252,12 @@ def page_structure(close, rd, rw, window, p):
                      "worst day %": r.min() * 100, "best day %": r.max() * 100})
     lo, hi = vix.quantile(0.5), vix.quantile(0.9)
     st.dataframe(pd.DataFrame(rows).set_index("regime (prior close)").round(3), width="stretch")
-    st.caption(f"Calm: India VIX ≤ {lo:.1f} (median). Stress: ≥ {hi:.1f} (top decile). Cut-offs use the whole "
-               "history, so this describes the past; it is not a live signal. Each day is classified by the "
+    cut_text = ("Cut-offs are the median and top decile of VIX history *up to each day* (first year unlabelled), "
+                "so nothing looks ahead. Each day" if expanding else
+                f"Calm: India VIX ≤ {lo:.1f} (median). Stress: ≥ {hi:.1f} (top decile). Cut-offs use the whole "
+                "history, so this describes the past; it is not a live signal. Toggle above for the no-look-ahead "
+                "version. Each day")
+    st.caption(cut_text + " is classified by the "
                "*previous* close. Note the mean-return column: its standard error is larger than the gaps "
                "between regimes — stress differs in variance, not demonstrably in average return.")
 
@@ -268,7 +274,8 @@ def page_structure(close, rd, rw, window, p):
     left.plotly_chart(heat(p, tab_d, 200), theme=None, width="stretch", config={"displayModeBar": False})
 
     cross = ["sp500", "usdinr", "dxy", "brent_usd", "gold_usd", "copper_usd"]
-    reg_w = A.regime_labels(close["indiavix"].dropna().resample("W-FRI").last().dropna())
+    reg_w = A.regime_labels(close["indiavix"].dropna().resample("W-FRI").last().dropna(),
+                            expanding=expanding, min_periods=52)
     out_w = A.corr_by_regime(rw[["nifty50", *cross]], reg_w)
     tab_w = pd.DataFrame({k: v["nifty50"].drop("nifty50") for k, v in out_w.items()})
     tab_w.index = [NAMES[i] for i in tab_w.index]
@@ -310,7 +317,7 @@ def page_flows(close, rd, rw, flows, window, p, raw):
     fig.add_trace(go.Bar(x=ll.index, y=ll["corr"], name="correlation", marker_color=color(p, "nifty50"),
                          width=0.45, hovertemplate="lag %{x}: %{y:.3f}<extra></extra>"))
     for sign, show_leg in ((1, True), (-1, False)):
-        fig.add_trace(go.Scatter(x=ll.index, y=sign * ll["band"], mode="lines", name="±1.96/√n noise band",
+        fig.add_trace(go.Scatter(x=ll.index, y=sign * ll["band_hac"], mode="lines", name="±1.96 HAC noise band",
                                  showlegend=show_leg, line=dict(color=p["muted"], width=1),
                                  hovertemplate="band: %{y:.3f}<extra></extra>"))
     fig.update_xaxes(dtick=1, title=dict(text="lag k  ·  k > 0: flow leads Nifty  |  k < 0: flow follows Nifty",
@@ -320,8 +327,10 @@ def page_flows(close, rd, rw, flows, window, p, raw):
     show(fig)
     st.caption(f"{freq} bars, {int(ll['n'].iloc[0]):,} observations. The peak at k = 0 and the decay toward k < 0 "
                "mean flows move with the market and follow its recent direction. Bars at k > 0 would "
-               "indicate flows *leading* — they sit at about the noise band. NSDL data, Dec 2009 onward. "
-               "Several lags are inspected, so a bar only just outside the band is not evidence.")
+               "indicate flows *leading* — they stay inside the noise band. The band is Newey-West (HAC): robust to "
+               "fat-tailed returns and persistent flows; the naive ±1.96/√n band is too narrow here (it is in the "
+               "table as `band`). NSDL data, Dec 2009 onward. Several lags are inspected, so a bar only just "
+               "outside the band is still not evidence.")
     table_twin(ll.round(4))
 
     st.subheader("E3 · Who holds index futures? Participant net positions")

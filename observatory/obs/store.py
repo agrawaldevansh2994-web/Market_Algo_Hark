@@ -44,8 +44,19 @@ def latest_snapshot(key: str) -> str | None:
     return stamps[-1] if stamps else None
 
 
+def snapshot_on_or_before(key: str, snapshot: str) -> str | None:
+    """Latest snapshot of `key` dated on or before `snapshot` — the vintage that
+    existed then. Instruments are not all re-pulled on the same day."""
+    folder = RAW / key
+    if not folder.exists():
+        return None
+    stamps = sorted(p.stem for p in folder.glob("*.parquet") if p.stem <= snapshot)
+    return stamps[-1] if stamps else None
+
+
 def read_raw(key: str, snapshot: str | None = None) -> pd.DataFrame:
-    snapshot = snapshot or latest_snapshot(key)
+    """One pull. With `snapshot`, the vintage on or before that date (not only an exact match)."""
+    snapshot = snapshot_on_or_before(key, snapshot) if snapshot else latest_snapshot(key)
     if snapshot is None:
         raise FileNotFoundError(f"no raw snapshots for {key!r} — run build.py first")
     return pd.read_parquet(raw_path(key, snapshot))

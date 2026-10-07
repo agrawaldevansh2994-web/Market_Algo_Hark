@@ -227,3 +227,13 @@ Harness shakedown, pre-registered, 10 trials logged, holdout from 2024-10-01 sea
 
 **What it says.** Every SMA length from 50 to 250 lands at Sharpe 0.63–0.75, around buy & hold's 0.72: the family reliably cuts volatility and gives up return, and the *choice* of length is noise (PBO 94%). Trend sat in cash through the 2008 crash tail and lost a third as much in the COVID crash (−21% vs −52% annualised over Feb–May 2020), but lagged badly in 2009–2013 whipsaws. Turning a long-term hold into sub-year holdings also converts LTCG (12.5%) into STCG (20%): after the approximate tax model, Sharpe falls to 0.64. **Not a strategy.** A volatility-targeted buy & hold is the honest comparator if this is ever revisited.
 
+### 2026-10-07 — Re-check of E1, D1 and D3 with honest yardsticks (data through 2026-09-28)
+
+Two fixes to `obs/analysis.py`, then the original questions re-run. Nothing new was searched for; this only re-reads earlier answers.
+
+**E1 — the conclusion holds, for the right reason now.** The old ±1.96/√n band assumed thin-tailed, independent data; daily FPI flow has lag-1 autocorrelation 0.43 and Nifty returns have fat tails. With a Newey-West (HAC) band: daily k=+1 corr +0.041, naive band ±0.032 (looked significant), **HAC t 1.68** (band ±0.048) — not significant, and 22 lags were inspected besides. Weekly k=+1 +0.003, t 0.08. The contemporaneous and flow-follows-returns lags stay strongly significant (daily k=0 t 12.2, k=−1 t 8.4).
+
+**D1 — holds without look-ahead.** With expanding cut-offs (each day's median / top-decile VIX from history up to that day only): Nifty vol calm 13.9%, elevated 24.0%, stress 57.4%; means still indistinguishable. But only **45 stress days** qualify, because the 2008 VIX spike sets the top-decile bar high for years afterwards. Stress-regime numbers rest on very few days either way.
+
+**D3 — direction holds; the gold answer to G1 does not.** Expanding cut-offs leave too few stress observations (< 60 days daily, 10 weeks weekly) to estimate stress correlations at all, so compare calm → elevated: Bank 0.87 → 0.89, IT 0.53 → 0.66, S&P 500 0.47 → 0.56, USD/INR −0.47 → −0.52, **Gold 0.08 → 0.23**. Correlations still rise with stress, but gold's rise is now the *largest* of the cross-asset set, not the smallest. "Gold is the least stress-sensitive" depended on in-sample cut-offs; treat G1 as **open**.
+

@@ -191,3 +191,45 @@ def test_nsdl_shift_drops_rows_before_first_trading_day():
     flow = pd.Series([1.0, 2.0], index=pd.to_datetime(["2026-09-29", "2026-09-30"]))
     out = A.nsdl_to_trade_date(flow, trading)
     assert out.index.tolist() == [pd.Timestamp("2026-09-29")] and out.tolist() == [2.0]
+
+
+def test_lead_lag_hac_band_matches_naive_on_white_noise():
+    rng = np.random.default_rng(11)
+    ll = A.lead_lag(series(rng.normal(size=5000)), series(rng.normal(size=5000)), [0, 1])
+    for k in (0, 1):
+        assert ll.loc[k, "band_hac"] == pytest.approx(ll.loc[k, "band"], rel=0.15)
+
+
+def test_lead_lag_hac_band_widens_under_heteroskedasticity():
+    """Volatility clustering in both series: the naive band is too narrow, HAC is not."""
+    rng = np.random.default_rng(12)
+    n = 5000
+    vol = np.exp(np.cumsum(rng.normal(0, 0.1, n)) * 0.3)     # persistent common volatility
+    x = series(rng.normal(size=n) * vol)
+    y = series(rng.normal(size=n) * vol)
+    ll = A.lead_lag(x, y, [1])
+    assert ll.loc[1, "band_hac"] > 1.3 * ll.loc[1, "band"]
+
+
+def test_lead_lag_hac_rejection_rate_is_honest():
+    """Under no relationship with fat, clustered tails, |t_hac| > 1.96 about 5% of the time."""
+    rng = np.random.default_rng(13)
+    hits = []
+    for _ in range(200):
+        n = 1000
+        vol = np.exp(np.cumsum(rng.normal(0, 0.1, n)) * 0.3)
+        x = series(rng.standard_t(4, n) * vol)
+        y = series(rng.standard_t(4, n) * vol)
+        hits.append(abs(A.lead_lag(x, y, [1]).loc[1, "t_hac"]) > 1.96)
+    assert np.mean(hits) < 0.11
+
+
+def test_regime_labels_expanding_never_looks_ahead():
+    rng = np.random.default_rng(14)
+    lv = series(np.abs(rng.normal(15, 5, 1500)))
+    a = A.regime_labels(lv, expanding=True, min_periods=252)
+    lv2 = lv.copy()
+    lv2.iloc[1000:] = 80.0                                  # a future regime shift
+    b = A.regime_labels(lv2, expanding=True, min_periods=252)
+    pd.testing.assert_series_equal(a.iloc[: 1000 - 252], b.iloc[: 1000 - 252])
+    assert a.index[0] == lv.index[251]                      # first year unlabelled

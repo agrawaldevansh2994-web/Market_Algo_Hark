@@ -105,30 +105,74 @@ def rolling_corr(a: pd.Series, b: pd.Series, window: int = 60) -> pd.Series:
     return x["a"].rolling(window, min_periods=window).corr(x["b"])
 
 
+def _newey_west_se(x: np.ndarray, y: np.ndarray, maxlags: int | None = None) -> float:
+    """HAC (Newey-West, Bartlett kernel) standard error of the slope of y on x.
+
+    Both inputs are standardised first, so the slope is (almost exactly) the
+    correlation and its standard error is directly comparable to 1/√n. Robust
+    to heteroskedasticity (fat-tailed returns) and to autocorrelation in the
+    product x·e (persistent flows). maxlags defaults to the usual
+    floor(4·(n/100)^(2/9)) rule."""
+    n = len(x)
+    x = (x - x.mean()) / x.std()
+    y = (y - y.mean()) / y.std()
+    beta = (x @ y) / (x @ x)
+    u = x * (y - beta * x)
+    L = maxlags if maxlags is not None else int(np.floor(4 * (n / 100) ** (2 / 9)))
+    s = u @ u
+    for lag in range(1, min(L, n - 1) + 1):
+        s += 2 * (1 - lag / (L + 1)) * (u[lag:] @ u[:-lag])
+    return float(np.sqrt(max(s, 0.0)) / (x @ x))
+
+
 def lead_lag(x: pd.Series, y: pd.Series, lags=range(-5, 6)) -> pd.DataFrame:
     """corr(x_t, y_{t+k}) for each lag k, on the pairwise-intersected sample.
 
     k > 0: x leads y by k observations. k < 0: x lags y. k = 0 is the
-    contemporaneous correlation. `band` is the rough ±1.96/√n noise band under no
-    relationship — a guard against reading structure into small wiggles."""
+    contemporaneous correlation.
+
+    Two noise bands are returned:
+      band      ±1.96/√n — valid only for thin-tailed, serially independent
+                data. Kept for reference; too narrow for daily returns and flows.
+      band_hac  ±1.96 × Newey-West standard error. The one to read. t_hac is
+                corr / HAC s.e. (2026-10-07: daily FPI flow at k=+1 sits outside
+                `band` but has t_hac 1.88 — inside band_hac.)
+    Several lags are inspected, so even band_hac is a per-lag yardstick, not a
+    multiple-testing correction."""
     df = pd.concat({"x": x, "y": y}, axis=1, join="inner").dropna()
     rows = []
     for k in lags:
         m = pd.concat([df["x"], df["y"].shift(-k)], axis=1).dropna()
         n = len(m)
-        rows.append({"lag": k, "corr": m.iloc[:, 0].corr(m.iloc[:, 1]) if n > 2 else np.nan,
-                     "n": n, "band": 1.96 / np.sqrt(n) if n > 0 else np.nan})
+        if n > 2:
+            c = m.iloc[:, 0].corr(m.iloc[:, 1])
+            se = _newey_west_se(m.iloc[:, 0].to_numpy(float), m.iloc[:, 1].to_numpy(float))
+        else:
+            c, se = np.nan, np.nan
+        rows.append({"lag": k, "corr": c, "n": n,
+                     "band": 1.96 / np.sqrt(n) if n > 0 else np.nan,
+                     "band_hac": 1.96 * se, "t_hac": c / se if se and se > 0 else np.nan})
     return pd.DataFrame(rows).set_index("lag")
 
 
-def regime_labels(level: pd.Series, calm_q: float = 0.5, stress_q: float = 0.9) -> pd.Series:
+def regime_labels(level: pd.Series, calm_q: float = 0.5, stress_q: float = 0.9,
+                  expanding: bool = False, min_periods: int = 252) -> pd.Series:
     """Label each date calm / elevated / stress from the series' own quantiles.
 
-    IN-SAMPLE description: the quantile cut-offs use the whole history, so this
-    is for studying the past, not for a live signal (use trailing_percentile
-    for that). Returns an ordered categorical."""
+    expanding=False (default): IN-SAMPLE description — cut-offs use the whole
+    history, including the future. Fine for studying the past, never a signal.
+    expanding=True: each date's cut-offs use only observations up to and
+    including that date (after `min_periods`; earlier dates are left
+    unlabelled). This is the version any rule that trades must use.
+    Returns an ordered categorical."""
     lv = level.dropna()
-    lo, hi = lv.quantile(calm_q), lv.quantile(stress_q)
+    if expanding:
+        lo = lv.expanding(min_periods).quantile(calm_q)
+        hi = lv.expanding(min_periods).quantile(stress_q)
+        ok = lo.notna()
+        lv, lo, hi = lv[ok], lo[ok], hi[ok]
+    else:
+        lo, hi = lv.quantile(calm_q), lv.quantile(stress_q)
     lab = pd.Series(np.where(lv >= hi, "stress", np.where(lv <= lo, "calm", "elevated")), index=lv.index)
     return pd.Series(pd.Categorical(lab, categories=["calm", "elevated", "stress"], ordered=True),
                      index=lv.index, name="regime")
