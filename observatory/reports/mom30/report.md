@@ -71,3 +71,58 @@ demerger ex-dates either (Reliance → Jio Financial, 2023-07-20).
 3. **Weights (B)** — equal weight beats the tilt in most years, so the turnover-for-ffmcap proxy itself
    costs ~1.3 pts/yr overall (equal weight: −3.2 vs tilt −4.4).
 4. **2005–2008 data thinness** — F&O list of 122 stocks at the first review vs ~210 now.
+
+---
+
+# Step 5b — gap decomposition (2026-10-09)
+
+Script: `decompose_gap.py` → `decomposition.csv`, `held_jumps.csv`, `dividends_by_year.csv`.
+Each experiment changes one approximation. Gap = replica − published TRI, % points a year.
+
+## Framing that changes the reading
+
+The index **launched 2020-08-25** (base 2005-04-01). Every TRI value before launch is NSE's own
+back-calculation, made with point-in-time Nifty 200 lists and free-float mcaps we cannot see. So the
+live period is the cleanest test, and a pre-launch gap can be our proxies *or* choices in that
+back-calculation. This script can only measure the first kind.
+
+## Result: new default universe = estimated market cap
+
+`obs/size.py`: mcap ≈ 6-month average split-adjusted price × today's share count (Yahoo, 890 of 1,168
+candidates). It is exact if the share count changed only through splits/bonuses; later issuance or
+buybacks make it wrong (ESTIMATE). Names that no longer trade (278) get a turnover-imputed value;
+they are up to ~25% of the 2007 top 200 and ~0 after 2019.
+
+| Check | Turnover proxy (first pass) | Estimated mcap (new) |
+|---|---|---|
+| Proxy vs actual Nifty 200, Oct 2026 | 154 / 200 | **176 / 200** |
+| June 2026 picks vs actual Momentum 30 | 28 / 30 | 28 / 30 |
+| Live since launch: gap, TE, corr | +2.8, 3.8%, 0.985 | **+0.4, 2.5%, 0.992** |
+| 2018–2026 gap | +1.6 | −0.4 |
+| 2013–2017 gap | −6.9 | −7.8 |
+| 2005–2012 gap | −9.9 | −7.7 |
+
+## What the experiments say about pre-2018
+
+1. **Not the momentum rules, mostly.** A plain size-weighted top-200 of our own (no momentum logic)
+   trails the Nifty 200 TRI by 3.6–4.0 pts/yr before 2018 and by 0.4 since launch. So roughly half
+   of the momentum replica's pre-2018 gap is already present before any scoring: universe/size proxy
+   and price data, not selection.
+2. **Price jumps in held stocks are not the cause.** 55 held days moved more than ±20% before 2018;
+   net contribution +1.1% of portfolio value in total. One real error: IVRCL's 1:5 split
+   (2006-03-29) is unadjusted and costs about 4% once. Most others are real market-wide crash days
+   (21–22 Jan 2008).
+3. **Dividends are under-recorded in 2005–2008.** The replica captured 0.1–0.7% a year then vs
+   1.0–2.4% from 2009. Missing NSE dividend records cost roughly 1 pt/yr in those four years.
+4. **Timing is second-order.** Shifting the effective date ±5–10 sessions moves the gap by 1–2 pts.
+5. **F&O filter is kept.** Switching it off narrows the pre-2018 gap by ~1 pt but triples TE since
+   2018; the methodology had it at launch.
+6. **The year pattern points at composition.** 2005–2012's gap is mostly 2007–2008 (Oct 2007 −10 pts,
+   Sep–Dec 2008 swings); 2014 bleeds 1–4 pts every month. Steady monthly drift is what a different
+   set of holdings looks like, not data glitches.
+
+## Remaining open
+
+- The residual momentum-specific gap before 2018 (~4 pts/yr) needs real Nifty 200 lists for
+  2005–2017 to settle. The Internet Archive was offline on 2026-10-09; retry the Wayback anchors.
+- Fix IVRCL 2006 manually and add a dividend second source for 2005–2008 (small, ~1 pt/yr there).
