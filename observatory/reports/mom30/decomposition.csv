@@ -1,0 +1,41 @@
+experiment,era,replica_cagr,index_cagr,gap_pa,tracking_error,corr,note
+A/B. turnover universe + turnover weights (first pass),2005–2012,0.0848,0.1839,-0.0992,0.1026,0.9532,top 200 by 6-month turnover; weight = turnover × score
+A/B. turnover universe + turnover weights (first pass),2013–2017,0.1952,0.2647,-0.0695,0.0599,0.9475,top 200 by 6-month turnover; weight = turnover × score
+A/B. turnover universe + turnover weights (first pass),2018–2026,0.1562,0.1399,0.0163,0.0372,0.9854,top 200 by 6-month turnover; weight = turnover × score
+A/B. turnover universe + turnover weights (first pass),live (since launch),0.2011,0.1730,0.0281,0.0380,0.9850,top 200 by 6-month turnover; weight = turnover × score
+"B. turnover universe, equal weight",2005–2012,0.1024,0.1839,-0.0815,0.0995,0.9496,
+"B. turnover universe, equal weight",2013–2017,0.2192,0.2647,-0.0456,0.0630,0.9400,
+"B. turnover universe, equal weight",2018–2026,0.1584,0.1399,0.0185,0.0400,0.9818,
+"B. turnover universe, equal weight",live (since launch),0.2089,0.1730,0.0359,0.0385,0.9826,
+A/B. estimated-mcap universe + mcap weights (new default),2005–2012,0.1065,0.1839,-0.0775,0.0889,0.9583,mcap ≈ adjusted price × today's shares; turnover-imputed for delisted names
+A/B. estimated-mcap universe + mcap weights (new default),2013–2017,0.1868,0.2647,-0.0779,0.0553,0.9485,mcap ≈ adjusted price × today's shares; turnover-imputed for delisted names
+A/B. estimated-mcap universe + mcap weights (new default),2018–2026,0.1354,0.1399,-0.0045,0.0263,0.9913,mcap ≈ adjusted price × today's shares; turnover-imputed for delisted names
+A/B. estimated-mcap universe + mcap weights (new default),live (since launch),0.1773,0.1730,0.0043,0.0250,0.9916,mcap ≈ adjusted price × today's shares; turnover-imputed for delisted names
+"B. estimated-mcap universe, equal weight",2005–2012,0.1365,0.1839,-0.0474,0.0869,0.9566,
+"B. estimated-mcap universe, equal weight",2013–2017,0.2126,0.2647,-0.0522,0.0562,0.9476,
+"B. estimated-mcap universe, equal weight",2018–2026,0.1451,0.1399,0.0052,0.0342,0.9855,
+"B. estimated-mcap universe, equal weight",live (since launch),0.2046,0.1730,0.0316,0.0310,0.9872,
+C. effective date -10 sessions,2005–2012,0.1310,0.1839,-0.0529,0.0890,0.9574,
+C. effective date -10 sessions,2013–2017,0.1876,0.2647,-0.0772,0.0559,0.9483,
+C. effective date -10 sessions,2018–2026,0.1556,0.1399,0.0157,0.0336,0.9858,
+C. effective date -10 sessions,live (since launch),0.2100,0.1730,0.0370,0.0343,0.9842,
+C. effective date -5 sessions,2005–2012,0.1203,0.1839,-0.0637,0.0896,0.9575,
+C. effective date -5 sessions,2013–2017,0.1848,0.2647,-0.0800,0.0558,0.9482,
+C. effective date -5 sessions,2018–2026,0.1514,0.1399,0.0115,0.0310,0.9879,
+C. effective date -5 sessions,live (since launch),0.1977,0.1730,0.0247,0.0317,0.9865,
+C. effective date +5 sessions,2005–2012,0.1178,0.1838,-0.0660,0.0910,0.9571,
+C. effective date +5 sessions,2013–2017,0.1827,0.2647,-0.0820,0.0557,0.9476,
+C. effective date +5 sessions,2018–2026,0.1457,0.1399,0.0058,0.0303,0.9884,
+C. effective date +5 sessions,live (since launch),0.1922,0.1730,0.0192,0.0301,0.9878,
+F&O eligibility filter switched off,2005–2012,0.1235,0.1839,-0.0605,0.1023,0.9376,
+F&O eligibility filter switched off,2013–2017,0.1989,0.2647,-0.0658,0.0744,0.9027,
+F&O eligibility filter switched off,2018–2026,0.1501,0.1399,0.0102,0.0660,0.9481,
+F&O eligibility filter switched off,live (since launch),0.2096,0.1730,0.0366,0.0657,0.9460,
+"Universe only: turnover top 200, size-weighted, vs NIFTY 200 TRI",2005–2012,0.1005,0.1414,-0.0409,0.0787,0.9821,benchmark here is the Nifty 200 TRI
+"Universe only: turnover top 200, size-weighted, vs NIFTY 200 TRI",2013–2017,0.1442,0.1557,-0.0115,0.0565,0.9656,benchmark here is the Nifty 200 TRI
+"Universe only: turnover top 200, size-weighted, vs NIFTY 200 TRI",2018–2026,0.0886,0.1170,-0.0284,0.0661,0.9477,benchmark here is the Nifty 200 TRI
+"Universe only: turnover top 200, size-weighted, vs NIFTY 200 TRI",live (since launch),0.1923,0.1559,0.0364,0.0576,0.9570,benchmark here is the Nifty 200 TRI
+"Universe only: estimated mcap top 200, size-weighted, vs NIFTY 200 TRI",2005–2012,0.1055,0.1414,-0.0359,0.0701,0.9753,benchmark here is the Nifty 200 TRI
+"Universe only: estimated mcap top 200, size-weighted, vs NIFTY 200 TRI",2013–2017,0.1156,0.1557,-0.0401,0.0589,0.9360,benchmark here is the Nifty 200 TRI
+"Universe only: estimated mcap top 200, size-weighted, vs NIFTY 200 TRI",2018–2026,0.0802,0.1170,-0.0369,0.0354,0.9781,benchmark here is the Nifty 200 TRI
+"Universe only: estimated mcap top 200, size-weighted, vs NIFTY 200 TRI",live (since launch),0.1603,0.1559,0.0044,0.0225,0.9883,benchmark here is the Nifty 200 TRI
