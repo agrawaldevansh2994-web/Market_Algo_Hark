@@ -437,7 +437,9 @@ def load_mom(_stamp):
            "by_year": pd.read_csv(MOM / "by_year.csv"),
            "anchors": pd.read_csv(MOM / "anchors.csv") if (MOM / "anchors.csv").exists() else pd.DataFrame(),
            "turnover": pd.read_csv(MOM / "turnover.csv"),
-           "summary": __import__("json").loads((MOM / "summary.json").read_text())}
+           "summary": __import__("json").loads((MOM / "summary.json").read_text()),
+           "decomp": pd.read_csv(MOM / "decomposition.csv") if (MOM / "decomposition.csv").exists() else None,
+           "jumps": pd.read_csv(MOM / "held_jumps.csv") if (MOM / "held_jumps.csv").exists() else None}
     audit_p = HERE / "reports" / "corpactions" / "audit.csv"
     out["audit"] = pd.read_csv(audit_p, parse_dates=["ex_date", "applied_date"]) if audit_p.exists() else None
     return out
@@ -455,13 +457,19 @@ def page_mom30(window, p):
                "methodology is NSE's (Sept 2026 document, pp. 187–189); what free data forces us to approximate is "
                "listed at the bottom. Success means an explained gap, not a zero one.")
     k = st.columns(5)
-    k[0].metric("Replica CAGR", f"{tt['cagr_rep']:.1%}", help="Score × liquidity weights, total return, gross of costs")
+    k[0].metric("Replica CAGR", f"{tt['cagr_rep']:.1%}", help="Estimated market cap × score weights, total return, gross of costs")
     k[1].metric("Index TRI CAGR", f"{tt['cagr_bench']:.1%}")
     k[2].metric("Gap per year", f"{tt['gap_pa']:+.1%}", help="Replica minus index, annualised")
     k[3].metric("Tracking error", f"{tt['tracking_error']:.1%}", help="Annualised std. dev. of daily return differences")
     k[4].metric("Daily correlation", f"{tt['corr']:.3f}")
     st.caption(f"{tt['start']} → {tt['end']}, {summ['reviews']} semi-annual reviews. Equal-weight replica: "
                f"CAGR {te['cagr_rep']:.1%}, tracking error {te['tracking_error']:.1%}.")
+    lv = summ["tracking"].get("live_replica_tilt")
+    if lv:
+        st.info(f"**Since the index went live ({summ['live_from']})** the replica returned {lv['cagr_rep']:.1%} a year "
+                f"against {lv['cagr_bench']:.1%} — a gap of {lv['gap_pa']:+.1%}, tracking error "
+                f"{lv['tracking_error']:.1%}, correlation {lv['corr']:.3f}. Everything before that date is NSE's own "
+                "back-calculation, built with membership and free-float data we cannot see.")
 
     dd = clip(d, window)
     growth = (1 + dd).cumprod()
@@ -490,23 +498,44 @@ def page_mom30(window, p):
 
     from obs.momentum import tracking_stats
     eras = []
-    for a_, b_ in [("2005", "2012"), ("2013", "2017"), ("2018", str(d.index[-1].year))]:
+    for a_, b_, lab in [("2005", "2012", "2005–2012"), ("2013", "2017", "2013–2017"),
+                        ("2018", str(d.index[-1].year), f"2018–{d.index[-1].year}"),
+                        (summ.get("live_from", "2020-08-25"), str(d.index[-1].date()), "live (since launch)")]:
         g = d.loc[a_:b_]
         t_ = tracking_stats(g["replica_tilt"], g["nifty200mom30_tri"])
-        eras.append({"era": f"{a_}–{b_}", "replica CAGR %": round(t_["cagr_rep"] * 100, 1),
+        eras.append({"era": lab, "replica CAGR %": round(t_["cagr_rep"] * 100, 1),
                      "index CAGR %": round(t_["cagr_bench"] * 100, 1), "gap pts/yr": round(t_["gap_pa"] * 100, 1),
                      "tracking error %": round(t_["tracking_error"] * 100, 1), "correlation": round(t_["corr"], 3)})
     st.dataframe(pd.DataFrame(eras).set_index("era"), width="stretch")
     unx = m["audit"][m["audit"]["status"] == "unexplained"] if m["audit"] is not None else pd.DataFrame(columns=["ex_date"])
     n_unx, n_old = len(unx), int((unx["ex_date"].dt.year <= 2012).sum()) if len(unx) else 0
-    st.caption("The gap is concentrated before 2018. That is where NSE's corporate-action feed leaves the most "
-               f"price gaps unexplained ({n_old} of {n_unx} fall in 2004–2012) and where the turnover proxy for "
-               "Nifty 200 has no anchor to check it against.")
+    st.caption("The gap sits before 2018, and most of 2005–2012's comes from 2007–2008. The decomposition below "
+               "tests each suspect on its own.")
+
+    dc = m.get("decomp")
+    if dc is not None:
+        st.subheader("Decomposing the gap — one approximation changed at a time")
+        piv = dc.assign(gap=(dc["gap_pa"] * 100).round(1)).pivot_table(index="experiment", columns="era",
+                                                                       values="gap", sort=False)
+        st.dataframe(piv, width="stretch")
+        te_piv = dc.assign(te=(dc["tracking_error"] * 100).round(1)).pivot_table(index="experiment", columns="era",
+                                                                                 values="te", sort=False)
+        table_twin(te_piv, "Tracking error by era, %")
+        st.caption("Gap = replica minus index, % points a year. **Universe only** rows compare a size-weighted "
+                   "proxy-200 with the Nifty 200 TRI, so they test the universe and the price data without any "
+                   "momentum logic.")
+        j = m.get("jumps")
+        if j is not None and len(j):
+            jj = j[pd.to_datetime(j["date"]).dt.year < 2018]
+            st.caption(f"Held stocks' single-day moves beyond ±20% before 2018: {len(jj)} days, net contribution "
+                       f"{jj['contribution'].sum():+.1%} of portfolio value; {int(jj['unexplained_gap'].sum())} are "
+                       "unexplained price gaps. Most fall on market-wide crash days (Jan 2008).")
+            table_twin(jj.sort_values("contribution").head(25), "Largest held-stock jumps before 2018")
 
     st.subheader("Validation anchors — the real lists on file")
     if len(m["anchors"]):
         st.dataframe(m["anchors"], width="stretch", hide_index=True)
-        st.caption("The first row tests the whole pipeline; the second tests only the universe proxy; the third "
+        st.caption("The first row tests the whole pipeline; the next two test only the universe proxy (new, then first pass); the last "
                    "scores the *real* Nifty 200 with our code, so its overlap isolates the scoring from the "
                    "universe approximation. More anchors arrive as the forward capture records each review.")
 
@@ -547,9 +576,11 @@ def page_mom30(window, p):
 
     with st.expander("What free data forces us to approximate"):
         st.markdown(
-            "- **A. Universe** — Nifty 200 membership history is not free. Proxy: top 200 by 6-month average "
-            "daily turnover (point-in-time by construction). NSE ranks by market cap.\n"
-            "- **B. Weights** — free-float market cap history is not free. Proxy: 6-month average turnover × "
+            "- **A. Universe** — Nifty 200 membership history is not free. Proxy: top 200 by *estimated* market "
+            "cap = 6-month average split-adjusted price × today's share count (Yahoo). Later share issuance or "
+            "buybacks make it wrong; stocks that no longer trade get a turnover-imputed value. The first pass "
+            "used 6-month turnover instead.\n"
+            "- **B. Weights** — free-float market cap history is not free. Proxy: estimated full market cap × "
             "score, capped at min(5%, 5× base weight). Equal weight shown alongside.\n"
             "- **C. Timing** — portfolio changes at the close of the last trading day of June/December; NSE's "
             "effective date is usually a few sessions earlier.\n"

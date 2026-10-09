@@ -21,6 +21,7 @@ import requests
 from obs import bhavcopy as B
 from obs import corpactions as CA
 from obs import momentum as M
+from obs import size as S
 from obs.flows import UA
 from obs.store import DATA_ROOT, RAW
 from obs.textstore import read_split, write_split
@@ -97,7 +98,8 @@ def actual_list(key: str) -> tuple[set[str], str] | tuple[None, None]:
 
 # ------------------------------------------------------------------ main
 
-def main() -> int:
+def prepare(write_audit: bool = True) -> dict:
+    """Everything up to the reviews: price panel, audit, adjusted prices, total returns."""
     OUT.mkdir(parents=True, exist_ok=True)
     OUT_CA.mkdir(parents=True, exist_ok=True)
     if not (DATA_ROOT / "corpactions" / "nse_actions").exists():
@@ -134,7 +136,8 @@ def main() -> int:
     ask = sorted(set(aud.loc[aud["status"].str.startswith(("applied", "unexplained")), "cid"]))
     aud = CA.second_source(aud, close, CA.fetch_yf_splits(ask, log=log))
     log("yahoo cross-check: " + json.dumps(aud["yf_check"].value_counts().to_dict()))
-    aud.to_csv(OUT_CA / "audit.csv", index=False, date_format="%Y-%m-%d", float_format="%.5f")
+    if write_audit:
+        aud.to_csv(OUT_CA / "audit.csv", index=False, date_format="%Y-%m-%d", float_format="%.5f")
     log("audit: " + json.dumps(aud["status"].value_counts().to_dict()))
     fac = CA.adjustment_factors(close, aud)
     adj = close * fac
@@ -155,20 +158,33 @@ def main() -> int:
 
     fo = fo_lists(list(sched["cutoff"]))
 
+    return dict(dates=dates, sched=sched, adv6=adv6, cand=cand, first_seen=first_seen, last_seen=last_seen,
+                close=close, adj=adj, fac=fac, div=div, tr=tr, wild=int(wild), fo=fo, changes=changes,
+                aud=aud, acts=acts)
+
+
+def run_reviews(ctx: dict, universe=None, size=None) -> tuple[pd.DataFrame, dict, dict]:
+    """Selections and target weights at every review. `universe(r, ctx)` may
+    return the candidate list for a review (default: turnover top 200);
+    `size(r, ctx, chosen)` the weight-size series (default: 6-month turnover)."""
+    sched, adv6, cand, fo, changes = ctx["sched"], ctx["adv6"], ctx["cand"], ctx["fo"], ctx["changes"]
+    first_seen, last_seen, adj = ctx["first_seen"], ctx["last_seen"], ctx["adj"]
+
     # reviews
     sel_rows, w_tilt, w_ew, prev = [], {}, {}, None
     for r in sched.itertuples(index=False):
         a6 = adv6.loc[r.cutoff, cand].dropna()
         traded = last_seen[a6.index] >= r.cutoff - pd.Timedelta(days=10)
         proxy200 = a6[traded].nlargest(PROXY_N)
-        listed = first_seen[proxy200.index] <= r.cutoff - pd.Timedelta(days=365)
+        members = list(proxy200.index) if universe is None else [c for c in universe(r, ctx) if c in adj.columns]
         fo_c = to_cid(fo.get(r.cutoff, set()), r.cutoff, changes)
-        elig = [c for c in proxy200.index if listed[c] and c in fo_c]
+        elig = [c for c in members if first_seen.get(c, r.cutoff) <= r.cutoff - pd.Timedelta(days=365)
+                and c in fo_c]
         sc = M.momentum_scores(adj, r.cutoff, r.p7, r.p13, elig)
         chosen = M.select(sc, prev)
         prev = chosen
-        size = proxy200[chosen].astype(float)
-        wt = M.capped_weights(sc.loc[chosen, "score"], size)
+        sz = a6.reindex(chosen).fillna(a6.median()).astype(float) if size is None else size(r, ctx, chosen)
+        wt = M.capped_weights(sc.loc[chosen, "score"], sz)
         w_tilt[r.effective] = wt
         w_ew[r.effective] = pd.Series(1 / len(chosen), index=chosen)
         for c in chosen:
@@ -177,16 +193,57 @@ def main() -> int:
                              "ret6": sc.loc[c, "ret6"], "ret12": sc.loc[c, "ret12"], "sigma": sc.loc[c, "sigma"],
                              "weight_tilt": wt[c], "weight_ew": 1 / len(chosen),
                              "n_eligible": len(sc)})
-    sel = pd.DataFrame(sel_rows)
+
+    return pd.DataFrame(sel_rows), w_tilt, w_ew
+
+
+LIVE_FROM = "2020-08-25"   # index launch; everything earlier is NSE's back-calculation
+
+
+def mcap_rules(ctx: dict):
+    """Universe and weight-size callables for run_reviews using the estimated
+    market cap (obs.size): 6-month average adjusted price × today's share count,
+    turnover-imputed for stocks that no longer trade."""
+    cand, adj, adv6, last_seen = ctx["cand"], ctx["adj"], ctx["adv6"], ctx["last_seen"]
+    if "shares" not in ctx:
+        ctx["shares"] = S.fetch_shares(cand, log=log).set_index("cid")["shares"]
+    avgpx = adj[cand].rolling(126, min_periods=100).mean()
+    cache = {}
+
+    def at(d):
+        if d not in cache:
+            ok = (last_seen[cand] >= d - pd.Timedelta(days=10)).values
+            cache[d] = S.mcap_estimate(avgpx.loc[d][ok], adv6.loc[d, cand][ok], ctx["shares"])
+        return cache[d]
+
+    def universe(r, _ctx):
+        return list(at(r.cutoff)[0].nlargest(PROXY_N).index)
+
+    def size(r, _ctx, chosen):
+        mc = at(r.cutoff)[0]
+        return mc.reindex(chosen).fillna(mc.median())
+
+    return universe, size, at
+
+
+def main() -> int:
+    ctx = prepare()
+    (dates, sched, adv6, cand, first_seen, last_seen, close, adj, fac, div, tr, wild, fo, changes, aud, acts) = (
+        ctx[k] for k in ("dates", "sched", "adv6", "cand", "first_seen", "last_seen", "close", "adj", "fac",
+                         "div", "tr", "wild", "fo", "changes", "aud", "acts"))
+    uni, size, mcap_at = mcap_rules(ctx)
+    sel, w_tilt, w_ew = run_reviews(ctx, universe=uni, size=size)
+    _, w_turn, _ = run_reviews(ctx)          # the first-pass turnover proxy, kept for comparison
 
     rep_tilt = M.drifting_portfolio(tr, w_tilt)
     rep_ew = M.drifting_portfolio(tr, w_ew)
+    rep_turn = M.drifting_portfolio(tr, w_turn)
     tri = pd.read_csv(REF / "nifty200mom30_tri.csv", parse_dates=["date"]).set_index("date")["tri"]
     n200 = pd.read_csv(REF / "nifty200_tri.csv", parse_dates=["date"]).set_index("date")["tri"]
     bench = tri.pct_change().reindex(rep_tilt.index)
     n200r = n200.pct_change().reindex(rep_tilt.index)
-    daily = pd.DataFrame({"replica_tilt": rep_tilt, "replica_ew": rep_ew, "nifty200mom30_tri": bench,
-                          "nifty200_tri": n200r}).dropna()
+    daily = pd.DataFrame({"replica_tilt": rep_tilt, "replica_ew": rep_ew, "replica_turnover": rep_turn,
+                          "nifty200mom30_tri": bench, "nifty200_tri": n200r}).dropna()
     write_split(daily, OUT / "daily_returns", float_format="%.6f")
 
     # turnover between reviews (one-way), from target weights
@@ -206,6 +263,8 @@ def main() -> int:
         ste = M.tracking_stats(g["replica_ew"], g["nifty200mom30_tri"])
         per.append({"year": y, "replica_tilt": (1 + g["replica_tilt"]).prod() - 1,
                     "replica_ew": (1 + g["replica_ew"]).prod() - 1,
+                    "replica_turnover": (1 + g["replica_turnover"]).prod() - 1,
+                    "replica_turnover": (1 + g["replica_turnover"]).prod() - 1,
                     "index_tri": (1 + g["nifty200mom30_tri"]).prod() - 1,
                     "nifty200_tri": (1 + g["nifty200_tri"]).prod() - 1,
                     "te_tilt": st["tracking_error"], "te_ew": ste["tracking_error"]})
@@ -226,7 +285,11 @@ def main() -> int:
         dlast = adv6.index[adv6.index <= snap][-1]
         a6 = adv6.loc[dlast, cand].dropna()
         ours200 = set(a6[last_seen[a6.index] >= dlast - pd.Timedelta(days=10)].nlargest(PROXY_N).index)
-        anchors.append({"check": f"Nifty 200 proxy (turnover top 200 on {dlast.date()}) vs actual list captured {stamp200}",
+        ours_mc = set(mcap_at(dlast)[0].nlargest(PROXY_N).index)
+        anchors.append({"check": f"Nifty 200 proxy (estimated-mcap top 200 on {dlast.date()}) vs actual list captured {stamp200}",
+                        "overlap": len(ours_mc & act200), "of": len(act200),
+                        "ours_only": " ".join(sorted(ours_mc - act200)), "actual_only": " ".join(sorted(act200 - ours_mc))})
+        anchors.append({"check": f"First-pass proxy (turnover top 200 on {dlast.date()}) vs actual list captured {stamp200}",
                         "overlap": len(ours200 & act200), "of": len(act200),
                         "ours_only": " ".join(sorted(ours200 - act200)), "actual_only": " ".join(sorted(act200 - ours200))})
         # isolate the universe approximation: score the REAL Nifty 200 at the last review
@@ -243,10 +306,15 @@ def main() -> int:
     pd.DataFrame(anchors).to_csv(OUT / "anchors.csv", index=False)
     write_split(sel, OUT / "selections", "cutoff", float_format="%.5f")
 
-    overall = {k: M.tracking_stats(daily[k], daily["nifty200mom30_tri"]) for k in ("replica_tilt", "replica_ew")}
+    overall = {k: M.tracking_stats(daily[k], daily["nifty200mom30_tri"])
+               for k in ("replica_tilt", "replica_ew", "replica_turnover")}
+    live = daily.loc[LIVE_FROM:]
+    overall["live_replica_tilt"] = M.tracking_stats(live["replica_tilt"], live["nifty200mom30_tri"])
+    overall["live_replica_turnover"] = M.tracking_stats(live["replica_turnover"], live["nifty200mom30_tri"])
     overall["nifty200_vs_mom30"] = M.tracking_stats(daily["nifty200_tri"], daily["nifty200mom30_tri"])
     summary = {"built": str(pd.Timestamp.today().date()), "data_end": str(dates[-1].date()),
-               "reviews": len(sched), "candidates": len(cand), "clipped_daily_moves": int(wild),
+               "reviews": len(sched), "candidates": len(cand), "live_from": LIVE_FROM,
+               "shares_known": int(ctx["shares"].notna().sum()), "clipped_daily_moves": int(wild),
                "audit": aud["status"].value_counts().to_dict(),
                "yahoo_check": aud["yf_check"].value_counts().to_dict(),
                "tracking": {k: {kk: (str(vv) if kk in ("start", "end") else vv) for kk, vv in v.items()}
