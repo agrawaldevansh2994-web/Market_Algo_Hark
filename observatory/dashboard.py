@@ -592,14 +592,26 @@ def page_mom30(window, p):
 
 # --------------------------------------------------------------------- main
 
+def _raw_fingerprint() -> str:
+    """Names of every committed raw snapshot. New captures add new dated files, so this changes on each sync."""
+    import hashlib
+    names = sorted(str(q.relative_to(RAW)) for q in RAW.rglob("*") if q.is_file())
+    return hashlib.sha1("\n".join(names).encode()).hexdigest()
+
+
 def ensure_curated() -> None:
-    """Hosted deploys (Streamlit Cloud) start without the gitignored data/curated/.
-    Rebuild it once from the committed raw snapshots — no network fetch."""
-    if any(CURATED.glob("*.parquet")):
+    """Hosted deploys (Streamlit Cloud) start without the gitignored data/curated/, and a redeploy after
+    `git pull` keeps the old one. Rebuild from the committed raw snapshots when curated is missing or
+    older than the raw set (fingerprint mismatch). No network fetch."""
+    marker = CURATED / "_raw_fingerprint.txt"
+    fp = _raw_fingerprint()
+    if any(CURATED.glob("*.parquet")) and marker.exists() and marker.read_text().strip() == fp:
         return
     import build
-    with st.spinner("First run on this server: building panels from committed snapshots…"):
+    with st.spinner("New snapshots on this server: rebuilding panels from committed data…"):
         build.main(fetch=False)
+    CURATED.mkdir(parents=True, exist_ok=True)
+    marker.write_text(fp)
 
 
 PAPER = HERE / "paper" / "state"
