@@ -20,3 +20,7 @@ scratchpad/
 
 # --- NSE bhavcopy store: public immutable archive, regenerable with build_bhav.py (~100 MB) ---
 observatory/data/bhav/
+
+# --- Secrets: repo is public ---
+.env
+.env.*
