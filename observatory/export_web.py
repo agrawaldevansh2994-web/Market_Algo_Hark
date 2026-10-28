@@ -27,6 +27,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from paper.view import paper_frame
 
 HERE = Path(__file__).parent
 DEFAULT_OUT = HERE.parent / "web" / "data"
@@ -316,23 +317,45 @@ def export_mom30(D) -> dict | None:
     return out
 
 
+def membership(pos: pd.DataFrame) -> dict | None:
+    """Paper holdings vs the latest official Nifty200 Momentum 30 list (captured snapshots)."""
+    try:
+        from obs import universe as U
+        m, as_of = U.members_at("nifty200_momentum30", pd.Timestamp(datetime.now(IST).date()))
+    except Exception:  # noqa: BLE001: no snapshot yet; the view just omits the check
+        return None
+    off = set(m["symbol"].astype(str).str.strip())
+    held = set(pos.loc[(pos["symbol"] != "CASH") & (pos["shares"] > 0), "symbol"].astype(str))
+    return {"as_of": str(as_of)[:10], "overlap": len(off & held), "of": len(off),
+            "held_not_in_index": sorted(held - off), "in_index_not_held": sorted(off - held)}
+
+
 def export_paper(D) -> dict | None:
     P = D.PAPER
     if not (P / "daily.csv").exists():
         return None
-    d = pd.read_csv(P / "daily.csv", parse_dates=["date"])
+    d = paper_frame(pd.read_csv(P / "daily.csv", parse_dates=["date"]))
     pos = pd.read_csv(P / "positions.csv")
     led = pd.read_csv(P / "ledger.csv")
-    d["Paper book"] = d["nav"] / d["nav"].iloc[0] - 1
-    d["Index (price)"] = d["index_price"] / d["index_price"].iloc[0] - 1
+    t = d.dropna(subset=["Index (TRI)"])
+    tri_ret = t["Index (TRI)"].iloc[-1] if len(t) else None
+    book_at_tri = t["Paper book"].iloc[-1] if len(t) else None
+    dv = led[led["side"].astype(str).str.upper().eq("DIVIDEND")]
+    divs = float((dv["qty"] * dv["price"]).sum())
     return {"nav": _num(d["nav"].iloc[-1], 2),
             "ret": _num(d["Paper book"].iloc[-1], 6), "idx_ret": _num(d["Index (price)"].iloc[-1], 6),
             "diff": _num(d["Paper book"].iloc[-1] - d["Index (price)"].iloc[-1], 6),
+            "tri_ret": _num(tri_ret, 6), "tri_last": d8(t["date"].iloc[-1]) if len(t) else None,
+            "tri_diff": _num(book_at_tri - tri_ret, 6) if len(t) else None,
             "first": d8(d["date"].iloc[0]), "last": d8(d["date"].iloc[-1]),
-            "daily": table_obj(d[["date", "nav", "index_price", "Paper book", "Index (price)"]], 6),
+            "daily": table_obj(d[["date", "nav", "index_tri", "index_price", "Paper book", "Index (TRI)",
+                                  "Index (price)"]] if "index_tri" in d else
+                               d[["date", "nav", "index_price", "Paper book", "Index (price)"]], 6),
             "positions": table_obj(pos, 4), "ledger": table_obj(led, 4),
-            "cost": _num(led["cost"].sum(), 2), "n_holdings": int(((pos["shares"] > 0) & (pos["symbol"] != "CASH")).sum()),
-            "cash": _num(pos.loc[pos["symbol"] == "CASH", "shares"].sum(), 2)}
+            "cost": _num(led["cost"].sum(), 2), "dividends": _num(divs, 2),
+            "n_holdings": int(((pos["shares"] > 0) & (pos["symbol"] != "CASH")).sum()),
+            "cash": _num(pos.loc[pos["symbol"] == "CASH", "shares"].sum(), 2),
+            "membership": membership(pos)}
 
 
 def export_health(D, close, flows, raw, run_checks: bool = True) -> dict:
@@ -407,9 +430,10 @@ def export_meta(D, close, flows, raw, mom, paper) -> dict:
             "descriptive": "Descriptive only — nothing here is a signal, forecast or backtest.",
             "paper": ("PAPER ONLY, with no broker and no real money. ₹10,00,000 notional, bought at the 16 Oct 2026 open "
                       "at the June 2026 review weights (whole shares, 0.1% per side cost, an estimate). The next "
-                      "rebalance is the Dec 2026 review. Benchmark: Nifty200 Momentum 30 price index (not TRI). "
-                      "Dividends and corporate actions on holdings are not yet adjusted."),
-            "benchmark_label": "Nifty200 Momentum 30 price index (not TRI)",
+                      "rebalance is the Dec 2026 review. Benchmark: Nifty200 Momentum 30 Total Return Index (official, "
+                      "niftyindices.com); the price index is shown for context. Dividends are credited gross (pre-TDS) "
+                      "on the ex-date and splits/bonuses adjust share counts; rights and demergers are not adjusted."),
+            "benchmark_label": "Nifty200 Momentum 30 TRI (official, niftyindices.com)",
             "mom30_benchmark": "Nifty200 Momentum 30 TRI (the answer key)",
             "costs": "Costs are estimates (0.1% per side).",
             "mom30_gross": "Replication results are gross of costs, like the TRI.",

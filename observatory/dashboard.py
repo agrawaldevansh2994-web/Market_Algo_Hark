@@ -621,23 +621,29 @@ def page_paper(p):
     st.subheader("Paper book: Momentum 30 replica, traded on paper")
     st.caption("PAPER ONLY, with no broker and no real money. ₹10,00,000 notional, bought at the 16 Oct 2026 open at the "
                "June 2026 review weights (whole shares, 0.1% per side cost, an estimate). The next rebalance is the Dec 2026 "
-               "review. Benchmark: Nifty200 Momentum 30 price index (not TRI). Dividends and corporate actions on "
-               "holdings are not yet adjusted.")
+               "review. Benchmark: Nifty200 Momentum 30 Total Return Index (official, niftyindices.com); the price index "
+               "is shown for context. Dividends are credited gross (pre-TDS) on the ex-date and splits/bonuses adjust "
+               "share counts; rights and demergers are not adjusted.")
     if not (PAPER / "daily.csv").exists():
         st.info("No paper book yet.")
         return
     d = pd.read_csv(PAPER / "daily.csv", parse_dates=["date"])
     pos = pd.read_csv(PAPER / "positions.csv")
     led = pd.read_csv(PAPER / "ledger.csv")
-    d["Paper book"] = d["nav"] / d["nav"].iloc[0] - 1
-    d["Index (price)"] = d["index_price"] / d["index_price"].iloc[0] - 1
+    from paper.view import paper_frame
+    d = paper_frame(d)
+    t = d.dropna(subset=["Index (TRI)"])
     k = st.columns(4)
     k[0].metric("NAV", f"₹{d['nav'].iloc[-1]:,.0f}")
     k[1].metric("Paper return", f"{d['Paper book'].iloc[-1]:+.2%}")
-    k[2].metric("Index (price) return", f"{d['Index (price)'].iloc[-1]:+.2%}")
-    k[3].metric("Difference", f"{d['Paper book'].iloc[-1] - d['Index (price)'].iloc[-1]:+.2%}")
+    if len(t):
+        k[2].metric("Index TRI return", f"{t['Index (TRI)'].iloc[-1]:+.2%}")
+        k[3].metric("vs TRI", f"{t['Paper book'].iloc[-1] - t['Index (TRI)'].iloc[-1]:+.2%}")
+    else:
+        k[2].metric("Index (price) return", f"{d['Index (price)'].iloc[-1]:+.2%}")
+        k[3].metric("Difference", f"{d['Paper book'].iloc[-1] - d['Index (price)'].iloc[-1]:+.2%}")
     fig = go.Figure()
-    for i, c in enumerate(["Paper book", "Index (price)"]):
+    for i, c in enumerate(["Paper book", "Index (TRI)", "Index (price)"]):
         fig.add_trace(go.Scatter(x=d["date"], y=d[c], name=c, mode="lines+markers",
                                  line=dict(color=p["series"][i], width=2)))
     fig.update_layout(height=320, yaxis_tickformat=".1%", margin=dict(l=10, r=10, t=10, b=10),

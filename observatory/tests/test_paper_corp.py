@@ -78,11 +78,11 @@ def test_runner_credits_late_dividend_and_split_keeps_nav_continuous(tmp_path, m
         {"symbol": list(px[d.isoformat()]), "series": "EQ", "close": list(px[d.isoformat()].values())})
         if d.isoformat() in px else None)
     monkeypatch.setattr(RP, "index_close", lambda d, s: 1.0)
-    RP.main(dt.date(2026, 10, 20), fetch_ca=False)
+    RP.main(dt.date(2026, 10, 20), fetch_ca=False, fetch_tri=False)
     daily = pd.read_csv(tmp_path / "daily.csv").set_index("date")["nav"]
     assert daily.to_dict() == {"2026-10-16": 2800.0, "2026-10-19": 2826.0, "2026-10-20": 2826.0}
     pos = pd.read_csv(tmp_path / "positions.csv").set_index("symbol")["shares"]
     assert pos["B"] == 20 and pos["CASH"] == 1026.0
     assert set(pd.read_csv(tmp_path / "ledger.csv")["side"]) == {"BUY", "DIVIDEND", "SPLIT"}
-    RP.main(dt.date(2026, 10, 20), fetch_ca=False)                   # idempotent
+    RP.main(dt.date(2026, 10, 20), fetch_ca=False, fetch_tri=False)                   # idempotent
     assert len(pd.read_csv(tmp_path / "ledger.csv")) == 4

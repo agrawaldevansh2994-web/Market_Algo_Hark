@@ -58,7 +58,7 @@ def test_export_end_to_end(tmp_path):
     nifty = close["nifty50"].dropna()
     assert meta["data_through"] == nifty.index[-1].strftime("%Y-%m-%d")
     assert next(t for t in ov["tiles"] if t["key"] == "nifty50")["last"] == pytest.approx(float(nifty.iloc[-1]), abs=1e-3)
-    assert "not TRI" in meta["caveats"]["benchmark_label"]
+    assert "TRI" in meta["caveats"]["benchmark_label"] and "not TRI" not in meta["caveats"]["benchmark_label"]
     paper = json.loads((tmp_path / "paper.json").read_text(encoding="utf-8"))
     if not paper.get("missing"):
         daily = pd.read_csv(HERE / "paper" / "state" / "daily.csv")

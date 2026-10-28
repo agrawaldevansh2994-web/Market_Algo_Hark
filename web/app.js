@@ -466,16 +466,31 @@ async function viewPaper(root) {
   root.append(sub("Paper book: Momentum 30 replica, traded on paper"));
   root.append(cap(META.caveats.paper));
   if (p.missing) { root.append(h("div", { class: "info" }, "No paper book yet.")); return; }
-  root.append(tiles([{ label: "NAV", value: "₹" + fmt(p.nav, 0) }, { label: "Paper return", value: pct(p.ret, 2, true) },
-    { label: "Index (price) return", value: pct(p.idx_ret, 2, true) }, { label: "Difference", value: pct(p.diff, 2, true) }]));
+  const hasTri = p.tri_ret !== null && p.tri_ret !== undefined;
+  root.append(tiles(hasTri
+    ? [{ label: "NAV", value: "₹" + fmt(p.nav, 0) }, { label: "Paper return", value: pct(p.ret, 2, true) },
+       { label: "Index TRI return", value: pct(p.tri_ret, 2, true) }, { label: "vs TRI", value: pct(p.tri_diff, 2, true) }]
+    : [{ label: "NAV", value: "₹" + fmt(p.nav, 0) }, { label: "Paper return", value: pct(p.ret, 2, true) },
+       { label: "Index (price) return", value: pct(p.idx_ret, 2, true) }, { label: "Difference", value: pct(p.diff, 2, true) }]));
   const d = p.daily, ci = n => d.cols.indexOf(n), x = d.rows.map(r => r[ci("date")]);
   const el = chartDiv(320); root.append(el);
-  plot(el, ["Paper book", "Index (price)"].map((c, i) => ({ type: "scatter", mode: "lines+markers", name: c, x, y: d.rows.map(r => r[ci(c)]),
-    line: { color: P.series[i], width: 2 } })),
+  const lines = ["Paper book", "Index (TRI)", "Index (price)"].filter(c => ci(c) >= 0);
+  plot(el, lines.map((c, i) => ({ type: "scatter", mode: "lines+markers", name: c, x, y: d.rows.map(r => r[ci(c)]),
+    line: { color: P.series[i], width: 2, dash: c === "Index (price)" ? "dot" : "solid" } })),
     { height: 320, margin: { l: 56, r: 16, t: 10, b: 40 }, paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)",
       font: { family: FONT, color: P.ink2 }, legend: { orientation: "h", y: -0.18 },
       yaxis: { tickformat: ".1%", gridcolor: P.grid, zeroline: false }, xaxis: { showgrid: false, linecolor: P.axis, type: "date", tickformat: "%d %b", dtick: 86400000 } });
-  root.append(cap(`Since ${dmy(p.first)} close; last mark ${dmy(p.last)}.`));
+  root.append(cap(`Since ${dmy(p.first)} close; last mark ${dmy(p.last)}.` +
+    (hasTri && p.tri_last !== p.last ? ` TRI published through ${dmy(p.tri_last)}; "vs TRI" is measured to that day.` : "") +
+    (p.dividends ? ` Dividends credited: ₹${fmt(p.dividends, 0)} (gross).` : "")));
+  if (p.membership) {
+    const m = p.membership;
+    root.append(h("div", { class: m.overlap === m.of ? "ok" : "info" },
+      `Official index list (${dmy(m.as_of)}): ${m.overlap} of ${m.of} names held.` +
+      (m.held_not_in_index.length ? ` Held, not in index: ${m.held_not_in_index.join(", ")}.` : "") +
+      (m.in_index_not_held.length ? ` In index, not held: ${m.in_index_not_held.join(", ")}.` : "") +
+      " The book only trades at the semi-annual review, so drift between reviews is expected."));
+  }
   root.append(h("div", { class: "cols2" },
     h("div", {}, h("h3", {}, "Holdings"), table(p.positions, { fmt: { shares: v => defNum(v) }, maxh: 1150 })),
     h("div", {}, h("h3", {}, "Fills"), table(p.ledger, { left: ["date", "symbol", "side"], maxh: 1150 }))));
